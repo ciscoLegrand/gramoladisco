@@ -34,8 +34,8 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
-
+  config.active_storage.service = :spaces
+  config.active_storage.variant_processor = :vips
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -61,7 +61,7 @@ Rails.application.configure do
 
 
   # Raises error for missing translations.
-  # config.i18n.raise_on_missing_translations = true
+  config.i18n.raise_on_missing_translations = true
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
@@ -71,4 +71,13 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = false
+  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.mailjet_settings = {
+    api_key: Figaro.env.mailjet_api_key,
+    secret_key: Figaro.env.mailjet_secret_key
+  }
 end

@@ -14,13 +14,15 @@ module Gramoladisco
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.active_job.queue_adapter = :sidekiq
     config.autoload_lib(ignore: %w(assets tasks))
+
     config.generators do |gen|
       gen.assets            false
       gen.helper            false
       gen.test_framework    :minitest
-      gen.jbuilder          false
-      gen.orm               :active_record, primary_key_type: :uuid
+      gen.jbuilder          true
+      gen.orm               :active_record #, primary_key_type: :uuid
       gen.system_tests      false
     end
     # Configuration for the application, engines, and railties goes here.
@@ -30,9 +32,10 @@ module Gramoladisco
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.active_storage.variant_processor = :vips
     config.time_zone = 'Europe/Madrid'
     config.i18n.available_locales = %i[es en]
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = :en
     config.i18n.fallbacks = true
   end
 end

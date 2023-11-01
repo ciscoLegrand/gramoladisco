@@ -1,0 +1,6 @@
+:log_level: debug
+:concurrency: 1
+:queues:
+  - [high_priority_queue, 2]
+  - [default, 1]
+  - [low_priority_queue, 1]

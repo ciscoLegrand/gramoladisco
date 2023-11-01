@@ -71,5 +71,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "figaro"
+gem 'aws-sdk-s3', require: false
+gem 'figaro'
 gem 'friendly_id'
+gem 'mailjet'
+gem 'sidekiq'
+gem 'whenever', require: false
