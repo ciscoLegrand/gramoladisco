@@ -1,0 +1,8 @@
+<%= render StringSearcherComponent.new(
+  path: search_path,
+  attribute: attribute,
+  options: {
+    placeholder: 'Buscar ...',
+    regex: params[regex]
+  }
+)%>

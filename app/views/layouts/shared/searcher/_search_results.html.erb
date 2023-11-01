@@ -1,0 +1,26 @@
+<% if @error.present? %>
+  <div class="w-full flex justify-start my-2 p-2   hover:text-blue-500 text-gray-800 dark:hover:text-gray-300 bg-yellow-300 dark:hover:bg-gray-700 hover:bg-indigo-50 rounded-xl ">
+    <div class="text-xl ml-3 w-full flex justify-between">
+      <%= highlight(@error, @error, highlighter: '<div class="p-2" >\1</div>') %>
+    </div>
+  </div>
+<% elsif resources.size < 1 %>
+  <div class="w-full flex justify-start my-2 p-2  hover:text-blue-500 dark:text-gray-800 dark:hover:text-gray-300 bg-yellow-300 dark:hover:bg-gray-700 hover:bg-indigo-50 rounded-xl ">
+    <div class="text-xl ml-3 w-full flex justify-between">
+      <%= highlight('0 resultados', '0 resultados', highlighter: '<div class="p-2" >\1</div>') %>
+    </div>
+  </div>
+<% elsif params[attribute].blank? %>
+<% else %>
+  <div class="w-full overflow-y-auto custom-scroll">
+    <% resources.each do |resource| %>
+      <div class="flex justify-start my-2 p-2  hover:text-blue-500 dark:text-gray-800 dark:hover:text-gray-300 bg-yellow-300 dark:hover:bg-gray-700 hover:bg-indigo-50 rounded-xl hover:cursor-pointer">
+        <div class="text-xl ml-3 w-full">
+          <%= link_to edit_admin_album_path(resource) do %>
+            <%= highlight(resource.send(attribute), resource.send(attribute), highlighter: '<div class="p-2" >\1</div>') %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
