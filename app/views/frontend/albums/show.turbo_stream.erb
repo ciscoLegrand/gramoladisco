@@ -1,6 +1,6 @@
 
   <%= turbo_stream.append "images" do %>
-    <%= render partial: "albums/images/image", collection: @images %>
+    <%= render partial: "frontend/albums/images/image", collection: @images %>
   <% end %>
   <% if @pagy.next.present? %>
     <%= turbo_stream.replace "pagination" do %>
