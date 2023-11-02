@@ -1,0 +1,2 @@
+<%= turbo_stream.replace(@album, partial: "admin/albums/form", locals: { album: @album }) %>
+<%= turbo_stream.prepend "notification", partial: "layouts/shared/notification" %>
