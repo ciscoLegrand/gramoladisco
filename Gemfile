@@ -74,6 +74,7 @@ end
 gem 'aws-sdk-s3', require: false
 gem 'figaro'
 gem 'friendly_id'
+gem 'inline_svg'
 gem 'mailjet'
 gem 'sidekiq'
 gem 'whenever', require: false
