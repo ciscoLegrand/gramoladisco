@@ -1,0 +1,44 @@
+<aside  data-controller='decrease'
+        data-decrease-target='aside'
+        class="flex flex-col items-center hidden lg:block lg:w-2/12 min-h-screen text-gray-900 bg-blue-900 dark:bg-gray-200 transition-colors duration-200 ease-in-out px-2 relative z-10">
+  <!--LOGO--->
+  <div class="w-full h-16 flex justify-between items-center content-center">
+    <%= link_to inline_svg_tag('icons/login/email.svg', class: 'w-12 h-12'), 
+                root_path, 
+                class: 'flex items-center justify-center my-3' %>
+  </div>
+    <%= active_link_to '', data: { action: 'click->decrease#decrease' }, class: 'absolute top-3 -right-4 nav-link p-1 text-center rounded-full border border-slate-600 bg-white hover:bg-slate-200 hover:text-indigo-500 shadow-md shadow-slate-300 z-10' do %>
+      <%= inline_svg_tag('icons/shared/arrow-bar-left.svg', class: 'w-6 h-6', data: { 'decrease-target': 'iconLeft' }) %>
+      <%= inline_svg_tag('icons/shared/arrow-bar-right.svg', class: 'w-4 h-4 hidden', data: { 'decrease-target': 'iconRight' }) %>
+    <% end %>
+  <!---LINK OPTIONS-->
+  <div class="w-full flex flex-col items-center border-t border-gray-700 gap-8">
+    <%= active_link_to root_path, class: 'nav-link w-full flex justify-center items-center py-2 text-center' do %>
+      <span data-decrease-target="link" class="w-full text-lg">Inicio</span>
+      <%= inline_svg_tag('icons/aside/home.svg', class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' }) %>
+    <% end %>
+    <%= active_link_to admin_albums_path, class: 'nav-link w-full  flex justify-center items-centerpy-2 text-center' do %>
+      <span data-decrease-target="link" class="w-full text-lg">Albums</span>
+      <%= inline_svg_tag('icons/aside/photo.svg', class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' }) %>
+    <% end %>
+    <%= active_link_to 'admin_categories_path', class: 'nav-link w-full flex justify-center items-center py-2 text-center' do %>
+      <span data-decrease-target="link" class="w-full text-lg">Categories</span>
+      <%= inline_svg_tag('icons/aside/category.svg', class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' }) %>
+    <% end %>
+    <%= active_link_to 'admin_products_path', class: 'nav-link w-full  flex justify-center items-centerpy-2 text-center' do %>
+      <span data-decrease-target="link" class="w-full text-lg">Products</span>
+      <%= inline_svg_tag('icons/aside/dj.svg', class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' }) %>
+    <% end %>
+    <%= active_link_to 'admin_contacts_path', class: 'nav-link w-full flex justify-center items-center py-2 text-center' do %>
+      <span data-decrease-target="link" class="w-full text-lg">Contact</span>
+      <%= inline_svg_tag('icons/login/email.svg', class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' }) %>
+    <% end %>
+  </div>
+  <div class="w-full fixed top-2 right-[40%] flex justify-end md:hidden z-10">
+    <button class="w-10 ml-5 group focus:outline-none">
+      <div class="rounded-xl bg-black h-1 w-8 my-1 relative top-2 rotate-45 "></div>
+      <div class=""></div>
+      <div class="rounded-xl bg-black h-1 w-8 my-1 relative -rotate-45"></div>
+    </button>
+  </div>
+</aside>

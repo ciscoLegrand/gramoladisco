@@ -1,0 +1,20 @@
+<footer class="bg-gray-800 text-white p-4">
+  <%#= render 'layouts/shared/cookies_banner' %>
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+    <div class="flex justify-start items-baseline gap-3 mb-4 md:mb-0">
+      <span class="text-sm">© <%= Time.zone.now.year %></span>
+      <div>
+        <%= link_to root_path, class: 'flex items-center' do %>
+          <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
+            <span class="text-blue-500 font-semibold">LaGramola</span><span class="text-indigo-500 text-lg font-extrabold">Disco</span> 
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row items-center gap-4">
+      <%= link_to 'Términos y condiciones', 'terms_and_conditions_path' %>
+      <%= link_to 'Política de privacidad', 'privacy_policy_path' %>
+      <%= link_to 'Política de cookies', 'cookies_policy_path' %>
+    </div>
+  </div>
+</footer>
