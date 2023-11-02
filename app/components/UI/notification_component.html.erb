@@ -1,0 +1,17 @@
+<%= content_tag :div, id: "toast-#{type}", class: "flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-t-lg rounded-b-sm shadow dark:text-gray-400 dark:bg-gray-800 border-b-4 border-b-#{color} fixed bottom-0 left-0 m-4 z-50 opacity-0 toast-fade-in", role: "alert", data: { controller: "toast", toast_target: "container", toast_timeout: data[:timeout] } do %>
+  <%= content_tag :div, class: "inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-#{color} bg-#{bg_color} rounded-lg dark:bg-#{dark_bg_color} dark:text-#{dark_text_color}" do %>
+    <%= inline_svg_tag "icons/notification/#{icon}.svg", class: "h-8 w-8" %>
+  <% end %>
+  <div class="flex flex-col gap-4">
+    <%= content_tag :div, class: "ml-3 text-lg font-normal text-#{color}" do %>
+      <%= data[:title] %>
+    <% end %>
+    <%= content_tag :div, class: "ml-3 text-sm font-normal text-#{color}" do %>
+      <%= data[:body] %>
+    <% end if data[:body].present? %>
+  </div>
+  <%= button_tag type: "button", class: "ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700", data: { action: "click->toast#close", dismiss_target: "toast-#{type}" }, aria: { label: "Close" } do %>
+    <span class="sr-only">Close</span>
+    <%= inline_svg_tag 'icons/notification/close.svg', class: 'h-6 w-6'%>
+  <% end %>
+<% end %>
