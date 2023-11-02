@@ -161,6 +161,7 @@ GEM
       rest-client (>= 2.0.0)
     marcel (1.0.2)
     matrix (0.4.2)
+    method_source (1.0.0)
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0218.1)
@@ -273,6 +274,10 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    view_component (3.6.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -315,6 +320,7 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
+  view_component
   web-console
   whenever
 

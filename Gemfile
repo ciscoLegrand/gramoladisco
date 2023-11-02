@@ -77,4 +77,5 @@ gem 'friendly_id'
 gem 'inline_svg'
 gem 'mailjet'
 gem 'sidekiq'
+gem 'view_component'
 gem 'whenever', require: false
