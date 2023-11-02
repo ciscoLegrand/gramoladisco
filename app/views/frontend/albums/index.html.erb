@@ -1,12 +1,8 @@
 <div class="container flex flex-col gap-8 my-12 mx-auto">
+  <div id="next_link">
+    <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
+  </div>
   <section id="albums" class="grid grid-cols-4 gap-8">
-    <%= @albums.count %>
-    <% @albums.each do |album| %>
-          <figure class="aspect-w-4 aspect-h-3">
-      <%= image_tag url_for(album.images.first), 
-                    data: { src: "#{rails_blob_url(album.images.first)}"}, 
-                    class: "object-cover" if album.images.attached? %>
-    </figure>
-    <% end %>
+    <%= render UX::AlbumComponent.with_collection(@albums)%>
   </section>
 </div>

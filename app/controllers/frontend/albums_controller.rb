@@ -3,8 +3,7 @@ class Frontend::AlbumsController < ApplicationController
 
   # GET /albums or /albums.json
   def index
-    # @pagy, @albums = pagy_countless(Album.published, items: 12)
-    @albums = Album.all
+    @pagy, @albums = pagy_countless(Album.published, items: 12)
     respond_to do |format|
       format.html # GET
       format.turbo_stream # POST
@@ -33,7 +32,7 @@ class Frontend::AlbumsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(
             :modal,
-            partial: "albums/images/album",
+            partial: "frontend/albums/images/album",
             locals: { album: @album }
           )
         end
@@ -44,7 +43,7 @@ class Frontend::AlbumsController < ApplicationController
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.replace(:modal, partial: "albums/images/verify_password", locals: { album: @album }),
+            turbo_stream.replace(:modal, partial: "frontend/albums/images/verify_password", locals: { album: @album }),
             turbo_stream.prepend(:notification, partial: "layouts/shared/notification")
           ]
         end

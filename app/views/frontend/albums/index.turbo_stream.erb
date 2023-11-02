@@ -6,7 +6,7 @@
   <% end %>
   <%= turbo_stream.replace "albums" do %>
     <section id="albums" class="grid grid-cols-4 gap-8">
-      <%= render AlbumComponent.with_collection(@albums)%>
+      <%= render UX::AlbumComponent.with_collection(@albums)%>
     </section>
   <% end %>
 </div>

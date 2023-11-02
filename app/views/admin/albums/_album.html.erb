@@ -12,7 +12,11 @@
         <%= album.password %>
       </div>
       <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
-        <%= album.published_at.strftime('%d-%m-%y') %>
+        <% begin %>
+        <%= album&.published_at.strftime('%d-%m-%y') %>
+        <% rescue %>
+        <% album.published_at.presence || 'no data'%>
+        <% end %>
       </div>
       <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
         <%= album.date_event.strftime('%d-%m-%y') %>
