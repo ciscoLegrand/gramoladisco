@@ -76,6 +76,7 @@ gem 'figaro'
 gem 'friendly_id'
 gem 'inline_svg'
 gem 'mailjet'
+gem 'pagy'
 gem 'sidekiq'
 gem 'view_component'
 gem 'whenever', require: false
