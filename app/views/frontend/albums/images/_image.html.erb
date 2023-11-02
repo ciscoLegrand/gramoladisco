@@ -1,0 +1,9 @@
+<%= turbo_frame_tag image do %>
+  <div class="w-1/2 md:w-full mx-auto dark:text-white border border-gray-200 shadow-lg shadow-slate-300 rounded-lg hover:bg-red-500">
+    <figure class="aspect-w-4 aspect-h-3">
+      <%= image_tag url_for(image), 
+                    data: { src: "#{rails_blob_url(image)}"}, 
+                    class: "object-cover"%>
+    </figure>
+  </div>
+<% end %>
