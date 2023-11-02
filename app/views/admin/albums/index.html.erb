@@ -1,0 +1,41 @@
+<div class="w-full my-12">
+  <div class="container flex flex-col justify-between items-center gap-12 mx-auto">
+    <div class="w-full flex flex-col justify-between items-center gap-4">
+      <h2 class="w-full text-center text-3xl text-black font-semibold"><%= Album.count %> Albums</h2>
+      <div class="w-full flex justify-between items-center gap-8 mx-auto">
+        <div class="w-full flex justify-center items-center gap-8">
+          <% @years.each do |year|%>
+            <%= link_to year, admin_albums_path(year: year), class: 'rounded-lg py-3 px-5 border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white block font-medium' %>
+          <% end %>
+          <%= link_to 'Ocultos', admin_albums_path(draft: true), class: 'rounded-lg py-3 px-5 border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white block font-medium' %>
+          <%= link_to 'Publicados', admin_albums_path(published: true), class: 'rounded-lg py-3 px-5 border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white block font-medium' %>
+        </div>
+        <div class="w-full flex justify-between items-center my-8">
+          <%= render 'layouts/shared/searcher/search_form', search_path: search_admin_albums_path, regex: 'title', attribute: 'title' %>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex justify-between items-center gap-8 mx-auto">
+      <%== pagy_nav(@pagy) %>
+      <div class="flex justify-between items-center gap-8">
+        <%= link_to 'New album', new_admin_album_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium whitespace-nowrap" %>
+        <%= link_to 'Back', :back, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium whitespace-nowrap" %>
+      </div>
+    </div>
+  </div>
+  <section class="min-w-full w-full flex flex-col justify-center items-center gap-4 my-8 ">
+    <header class="min-w-full font-black dark:text-white">
+      <section class="grid grid-cols-6 gap-4 text-sm p-2">
+        <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">TITLE</div>
+        <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">PHOTOS</div>
+        <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">PASSWORD</div>
+        <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">PUBLISHED</div>
+        <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">DATE EVENT</div>
+        <div class="flex-1 flex justify-end items-center  text-lg py-4 px-2">ACTIONS</div>
+      </section>
+    </header>
+    <ul id="search_results" class="min-w-full flex flex-col turbo_stream">
+        <%= render @albums if params[:title].blank? %>
+    </ul>
+  </section>
+</div>

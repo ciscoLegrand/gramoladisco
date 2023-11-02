@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gramoladisco</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/6.0.0-beta.2/dropzone.css" integrity="sha512-b3Wb3Os4sxJRdYkfCWtFjvuN/OlfBNtBGJknON+zbxU6M7GRYdII8m1W7TMsls/kwuwtq1wt7TvuF58Sd/4AGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%= javascript_importmap_tags %>
+  </head>
+
+ <body>
+    <main class="w-full flex justify-between" data-controller="toogle">
+      <%= render 'layouts/shared/notification' %>
+      <%= render 'layouts/shared/aside_nav' %>
+      <div class="w-full flex flex-col py-12 px-24">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
