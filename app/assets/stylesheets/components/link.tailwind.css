@@ -1,0 +1,8 @@
+@layer components {
+  .nav-link {
+    @apply font-semibold hover:text-gray-600 dark:hover:text-gray-500 hover:border-b-2 transition-colors hover:border-b-slate-800 text-slate-900 p-2 duration-500 hover:duration-100 dark:border-b-slate-200 dark:hover:border-b-slate-400 dark:text-white dark:hover:text-slate-900 whitespace-nowrap;
+  }
+  .nav-link-active {
+    @apply bg-indigo-400 text-white hover:text-white rounded-lg p-2;
+  }
+}
