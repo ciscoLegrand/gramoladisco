@@ -1,0 +1,55 @@
+<%= form_with(model: [:admin, album], html: { id: 'album-form', class: "contents grid grid-cols-1 md:grid-cols-2 gap-8 dark:bg-dark-gray dark:text-white" }) do |form| %>
+  <% if album.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+        <% album.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", 'data-upload-target': 'input' %>
+  </div>
+
+  <div class="my-5 md:col-span-2">
+    <%= form.label :password %>
+    <%= form.text_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :emails, class: "mt-4" %>
+    <%= form.text_field :emails, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 md:col-span-2">
+    <%= form.label :date_event %>
+    <%= form.date_field :date_event, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :published_at, class: "mt-4" %>
+    <%= form.date_field :published_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    
+    <% if album.present? && album.images.attached? %>
+      <%= button_to "Eliminar #{album.images.size} fotos", admin_delete_all_path(album), method: :delete, class: 'rounded-lg py-3 px-5 bg-orange-600 text-white inline-block font-medium cursor-pointer'%>
+    <% end %>
+
+    <%= link_to 'Back to albums', admin_albums_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+
+  
+  <% if album.present? && album.persisted? %>
+    <!-- Aquí viene el código de Dropzone -->
+    <div id="dropzone"
+        data-controller="dropzone"
+        data-dropzone-album-value="<%= album.id %>"
+        data-dropzone-url="<%= admin_images_url %>"
+        class="dropzone w-full h-64 bg-gray-200 dark:bg-dark-gray rounded-md mt-12" >
+      <div class="dz-message" data-dz-message><span>Drag and drop files here or click to upload.</span></div>
+      <div class="dropzone-previews"></div>
+    </div>
+  <% end %>
+<% end %>
