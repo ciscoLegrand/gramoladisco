@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def active_link_to(text= nil, path = nil, **options, &block)
     link = block_given? ? text : path
     
