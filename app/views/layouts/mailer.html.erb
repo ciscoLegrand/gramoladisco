@@ -1,13 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
     <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-  <body>
-    <%= yield %>
-  </body>
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header, .footer {
+            text-align: center;
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .footer p {
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- TODO: Header -->
+        <div class="header">
+            <span style="align-self: center; font-size: 2em; font-weight: 600; white-space: nowrap; color: #FFFFFF;">
+                <span style="color: #3B82F6; font-size: 2em; font-weight: 600;">LaGramola</span>
+                <span style="color: #6366F1; font-size: 3em; font-weight: 900;">Disco</span>
+            </span>
+
+        </div>
+
+        <!-- Contenido -->
+        <div class="content">
+            <%= yield %>
+        </div>
+
+        <!-- TODO: Footer -->
+        <div class="footer">
+            <p>© 2023 Empresa XYZ. Todos los derechos reservados.</p>
+            <p>Calle Ejemplo 123, Ciudad, País</p>
+            <p>Si tienes preguntas, por favor contáctanos a <a href="mailto:correo@ejemplo.com" style="color: #ffffff; text-decoration: underline;">correo@ejemplo.com</a></p>
+        </div>
+    </div>
+</body>
 </html>
