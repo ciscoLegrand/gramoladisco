@@ -80,3 +80,4 @@ gem 'pagy'
 gem 'sidekiq'
 gem 'view_component'
 gem 'whenever', require: false
+gem 'letter_opener'
