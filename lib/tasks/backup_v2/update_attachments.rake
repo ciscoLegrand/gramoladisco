@@ -4,7 +4,7 @@ namespace :csv do
   desc "Update record_id in attachments CSV"
   task update_attachments: :environment do
     recovered_albums_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'recovered_albums.csv')
-    attachments_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'attachments.csv')
+    attachments_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'gr_attachments.csv')
     updated_attachments_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'updated_attachments.csv')
 
     gallery_to_album_hash = {}
