@@ -2,9 +2,9 @@ require 'csv'
 
 namespace :csv do
   desc "Merge albums and galleries CSV files"
-  task merge: :environment do
-    albums_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'albums.csv')
-    galleries_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'galleries.csv')
+  task merge_albums: :environment do
+    albums_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'gr_albums.csv')
+    galleries_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'gr_galleries.csv')
     merged_csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'recovered_albums.csv')
 
     albums_data = CSV.read(albums_csv_path, headers: true)
