@@ -81,3 +81,6 @@ gem 'sidekiq'
 gem 'view_component'
 gem 'whenever', require: false
 gem 'letter_opener'
+gem "roo", "~> 2.9.0"
+gem "caxlsx"
+gem "caxlsx_rails"
