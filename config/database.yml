@@ -13,8 +13,8 @@
 # gem "pg"
 #
 default: &default
-  user: <%= Figaro.env.DBUSER %>
-  password: <%= Figaro.env.DBPASS %>
+  user: <%= Figaro.env.dbuser %>
+  password: <%= Figaro.env.dbpass %>
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
@@ -23,12 +23,12 @@ default: &default
 
 development:
   <<: *default
-  host: <%= Figaro.env.DBHOST %>
-  database: <%= Figaro.env.DBNAME %>
+  host: <%= Figaro.env.dbhost %>
+  database: <%= Figaro.env.dbname %>
 
 staging:
   <<: *default
-  database: <%= Figaro.env.DBNAME %>
+  database: <%= Figaro.env.dbname %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -62,8 +62,8 @@ staging:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: <%= Figaro.env.DBHOST %>
-  database: <%= Figaro.env.DBTEST %>
+  host: <%= Figaro.env.dbhost %>
+  database: <%= Figaro.env.dbname %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
