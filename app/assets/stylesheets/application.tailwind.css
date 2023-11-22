@@ -1,6 +1,7 @@
 @import "components/buttons.tailwind.css";
 @import "components/link.tailwind.css";
 @import "components/pagy.tailwind.css";
+@import 'actiontext.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
