@@ -329,6 +329,7 @@ DEPENDENCIES
   jbuilder
   letter_opener
   mailjet
+  minitest
   pagy
   pg (~> 1.1)
   propshaft
