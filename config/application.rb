@@ -20,7 +20,7 @@ module Gramoladisco
     config.generators do |gen|
       gen.assets            false
       gen.helper            false
-      gen.test_framework    :minitest
+      # gen.test_framework    :minitest
       gen.jbuilder          true
       gen.orm               :active_record #, primary_key_type: :uuid
       gen.system_tests      false

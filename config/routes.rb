@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   scope module: 'frontend' do
     root 'pages#index'
     resources :albums do
