@@ -11,7 +11,7 @@ export default class extends Controller {
     e.preventDefault()
     console.log('decrease')
     this.asideTarget.classList.toggle('lg:w-2/12')
-    this.asideTarget.classList.toggle('lg:w-1/12')
+    this.asideTarget.classList.toggle('lg:w-[4%]')
     this.iconLeftTarget.classList.toggle('hidden')
     this.iconRightTarget.classList.toggle('hidden')
 
