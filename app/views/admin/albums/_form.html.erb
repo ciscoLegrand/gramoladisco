@@ -13,21 +13,21 @@
 
   <div class="my-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", 'data-upload-target': 'input' %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full", 'data-upload-target': 'input' %>
   </div>
 
   <div class="my-5 md:col-span-2">
     <%= form.label :password %>
-    <%= form.text_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :password, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
     <%= form.label :emails, class: "mt-4" %>
-    <%= form.text_field :emails, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :emails, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5 md:col-span-2">
     <%= form.label :date_event %>
-    <%= form.date_field :date_event, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :date_event, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
     <%= form.label :published_at, class: "mt-4" %>
-    <%= form.date_field :published_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :published_at, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">
@@ -37,7 +37,7 @@
       <%= button_to "Eliminar #{album.images.size} fotos", admin_delete_all_path(album), method: :delete, class: 'rounded-lg py-3 px-5 bg-orange-600 text-white inline-block font-medium cursor-pointer'%>
     <% end %>
 
-    <%= link_to 'Back to albums', admin_albums_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Back to albums', :back, class: "ml-2 rounded-lg py-3 px-5 bg-slate-300 text-slate-800 inline-block font-medium" %>
   </div>
 
   

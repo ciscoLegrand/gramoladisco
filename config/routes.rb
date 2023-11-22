@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :contacts
   scope module: 'frontend' do
     root 'pages#index'
     resources :albums do
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
         post :index
       end
     end
+    resources :contacts, only: %i[index new create]
   end
   namespace :admin do
     root 'dashboard#index'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       patch :publish, on: :member
       post  :search, on: :collection
     end
+    resources :contacts
     resources :images, only: %i[create]
     delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
   end

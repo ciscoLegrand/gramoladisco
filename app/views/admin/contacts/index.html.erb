@@ -5,10 +5,23 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Contacts</h1>
-    <%= link_to "New contact", new_contact_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="contacts" class="min-w-full">
+  <div id="contacts" class="min-w-full flex flex-col items-center">
+    <header class="min-w-full grid grid-cols-4 gap-4 bg-slate-400 py-4 px-2">
+      <div class="col-span-1">
+        <h2 class="font-bold text-xl">Name</h2>
+      </div>
+      <div class="col-span-1">
+        <h2 class="font-bold text-xl">Email</h2>
+      </div>
+      <div class="col-span-1">
+        <h2 class="font-bold text-xl">Subject</h2>
+      </div>
+      <div class="col-span-1">
+        <h2 class="font-bold text-xl">Actions</h2>
+      </div>
+    </header>
     <%= render @contacts %>
   </div>
 </div>

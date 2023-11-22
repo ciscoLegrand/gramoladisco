@@ -1,7 +1,12 @@
-<div id="<%= dom_id contact %>">
-  <% if action_name != "show" %>
-    <%= link_to "Show this contact", contact, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this contact", edit_contact_path(contact), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div id="<%= dom_id contact %>" class="min-w-full grid grid-cols-4 border border-slate-50">
+  <div class="flex justify-start items-center"><%= contact.title %></div>
+  <div class="flex justify-start items-center"><%= contact.email %></div>
+  <div class="flex justify-start items-center text-sm truncate hover:text-clip hover:whitespace-pre-line hover:text-sm hover:overflow-visible "><%= contact.subject.body %></div>
+  <div class="flex justify-end items-center gap-4 p-2">
+    <% if action_name != "show" %>
+      <%= link_to inline_svg_tag('icons/shared/eye.svg', class:'w-6 h-6'),
+                  admin_contact_path(contact),
+                  class: "h-12 w-12 flex justify-center items-center border rounded-full bg-slate-50" %>
+    <% end %>
+  </div>
 </div>

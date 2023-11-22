@@ -22,7 +22,7 @@ module Gramoladisco
       gen.helper            false
       # gen.test_framework    :minitest
       gen.jbuilder          true
-      gen.orm               :active_record #, primary_key_type: :uuid
+      gen.orm               :active_record, primary_key_type: :uuid
       gen.system_tests      false
     end
     # Configuration for the application, engines, and railties goes here.
