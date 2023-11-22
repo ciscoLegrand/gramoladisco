@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UI::StringSearcherComponent < ViewComponent::Base
+class UI::StringSearcher < ViewComponent::Base
   attr_reader :path, :placeholder, :kind, :regex, :attribute
 
   def initialize(path:, attribute:, options: {})
