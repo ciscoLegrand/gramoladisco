@@ -1,5 +1,4 @@
-class Admin::AlbumsController < ApplicationController
-  layout "admin"
+class Admin::AlbumsController < Admin::BaseController
   before_action :set_album, only: %i[ show edit update destroy publish]
 
   # GET /admin/albums or /admin/albums.json
@@ -9,7 +8,7 @@ class Admin::AlbumsController < ApplicationController
     @albums = Album.draft                   if params[:draft].present?
     @albums = Album.published               if params[:published].present?
     @albums = Album.by_year(params[:year])  if params[:year].present?
-      
+
     @total_records = @albums.count
     @pagy, @albums = pagy(@albums, items: 5)
 
@@ -37,10 +36,10 @@ class Admin::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.current_host    = request.host
-    @album.current_user_id = current_user&.id
+    @album.current_user_id = 1 #current_user&.id
     respond_to do |format|
       if @album.save
-        format.html { redirect_to edit_admin_album_url(@album), success: { title: t('admin.albums.create.success.title'), body: t('admin.albums.create.success.body') } }
+        format.html { redirect_to edit_admin_album_url(@album), success: {title: 'Correcto', body: 'Has creado un nuevo album'} }#{ title: t('admin.albums.create.success.title'), body: t('admin.albums.create.success.body') } }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { redirect_to new_admin_album_url, alert: { title: t('admin.albums.create.success.title'), body: @album.errors.full_messages } }
@@ -72,7 +71,7 @@ class Admin::AlbumsController < ApplicationController
   def destroy
     name = @album.title
     PurgeImagesJob.perform_later(@album)
-  
+
     respond_to do |format|
       format.html { redirect_to admin_albums_url, success: {title: t('admin.albums.destroy.success.title', name: name), body: t('admin.albums.destroy.success.body') } }
       format.turbo_stream do
@@ -97,7 +96,7 @@ class Admin::AlbumsController < ApplicationController
       else
         format.html { redirect_to admin_albums_path, alert: { title: t('admin.albums.publish.alert.title', name: @album.title), body: t('admin.albums.publish.alert.body') } }
         format.turbo_stream do
-          flash.now[:alert] = { title: t('admin.albums.publish.alert.title', name: @album.title), body: t('admin.albums.publish.alert.body') } 
+          flash.now[:alert] = { title: t('admin.albums.publish.alert.title', name: @album.title), body: t('admin.albums.publish.alert.body') }
           render 'admin/albums/turbo_streams/publish'
         end
         format.json { render :show, status: :unprocessable_entity, location: @album }
