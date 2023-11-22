@@ -9,7 +9,7 @@
               }  do |form| %>
               
   <%#= form.hidden_field :kind, value: kind if kind.present? %>
-  <div class="relative">
+  <div class="relative flex justify-end">
     <%= form.search_field attribute.to_sym,
                           value: regex,
                           placeholder: placeholder,
@@ -17,10 +17,10 @@
                             debounce_target: 'input',
                             action: 'input->debounce#search'
                           },
-                          class: 'w-full bg-purple-white shadow rounded border-0 p-3',
+                          class: 'w-1/4 bg-purple-white shadow rounded-xl border-0 p-3 duration-500 transition-500 focus:w-full focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:bg-blue-100 focus:border-orange-300',
                           autocomplete: 'off' %>
 
-    <div class="absolute top-1/4 right-2" data-debounce-target="icon">
+    <div class="absolute top-3 right-2 group-focus-within:scale-150 group-focus-within:duration-500 group-focus-within:text-corporation duration-500" data-debounce-target="icon">
       <%= inline_svg_tag('icons/shared/search.svg', class: 'w-6 h-6 stroke-gray-600')%>
     </div>
   </div>

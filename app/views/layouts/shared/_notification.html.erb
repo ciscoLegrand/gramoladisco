@@ -1,5 +1,5 @@
 <div id="notification" class="flex flex-col items-end justify-center z-50">
   <% flash.each do |type, data| %>
-    <%= render(UI::NotificationComponent.new(type: type, data: data)) %>
+    <%= render(UI::Notification.new(type: type, data: data)) %>
   <% end %>
 </div>

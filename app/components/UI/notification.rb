@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UI::NotificationComponent < ViewComponent::Base
+class UI::Notification < ViewComponent::Base
   attr_reader :data, :type
 
   def initialize(type:, data:)
@@ -17,7 +17,7 @@ class UI::NotificationComponent < ViewComponent::Base
       { body: data }.with_indifferent_access
     end
   end
-  
+
 
   def icon
     case type
