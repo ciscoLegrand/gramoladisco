@@ -16,7 +16,6 @@
     <main class="w-full flex justify-between" data-controller="toogle">
       <%= render 'layouts/shared/notification' %>
       <%= render 'layouts/shared/aside_nav' %>
-      <%= render(UI::Notification.new(type: 'success', data: { title: 'Album', body: 'Creado correctamente' })) %>
       <div class="w-full flex flex-col bg-gray-800 transition-all duration-500 ease-in-out px-2 relative z-1">
         <%= yield %>
       </div>

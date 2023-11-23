@@ -1,0 +1,5 @@
+@layer components {
+  .aside-default {
+    @apply flex-col items-center min-h-screen text-gray-900 bg-blue-950 transition-all duration-500 ease-in-out px-2 relative z-10 hidden;
+  }
+}

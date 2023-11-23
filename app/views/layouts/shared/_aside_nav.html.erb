@@ -1,24 +1,17 @@
 <aside  data-controller='decrease'
         data-decrease-target='aside'
-        class="md:flex flex-col items-center lg:block lg:w-2/12 min-h-screen text-gray-900 bg-blue-950 transition-all duration-500 ease-in-out px-2 relative z-10 hidden">
+        class="aside-default md:flex lg:block <%= cookies['asideState'] ? 'lg:w-2/12' : 'lg:w-[4%]' %>">
   <!--LOGO--->
   <%= render UI::Logo.new(link: root_path, logo: 'gramola-logo.png') %>
-
-  <%= active_link_to '', data: { action: 'click->decrease#decrease' }, class: 'absolute top-3 -right-4 nav-link p-1 text-center rounded-full border border-slate-600 bg-white hover:bg-slate-200 text-indigo-500 shadow-md shadow-slate-300 z-10' do %>
+  <br>
+  <%= cookies['asideState'] %>
+  <br>
+  <%= active_link_to '', data: { action: 'click->decrease#toggle' }, class: 'absolute top-3 -right-4 nav-link p-1 text-center rounded-full border border-slate-600 bg-white hover:bg-slate-200 text-indigo-500 shadow-md shadow-slate-300 z-10' do %>
     <%= inline_svg_tag('icons/aside/chevron-left.svg', class: 'w-6 h-6', data: { 'decrease-target': 'iconLeft' }) %>
     <%= inline_svg_tag('icons/aside/chevron-right.svg', class: 'w-6 h-6 hidden', data: { 'decrease-target': 'iconRight' }) %>
   <% end %>
 
   <!---LINK OPTIONS-->
-  <%
-    aside_items = [
-      { path: root_path, title: 'Inicio', icon: 'icons/aside/home.svg' },
-      { path: admin_albums_path, title: 'Albums', icon: 'icons/aside/photo.svg' },
-      { path: '#', title: 'Categories', icon: 'icons/aside/category.svg' },
-      { path: '#', title: 'Products', icon: 'icons/aside/dj.svg' },
-      { path: admin_contacts_path, title: 'Contact', icon: 'icons/contact/inbox.svg' }
-    ]
-  %>
   <nav class="w-full flex flex-col items-center border-t border-gray-700 gap-8">
     <% aside_items.each do |item| %>
       <%= render UI::NavLink.new(path: item[:path], title: item[:title], icon: item[:icon]) %>
