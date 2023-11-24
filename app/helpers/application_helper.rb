@@ -18,7 +18,6 @@ module ApplicationHelper
       { path: root_path, title: 'Inicio' },
       { path: albums_path, title: 'Galleries' },
       { path: contacts_path, title: 'Contact' },
-      { path: admin_root_path, title: 'Admin' }
     ]
   end
 
