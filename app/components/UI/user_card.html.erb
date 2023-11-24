@@ -1,0 +1,29 @@
+<div  data-controller="dropdown"
+      data-dropdown-open-value="false"
+      class="<%= container_style %>" >
+
+  <button role="button" 
+          tabindex=0 
+          data-dropdown-target="openButton"
+          data-action="click->dropdown#open"
+          class="<%= button_style %>">
+    <span class="<%= avatar_style %> hover:cursor-pointer">
+      <%= user.email[0] %>
+    </span>
+  </button>
+    
+  <dialog data-dropdown-target="dropdownContent"
+          class="<%= dropdown[:position] %> <%= dropdown[:style] %>">
+    <h3 class="w-full text-indigo-700 font-semibold text-center  border-b-2 border-b-indigo-700 pb-2"><%= user.email %></h3>
+    <ul class="flex justify-center items-center gap-5">
+      <li class="">
+        <%= link_to inline_svg_tag('icons/shared/search.svg', class:'option-icon'), admin_root_path, class:'relative flex justify-center items-center' %>
+      </li>
+      <li class="">
+        <%= link_to inline_svg_tag('icons/notification/alert-triangle.svg', class:'option-icon'), '#', class:'relative flex justify-center items-center' %>
+      </li>
+    </ul>
+  </dialog>
+</div>
+
+

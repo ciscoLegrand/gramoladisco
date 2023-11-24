@@ -1,24 +1,26 @@
 class UI::NavLink < ViewComponent::Base
-  def initialize(path:, icon:, title:)
+  def initialize(path:, icon: nil, title:)
     @path = path
     @icon = icon
     @title = title
   end
 
   def call
-    active_link_to(@path, class: 'nav-link w-full flex justify-center items-center py-2 text-center') do
-      safe_join([title_content, icon_content])
+    content = [title_content]
+    content << icon_content if @icon.present?
+    active_link_to(@path, data: { 'decrease-target': 'link'}, class: 'nav-link w-full flex justify-start items-center py-2 px-10 transition-all ease-in-out duration-1000') do
+      safe_join(content)
     end
   end
 
   private
 
   def title_content
-    content_tag(:span, @title, class: 'w-full text-lg', data: { 'decrease-target': 'link' })
+    content_tag(:span, @title, class: 'w-full text-lg transition-all ease-in-out duration-1000', data: { 'decrease-target': 'title' })
   end
 
   def icon_content
-    inline_svg_tag(@icon, class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' })
+    inline_svg_tag(@icon, class: 'w-8 h-8', data: { 'decrease-target': 'iconLeft' }) if @icon
   end
 
   def active_link_to(text = nil, path = nil, **options, &block)

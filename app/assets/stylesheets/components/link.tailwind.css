@@ -1,6 +1,6 @@
 @layer components {
   .nav-link {
-    @apply font-semibold hover:text-gray-600 hover:bg-indigo-300 text-indigo-100 rounded-lg hover:rounded-lg p-2 hover:duration-300 whitespace-nowrap transition-colors ease-in-out duration-300;
+    @apply font-semibold hover:text-gray-600 hover:bg-indigo-300 text-indigo-100 rounded-lg hover:rounded-lg hover:duration-300 whitespace-nowrap transition-colors ease-in-out duration-300;
   }
   .nav-link-active {
     @apply bg-indigo-400 text-white hover:text-white rounded-lg p-2;
