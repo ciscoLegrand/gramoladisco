@@ -3,7 +3,19 @@ class Admin::ContactsController < Admin::BaseController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+    items = params[:items] || 5
+    sort_column = params[:sort] || 'title'
+    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    @contacts = Contact.order_by(sort_column, sort_direction)
+    @headers = %w[title email created_at]
+
+    @pagy, @contacts = pagy(@contacts, items:)
+
+    respond_to do |format|
+      format.html # GET
+      format.turbo_stream # POST
+      format.json { render json: @contacts }
+    end
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -56,6 +68,19 @@ class Admin::ContactsController < Admin::BaseController
       format.json { head :no_content }
     end
   end
+
+  # POST /admin/contact/search
+  def search
+    text_fragment = params[:text]
+    @filtered_contacts = Contact.all.filter_by_text(params[:text])
+    @pagy, @filtered_contacts = pagy(@filtered_contacts, items: params[:items] || 15)
+    respond_to do |format|
+      format.turbo_stream do
+        render 'admin/contacts/search_results'
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

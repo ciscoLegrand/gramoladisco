@@ -1,0 +1,5 @@
+<%= turbo_stream.update(
+    'search_results',
+    partial: 'admin/contacts/search_results',
+    locals: { contacts: @filtered_contacts }
+    ) %>

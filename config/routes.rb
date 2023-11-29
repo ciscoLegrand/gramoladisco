@@ -16,7 +16,9 @@ Rails.application.routes.draw do
       patch :publish, on: :member
       post  :search, on: :collection
     end
-    resources :contacts
+    resources :contacts, only: %i[index show delete] do
+      post :search, on: :collection
+    end
     resources :images, only: %i[create]
     delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
   end
