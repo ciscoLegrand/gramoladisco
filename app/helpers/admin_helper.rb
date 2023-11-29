@@ -16,4 +16,14 @@ module AdminHelper
       }
     }
   end
+
+  def aside_items
+    [
+      { path: root_path, title: 'Inicio', icon: 'icons/aside/home.svg' },
+      { path: admin_albums_path, title: 'Albums', icon: 'icons/aside/photo.svg' },
+      { path: '#', title: 'Categories', icon: 'icons/aside/category.svg' },
+      { path: '#', title: 'Products', icon: 'icons/aside/dj.svg' },
+      { path: admin_contacts_path, title: 'Contact', icon: 'icons/contact/inbox.svg' }
+    ]
+  end
 end
