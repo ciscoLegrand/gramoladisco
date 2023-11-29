@@ -12,13 +12,63 @@
   </head>
 
   <body>
-    <%= render 'layouts/shared/navbar' %>
+    <!-- navbar -->
+    <header class="bg-gray-950 shadow-md transition-all">
+      <%= render UI::Navbar::Menu.new(orientation: :horizontal, style: {navbar: 'max-w-screen grid grid-cols-2 lg:grid-cols-3 items-center justify-between mx-auto p-4'}) do |menu| %>
+        <!-- Logo -->
+        <div class="flex items-center"> 
+          <%= link_to root_path, class: 'flex items-center' do %>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span class="text-blue-500 text-2xl font-semibold">LaGramola</span><span class="text-indigo-500 text-3xl font-extrabold">Disco</span> 
+            </span>
+          <% end %>
+          <!-- Menu Toggle Button -->
+          <div class="lg:hidden flex justify-end">
+            <button class="h-6 w-6 ml-5 group focus:outline-none" data-action="navbar#toggleMainMenu">
+              <div class="rounded-xl bg-black h-0.5 w-6 my-0.5 group-hover:relative group-hover:top-1 group-hover:rotate-45 duration-500"></div>
+              <div class="rounded-xl bg-black h-0.5 w-6 my-0.5 group-hover:bg-transparent group-hover:duration-150"></div>
+              <div class="rounded-xl bg-black h-0.5 w-6 my-0.5 group-hover:relative group-hover:bottom-1 group-hover:-rotate-45 duration-500"></div>
+            </button>
+          </div>
+        </div>
+        <!-- Main Menu -->
+        <div id="navbar-multi-level" data-navbar-target="mainMenu" class="fixed lg:relative top-12 left-0 lg:left-0 md:top-14 lg:top-0 z-40 col-span-2 lg:col-span-1 hidden lg:block bg-transparent  w-full h-auto">
+          <ul class="flex flex-col justify-center items-center font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
+            <!-- Menu options -->
+            <% navbar_items.each do |item| %>
+              <%= render UI::Navbar::NavItem.new(path: item[:path], title: item[:title]) %>
+            <% end %>
+          </ul>
+        </div>
+        <%= render UI::Cards::User.new(user: nil, options: navbar_user_card_options) %>
+      <% end %>
+    </header>
     <%= render 'layouts/shared/notification' %>
 
     <main class="w-full main-h-screen bg-gray-800 mx-auto flex-grow flex flex-col">
       <%= yield %>
     </main>
     <%= turbo_frame_tag :modal %>
-    <%= render 'layouts/shared/footer' %>
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white p-4">
+      <%#= render 'layouts/shared/cookies_banner' %>
+      <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div class="flex justify-start items-baseline gap-3 mb-4 md:mb-0">
+          <span class="text-sm">© <%= Time.zone.now.year %></span>
+          <div>
+            <%= link_to root_path, class: 'flex items-center' do %>
+              <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
+                <span class="text-blue-500 font-semibold">LaGramola</span><span class="text-indigo-500 text-lg font-extrabold">Disco</span> 
+              </span>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-4">
+          <%= link_to 'Términos y condiciones', 'terms_and_conditions_path' %>
+          <%= link_to 'Política de privacidad', 'privacy_policy_path' %>
+          <%= link_to 'Política de cookies', 'cookies_policy_path' %>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
