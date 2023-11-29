@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "faker"
+
+Faker::Config.locale = 'es'
+
+
+25.times do
+  Contact.create!(title: Faker::Lorem.sentence(word_count: 3), email: Faker::Internet.email, subject: Faker::Lorem.paragraph(sentence_count: 5))
+end
