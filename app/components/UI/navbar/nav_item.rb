@@ -1,4 +1,4 @@
-class UI::NavLink < ViewComponent::Base
+class UI::Navbar::NavItem < ViewComponent::Base
   def initialize(path:, icon: nil, title:)
     @path = path
     @icon = icon

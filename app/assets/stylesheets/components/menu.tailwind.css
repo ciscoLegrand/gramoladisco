@@ -1,0 +1,10 @@
+@layer components {
+  .menu-vertical {
+    @apply flex flex-col;
+  }
+
+  .menu-horizontal {
+    @apply flex flex-row;
+  }
+
+}
