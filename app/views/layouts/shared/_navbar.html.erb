@@ -27,18 +27,21 @@
         </ul>
       </div>
       <div class="flex justify-end items-center gap-4 px-2 relative">
-        <%= render UI::UserCard.new(
-                  user: nil,
-                  options: {
-                    container: 'w-1/4 flex justify-end bg-indigo-700 rounded-xl gap-8 shadow-md shadow-slate-700',
-                    button: 'w-full py-2 px-2 hover:cursor-pointer flex justify-center items-center gap-4',
-                    avatar: 'w-12 h-12 p-5 flex justify-center items-center bg-corporation border-2 border-indigo-600 bg-slate-950 rounded-full shadow-lg text-white hover:text-red-500 hover:duration-500 duration-500 text-center font-semibold uppercase',
-                    dropdown: {
-                      style: 'w-full flex flex-col gap-6 hidden border-2 border-gray-950 text-slate-200 shadow-lg shadow-slate-500 shadow-t-none rounded-lg rounded-t-none p-4 bg-gray-950 opacity-0 transition-opacity duration-300 ease-in-out',
-                      position: 'absolute -bottom-[9.4rem] -right-7 z-40'
+         <%= render UI::Cards::User.new(
+                    user: nil,
+                    options: {
+                      button: {
+                        style: 'w-full py-2 px-2 hover:cursor-pointer flex justify-center items-center gap-4'
+                      },
+                      avatar: {
+                        style: 'w-12 h-12 p-5 flex justify-center items-center bg-slate-200 border-4 border-indigo-600 rounded-full shadow shadow-indigo-100 text-slate-950 hover:text-red-500 hover:duration-500 duration-500 text-center font-bold uppercase'
+                      },
+                      dropdown: {
+                        style: 'w-full flex flex-col gap-6 hidden border-2 border-gray-950 text-slate-200 shadow-lg shadow-slate-500 shadow-t-none rounded-lg rounded-t-none p-4 bg-gray-950 opacity-0 transition-opacity duration-300 ease-in-out',
+                        position: 'absolute -bottom-[9.4rem] -right-7 z-40'
+                      }
                     }
-                  }
-                ) %>
+                  ) %>
       </div>
   </nav>
 </header>

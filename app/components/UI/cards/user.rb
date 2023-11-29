@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UI::UserCard < ViewComponent::Base
+class UI::Cards::User < ViewComponent::Base
   attr_reader :user, :options
 
   def initialize(user:, options: {})
@@ -22,15 +22,15 @@ class UI::UserCard < ViewComponent::Base
   end
 
   def container_style
-    options[:container]
+    options.dig(:container, :style)
   end
 
   def button_style
-    options[:button]
+    options.dig(:button, :style)
   end
 
   def avatar_style
-    options[:avatar]
+    options.dig(:avatar, :style)
   end
 
   def dropdown
