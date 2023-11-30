@@ -123,6 +123,8 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.5.12)
+      rails (>= 3.0.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     drb (2.1.1)
@@ -279,6 +281,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sentry-rails (5.14.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.14.0)
+    sentry-ruby (5.14.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     sidekiq (7.2.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
@@ -330,6 +337,7 @@ DEPENDENCIES
   caxlsx
   caxlsx_rails
   debug
+  dockerfile-rails (>= 1.5)
   error_highlight (>= 0.4.0)
   faker
   figaro
@@ -349,6 +357,8 @@ DEPENDENCIES
   redis (>= 4.0.1)
   roo (~> 2.9.0)
   selenium-webdriver
+  sentry-rails (~> 5.14)
+  sentry-ruby (~> 5.14)
   sidekiq
   stimulus-rails
   tailwindcss-rails
