@@ -1,0 +1,17 @@
+@layer components {
+  .list-container {
+    @apply w-full lg:w-2/3 mx-auto border rounded-xl;
+  }
+  .list-header {
+    @apply bg-white shadow;
+  }
+  .list-header-title {
+    @apply text-lg font-medium text-gray-900 py-4 px-4 sm:px-6 lg:px-8;
+  }
+  .list-header-actions {
+    @apply py-4 px-4 sm:px-6 lg:px-8;
+  }
+  .list-body {
+    @apply bg-white shadow;
+  }
+}
