@@ -1,7 +1,7 @@
 
-<div class="w-full flex flex-col justify-center items-center mx-auto">
+<div class="w-full lg:w-4/5 flex flex-col justify-center items-center mx-auto">
   <div class="w-full flex justify-between bg-corporation text-white py-4">
-    <div class="w-full flex justify-between items-center mx-auto gap-5 py-6 px-12">
+    <div class="w-full flex justify-between items-center mx-auto gap-5 py-6">
       <div class="flex-1 flex gap-8 flex-nowrap">
         <h1 id="count" class="font-bold text-4xl text-left pl-4 flex flex-nowrap">
           <%= t('.title') %>: <%= @pagy.count %>
@@ -19,7 +19,8 @@
       </div>
     </div>
   </div>
-  <header class="min-w-full grid grid-cols-4 gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-blue-950 border-b-4">
+
+  <header class="w-full grid grid-cols-<%= @headers.size + 1 %> gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-blue-950 border-b-4  border border-blue-800 rounded-t-2xl">
     <% @headers.each do |header| %>
       <% style = 'text-right' if header.eql? 'created_at' %>
       <% direction = params[:direction] == 'desc' && params[:sort] == header ? 'asc' : 'desc' %>
@@ -31,7 +32,7 @@
 
     <div class="capitalize px-3 text-right"> <%=t('.actions')%> </div>
   </header>
-  <ul id="search_results" class="min-w-full flex flex-col turbo_stream">
+  <ul id="search_results" class="w-full flex flex-col [&>li]:border-x [&>li]:border-x-blue-800 [&>li:nth-child(odd)]:bg-slate-900 [&>li:nth-child(even)]:bg-slate-950 [&>li:last-child]:border-b [&>li:last-child]:rounded-b-xl [&>li:last-child]:border-b-blue-800 mb-4">
     <%= render @contacts if params[:text].blank? %>
   </ul>
   <%== pagy_nav(@pagy)%>
