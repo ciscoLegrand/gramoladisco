@@ -12,6 +12,18 @@ require "faker"
 Faker::Config.locale = 'es'
 
 
-25.times do
-  Contact.create!(title: Faker::Lorem.sentence(word_count: 3), email: Faker::Internet.email, subject: Faker::Lorem.paragraph(sentence_count: 5))
+# Establece la fecha de inicio hace 15 meses
+start_date = 15.months.ago.to_date
+
+# Itera desde la fecha de inicio hasta hoy
+(start_date..Date.today).each do |date|
+  rand(0..15).times do
+    Contact.create!(
+      title: Faker::Lorem.sentence(word_count: 3),
+      email: Faker::Internet.email,
+      subject: Faker::Lorem.paragraph(sentence_count: 5),
+      created_at: date,
+      updated_at: date
+    )
+  end
 end
