@@ -1,0 +1,11 @@
+<hr style="margin: 22px 0;">
+<div class="header">
+  <span class="title"><%= @contact.email %></span>
+  <span class="date"><%= @contact.created_at.strftime('%d-%m-%Y [%H:%M] ') %></span>
+</div>
+<hr style="margin: 22px 0;">
+<div class="content">
+  <h2><%= @contact.title %></h2>
+  <p class="body-text"><%= raw @contact.subject.body %></p>
+</div>
+<hr style="margin: 22px 0;">
