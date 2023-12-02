@@ -79,6 +79,7 @@ gem 'friendly_id'
 gem 'inline_svg'
 gem 'mailjet'
 gem 'pagy'
+gem 'breadcrumbs_on_rails'
 gem 'sidekiq'
 gem 'view_component'
 gem 'whenever', require: false
@@ -86,3 +87,9 @@ gem 'letter_opener'
 gem "roo", "~> 2.9.0"
 gem "caxlsx"
 gem "caxlsx_rails"
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "sentry-ruby", "~> 5.14"
+
+gem "sentry-rails", "~> 5.14"

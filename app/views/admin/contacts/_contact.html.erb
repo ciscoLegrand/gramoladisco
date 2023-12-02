@@ -1,9 +1,9 @@
 <li id="<%= dom_id contact %>"
     data-target="search_results"
-    class="min-w-full grid grid-cols-4 py-2 text-slate-100 odd:bg-slate-900 even:bg-slate-950 transition-colors ease-in-out duration-500 hover:bg-indigo-800">
-  <div class="flex justify-start items-center py-2 px-4"><%= contact.title %></div>
-  <div class="flex justify-start items-center py-2 px-4"><%= contact.email %></div>
-  <div class="flex justify-end items-center py-2 px-4"><%= contact.created_at.strftime('%d-%m-%y %H:%M') %></div>
+    class="min-w-full grid grid-cols-4 py-2 text-slate-100 transition-colors ease-in-out duration-500 hover:bg-indigo-800">
+  <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= contact.title %></div>
+  <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= contact.email %></div>
+  <div class="flex justify-end items-center py-2 px-4 truncate whitespace-nowrap"><%= contact.created_at.strftime('%d-%m-%y %H:%M') %></div>
   <div class="flex justify-end items-center gap-5 py-2 px-4">
     <% if action_name != "show" %>
       <%= link_to inline_svg_tag('icons/shared/eye.svg', class:'w-6 h-6'),
