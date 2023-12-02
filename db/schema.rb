@@ -17,6 +17,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_182110) do
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "status", ["read", "unread"]
+
   create_table "action_text_rich_texts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -73,6 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_182110) do
   create_table "contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.string "email", null: false
+    t.enum "status", default: "unread", null: false, enum_type: "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
