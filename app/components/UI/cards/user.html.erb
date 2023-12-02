@@ -12,7 +12,7 @@
     </span>
   </button>
     
-  <dialog data-dropdown-target="dropdownContent"
+  <dropdown data-dropdown-target="dropdownContent"
           class="<%= dropdown[:position] %> <%= dropdown[:style] %>">
     <h3 class="w-full text-indigo-700 font-semibold text-center  border-b-2 border-b-indigo-700 pb-2"><%= user.email %></h3>
     <ul class="flex justify-center items-center gap-5">
@@ -23,7 +23,7 @@
         <%= link_to inline_svg_tag('icons/notification/alert-triangle.svg', class:'option-icon'), '#', class:'relative flex justify-center items-center' %>
       </li>
     </ul>
-  </dialog>
+  </dropdown>
 </div>
 
 
