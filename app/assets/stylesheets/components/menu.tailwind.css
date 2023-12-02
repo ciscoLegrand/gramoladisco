@@ -7,4 +7,7 @@
     @apply flex flex-row;
   }
 
+  .breadcrumb {
+    @apply w-auto flex flex-row justify-start items-center bg-gray-950 text-slate-200 py-3 px-8 rounded-xl shadow-lg shadow-slate-900 gap-3;
+  }
 }
