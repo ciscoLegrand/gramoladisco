@@ -79,6 +79,7 @@ gem 'friendly_id'
 gem 'inline_svg'
 gem 'mailjet'
 gem 'pagy'
+gem 'breadcrumbs_on_rails'
 gem 'sidekiq'
 gem 'view_component'
 gem 'whenever', require: false
