@@ -11,9 +11,9 @@
     </div>
   </div>
 <% else %>
-  <ul id="search_results" class="w-full flex flex-col [&>li]:border-x [&>li]:border-x-blue-800 [&>li:nth-child(odd)]:bg-slate-900 [&>li:nth-child(even)]:bg-slate-950 [&>li:last-child]:border-b [&>li:last-child]:rounded-b-xl [&>li:last-child]:border-b-blue-800 mb-4">
-  <% contacts.each do |contact| %>
-    <%= render 'admin/contacts/contact', contact: contact %>
-  <% end %>
+  <ul id="search_results" class="w-full flex flex-col mb-4 [&>li:last-child]:border-b [&>li:last-child]:border-b-gray-950 [&>li:last-child]:rounded-b-xl shadow-lg shadow-gray-950 rounded-xl">
+    <% contacts.each do |contact| %>
+      <%= render 'admin/contacts/contact', contact: contact %>
+    <% end %>
   </ul>
 <% end %>

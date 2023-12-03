@@ -3,11 +3,12 @@ class Admin::ContactsController < Admin::BaseController
 
   # GET /contacts or /contacts.json
   def index
-    items = params[:items] || 5
+    add_breadcrumb t('breadcrumbs.contacts.index'), :admin_contacts_path
+    items = params[:items]
     sort_column = params[:sort] || 'title'
     sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     @contacts = Contact.order_by(sort_column, sort_direction)
-    @headers = %w[title email created_at]
+    @headers = %w[email title created_at]
 
     @pagy, @contacts = pagy(@contacts, items:)
 
@@ -20,7 +21,16 @@ class Admin::ContactsController < Admin::BaseController
 
   # GET /contacts/1 or /contacts/1.json
   def show
+    @contact.read! if @contact.unread?
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update(@contact)
+      end
+    end
   end
+
 
   # GET /contacts/new
   def new
@@ -62,22 +72,28 @@ class Admin::ContactsController < Admin::BaseController
   # DELETE /contacts/1 or /contacts/1.json
   def destroy
     @contact.destroy!
+    @count = Contact.count
 
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
+      flash.now[:success] = 'Contact was successfully destroyed.'
+      format.html { redirect_to contacts_url }
       format.json { head :no_content }
+      format.turbo_stream
     end
   end
 
   # POST /admin/contact/search
   def search
-    text_fragment = params[:text]
-    @filtered_contacts = Contact.all.filter_by_text(params[:text])
-    @pagy, @filtered_contacts = pagy(@filtered_contacts, items: params[:items] || 15)
+    if params[:text].blank?
+      @pagy, @contacts = pagy(Contact.all, items: 10)
+    else
+      @contacts = Contact.all.filter_by_text(params[:text])
+    end
+
     respond_to do |format|
-      format.turbo_stream do
-        render 'admin/contacts/search_results'
-      end
+      format.html # GET
+      format.turbo_stream # POST
+      format.json { render json: @contacts }
     end
   end
 
