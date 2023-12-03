@@ -1,0 +1,2 @@
+<%= turbo_stream.replace('count', UI::TitleCount.new(title: 'contacts', count: @contacts.count).call)%>
+<%= turbo_stream.replace('contacts', partial: 'admin/contacts/search_results', locals: { contacts: @contacts })%>

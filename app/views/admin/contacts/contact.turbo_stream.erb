@@ -1,0 +1,3 @@
+<%= turbo_stream.update dom_id(@contact) do %>
+  <%= render partial: "contact", locals: { contact: @contact } %>
+<% end %>

@@ -1,39 +1,57 @@
 
-<div class="w-full lg:w-4/5 flex flex-col justify-center items-center mx-auto">
+<div class="w-full lg:container py-2 px-10 gap-6 flex flex-col justify-center items-center mx-auto">
   <div class="w-full flex justify-between bg-corporation text-white py-4">
     <div class="w-full flex justify-between items-center mx-auto gap-5 py-6">
-      <div class="flex-1 flex gap-8 flex-nowrap">
-        <h1 id="count" class="font-bold text-4xl text-left pl-4 flex flex-nowrap">
-          <%= t('.title') %>: <%= @pagy.count %>
-        </h1>
+      <div class="w-full flex-1 flex justify-start items-center gap-6">
+        <%= render(UI::TitleCount.new(title: 'contacts', count: @pagy.count)) %>
+        <%= render(UI::Paginator.new(items: params[:items])) %>
       </div>
       <div class="flex-1 flex justify-end items-center gap-x-5 text-blue-950">
-        <%= render UI::StringSearcher.new(
+        <%= render(UI::StringSearcher.new(
           path: search_admin_contacts_path,
           attribute: :text,
           options: {
             placeholder: 'Buscar contacto...',
             regex: params[:text]
-          }
+          })
         )%>
       </div>
     </div>
   </div>
 
-  <header class="w-full grid grid-cols-<%= @headers.size + 1 %> gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-blue-950 border-b-4  border border-blue-800 rounded-t-2xl">
-    <% @headers.each do |header| %>
-      <% style = 'text-right' if header.eql? 'created_at' %>
-      <% direction = params[:direction] == 'desc' && params[:sort] == header ? 'asc' : 'desc' %>
-      <% arrow = params[:direction] == 'desc' && params[:sort] == header ? '🔻' : '🔺' %>
-      <div class="capitalize px-3 <%= style %> ">
-        <%= link_to t(".#{header}"), admin_contacts_path(sort: header, direction: direction) %> <%= arrow %>
-      </div>
-    <% end %>
+  <div class="w-full grid grid-cols-8 gap-8">
+    <div class="span-all flex flex-col">
+      <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-<%= @headers.size + 1 %> gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-blue-950 border-b-4  border border-blue-800 rounded-t-2xl">
+        <% @headers.each do |header| %>
+          <% hidden = 'hidden lg:block' if header.eql?('title')%>
+          <% style = 'text-center 2xl:text-right' if header.eql? 'created_at' %>
+          <% sort = params[:direction] == 'desc' && params[:sort] == header ? {direction: 'asc', arrow: '🔻' } : {direction: 'desc', arrow: '🔺' } %>
+          <div class="capitalize px-3 <%= style %> <%= hidden %> text-sm xl:text-xl whitespace-nowrap">
+            <%= link_to "#{t(".#{header}")} #{sort[:arrow]}", admin_contacts_path(sort: header, direction: sort[:direction], items: params[:items]) %>
+          </div>
+        <% end %>
+        <div class="flex justify-end items-center gap-5 py-2 px-4">
+          <%= link_to inline_svg_tag("icons/contact/mail-search.svg", class:'w-6 h-6'),
+                      admin_contacts_path(sort: :status, direction: 'desc', items: params[:items]),
+                      class: "shadow hover:shadow-lg shadow-slate-400 hover:shadow-slate-200 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-slate-600 text-white bg-slate" %>
+          <%= link_to inline_svg_tag("icons/contact/mail-opened.svg", class:'w-6 h-6'),
+                      admin_contacts_path(sort: :status, direction: 'asc', items: params[:items]),
+                      class: "shadow hover:shadow-lg shadow-slate-400 hover:shadow-slate-200 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-slate-600 text-white bg-slate" %>
+        </div>
+      </header>
+      <%= turbo_frame_tag 'contacts' do %>
+        <ul id="search_results" class="w-full flex flex-col mb-4 [&>li:last-child]:border-b [&>li:last-child]:border-b-gray-950 [&>li:last-child]:rounded-b-xl shadow-lg shadow-gray-950 rounded-xl">
+          <%= render @contacts if params[:text].blank? %>
+        </ul>
+        <%== pagy_nav(@pagy)%>
+      <% end %>
+    </div>
 
-    <div class="capitalize px-3 text-right"> <%=t('.actions')%> </div>
-  </header>
-  <ul id="search_results" class="w-full flex flex-col [&>li]:border-x [&>li]:border-x-blue-800 [&>li:nth-child(odd)]:bg-slate-900 [&>li:nth-child(even)]:bg-slate-950 [&>li:last-child]:border-b [&>li:last-child]:rounded-b-xl [&>li:last-child]:border-b-blue-800 mb-4">
-    <%= render @contacts if params[:text].blank? %>
-  </ul>
-  <%== pagy_nav(@pagy)%>
+    <!-- Sección para Detalles del Contacto (2/3 del ancho) -->
+    <%= turbo_frame_tag('contact_details', class: 'col-span-5 flex justify-center items-start gap-4', load: :lazy) do%>
+      <style>
+          .span-all { grid-column: span 8;}
+      </style>
+    <% end %>
+  </div>
 </div>

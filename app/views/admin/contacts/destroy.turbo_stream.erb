@@ -1,0 +1,4 @@
+
+<%= turbo_stream.replace 'count', UI::TitleCount.new(title: 'contacts', count: @count).call %>
+<%= turbo_stream.remove dom_id(@contact) %>
+<%= turbo_stream.prepend "notification", partial: "layouts/shared/notification" %>

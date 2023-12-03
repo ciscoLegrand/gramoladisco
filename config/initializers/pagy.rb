@@ -16,8 +16,7 @@ Pagy::DEFAULT[:items] = 25# frozen_string_literal: true
 # Pagy::VARS[:page]   = 1                                  # default
 # Pagy::VARS[:items]  = 25                                 # default
 # Pagy::VARS[:outset] = 0                                  # default
-# Pagy::DEFAULT[:items] = 12
-
+Pagy::DEFAULT[:items] = 50
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
 # Pagy::VARS[:size]       = [1,4,4,1]                       # default

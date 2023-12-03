@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "notification", partial: "layouts/shared/notification" %>
+<%= turbo_stream.update "new_contact", partial: "frontend/contacts/form", locals: { contact: Contact.new } %>

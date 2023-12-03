@@ -1,5 +1,7 @@
 class Admin::DashboardController < Admin::BaseController
-  def index; end
+  def index
+    @unread = Contact.unread.count
+  end
 
   private
 
