@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string :surname,                 null: true,  default: ""
       t.string :phone_number,            null: true,  default: ""
       t.string :email,                   null: false, default: ""
-      t.enum   :role, enum_type: "role", null: false,  default: "user"
+      t.string :role,                    null: false, default: "user"
 
       t.string :encrypted_password, null: false, default: ""
 

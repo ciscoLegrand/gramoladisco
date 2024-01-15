@@ -12,7 +12,7 @@ class User < ApplicationRecord
     manager: "manager",
     admin: "admin",
     superadmin: "superadmin"
-  }, default: :user
+  }
 
   # Validations
   validates :role,
