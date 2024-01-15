@@ -19,7 +19,7 @@ start_date = 15.months.ago.to_date
 (start_date..Date.today).each do |date|
   rand(0..15).times do
     Contact.create!(
-      title: Faker::Lorem.sentence(word_count: 3),
+      title: Faker::Lorem.sentence(word_count: 4),
       email: Faker::Internet.email,
       subject: Faker::Lorem.paragraph(sentence_count: 5),
       created_at: date,

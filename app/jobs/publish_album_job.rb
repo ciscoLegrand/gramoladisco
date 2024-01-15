@@ -4,14 +4,14 @@ class PublishAlbumJob < ApplicationJob
   def perform(album)
     return Rails.logger.info('🔥🔥Album ya publicado') if album.publish?
     return Rails.logger.info("🔥🔥Se tiene que publicar el #{album.publised_at}") if (album.published_at >= Time.zone.now)
-    
+
     album.publish!
     Rails.logger.info "🔥🔥Album: #{album.title} publicado🔥🔥"
     album_name = album.title
     magic_link = Rails.application
                       .routes
                       .url_helpers
-                      .verify_password_album_url(album, host: Figaro.env.base_url, password: album.password)
+                      .verify_password_album_url(album, host: Rails.application.config.action_mailer.default_url_options[:host], password: album.password)
 
     AlbumMailer.with(album_name: album_name, magic_link: magic_link)
                .publish_notification
@@ -19,4 +19,3 @@ class PublishAlbumJob < ApplicationJob
     Rails.logger.info("🔥🔥Email para #{album_name} enviado🔥🔥")
   end
 end
-
