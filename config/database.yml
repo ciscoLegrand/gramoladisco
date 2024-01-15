@@ -13,6 +13,7 @@
 # gem "pg"
 #
 default: &default
+  host: <%= `ip route | awk '/default/ { print $3 }'`.strip %>
   user: <%= Figaro.env.dbuser %>
   password: <%= Figaro.env.dbpass %>
   adapter: postgresql
@@ -23,7 +24,6 @@ default: &default
 
 development:
   <<: *default
-  host: <%= Figaro.env.dbhost %>
   database: <%= Figaro.env.dbname %>
 
 staging:
