@@ -1,5 +1,5 @@
 module AdminHelper
-  def aside_user_card_options
+  def admin_navbar_user_card_options
     {
       container: {
         style: 'flex justify-end items-center gap-4 px-2 relative'
@@ -17,10 +17,10 @@ module AdminHelper
     }
   end
 
-  def admin_navbar_user_card_options
+  def aside_user_card_options
     {
       container: {
-        style: 'absolute bottom-4 left-2 w-[93%] mr-2 flex flex-col items-center bg-indigo-700 rounded-xl gap-8 shadow-md shadow-slate-700'
+        style: 'sticky bottom-4 left-6 w-full mr-2 flex flex-col items-center bg-indigo-700 rounded-xl gap-8 shadow-md shadow-slate-700'
       },
       button: {
         style: 'w-full py-8 px-4 hover:cursor-pointer flex justify-center items-center gap-4'
@@ -29,7 +29,7 @@ module AdminHelper
         style: 'w-12 h-12 p-5 flex justify-center items-center bg-corporation border-2 border-indigo-600 bg-slate-950 rounded-full shadow-lg text-white hover:text-red-500 hover:duration-500 duration-500 text-center font-semibold uppercase'
       },
       dropdown: {
-        style: 'w-64 flex flex-col gap-6 hidden border-2 border-slate-950 text-slate-200 shadow-lg shadow-slate-500 rounded-lg p-4 bg-slate-950 opacity-0 transition-opacity duration-300 ease-in-out',
+        style: 'w-full flex flex-col gap-6 hidden border-2 border-slate-950 text-slate-200 shadow-lg shadow-slate-500 rounded-lg p-4 bg-slate-950 opacity-0 transition-opacity duration-300 ease-in-out',
         position: 'absolute -top-40 left-0'
       }
     }
