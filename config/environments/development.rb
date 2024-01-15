@@ -46,8 +46,8 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :mailjet
   # config.action_mailer.mailjet_settings = {
-  #   api_key: Figaro.env.mailjet_api_key,
-  #   secret_key: Figaro.env.mailjet_secret_key
+  #   api_key: Rails.application.credentials.mailjet[:api_key],
+  #   secret_key: Rails.application.credentials.mailjet[:secret_key],
   # }
 
   # Print deprecation notices to the Rails logger.
