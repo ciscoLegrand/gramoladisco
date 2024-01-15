@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   scope module: 'frontend' do
     root 'pages#index'
     resources :albums do
