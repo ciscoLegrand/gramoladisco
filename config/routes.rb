@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  # only users with role worker, manager, admin or superadmin can access to /admin
-  devise_for :users,
-             path: 'admin',
-             path_names: { sign_in: 'login', sign_out: 'logout' }
+  devise_for :users
 
   scope module: 'frontend' do
     root 'pages#index'

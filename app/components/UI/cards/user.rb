@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
 class UI::Cards::User < ViewComponent::Base
-  attr_reader :user, :options
+  attr_reader :user, :options, :actions
 
-  def initialize(user:, options: {})
+  def initialize(user:, options: {}, actions: [])
     super
     @user = user.nil? ? guest : user
     @options = options
+    @actions = actions
   end
 
   def guest
     OpenStruct.new(
-      name: 'Gramolo',
-      email: 'guest@gramola.com'
+      name: '',
+      email: ''
     )
   end
 
@@ -35,7 +36,7 @@ class UI::Cards::User < ViewComponent::Base
 
   def dropdown
     {
-      style: options.dig(:dropdown, :style),
+      style:    options.dig(:dropdown, :style),
       position: options.dig(:dropdown, :position),
     }
   end
