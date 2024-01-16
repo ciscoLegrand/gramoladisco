@@ -40,7 +40,10 @@
             <% end %>
           </ul>
         </div>
-        <%= render UI::Cards::User.new(user: nil, options: navbar_user_card_options) %>
+
+        <!-- User Card -->
+        <% actions = user_signed_in? ? user_card_signed_links : user_card_unsigned_links %>
+        <%= render(UI::Cards::User.new(user: current_user, options: navbar_user_card_options, actions: actions)) %>
       <% end %>
     </header>
     <%= render 'layouts/shared/notification' %>
@@ -63,7 +66,7 @@
             <% end %>
           </div>
         </div>
-        <div class="flex flex-col md:flex-row items-center gap-4">
+        <div class="flex flex-col md:flex-row items-center gap-4 top-">
           <%= link_to 'Términos y condiciones', 'terms_and_conditions_path' %>
           <%= link_to 'Política de privacidad', 'privacy_policy_path' %>
           <%= link_to 'Política de cookies', 'cookies_policy_path' %>

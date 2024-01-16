@@ -22,7 +22,7 @@ module ApplicationHelper
       },
       dropdown: {
         style: 'w-full flex flex-col gap-6 hidden border-2 border-gray-950 text-slate-200 shadow-lg shadow-slate-500 shadow-t-none rounded-lg rounded-t-none p-4 bg-gray-950 opacity-0 transition-opacity duration-300 ease-in-out',
-        position: 'absolute -bottom-[9.4rem] -right-7 z-40'
+        position: 'absolute top-16 -right-4 z-40'
       }
     }
   end
@@ -34,4 +34,22 @@ module ApplicationHelper
       { path: contacts_path, title: 'Contact' },
     ]
   end
+
+  def user_card_unsigned_links
+    [
+      {
+        li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
+        link: { path: new_user_session_path, class: 'w-full flex justify-start items-center gap-4' },
+        title: { text: 'Iniciar sesión', class: 'text-white font-semibold' },
+        icon: { svg: 'icons/user/user-up.svg', class: 'w-6 h-6 text-white' }
+      },
+      {
+        li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
+        link: { path: new_user_registration_path, class: 'w-full flex justify-start items-center gap-4' },
+        title: { text: 'Registrarse', class: 'text-white font-semibold' },
+        icon: { svg: 'icons/user/user-plus.svg', class: 'w-6 h-6 text-white' }
+      }
+    ]
+  end
+
 end
