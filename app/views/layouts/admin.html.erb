@@ -18,9 +18,9 @@
       <!-- aside menu -->
       <aside  data-controller='decrease'
         data-decrease-target='aside'
-        class="relative aside-default md:flex lg:block <%= cookies['asideState'] ? 'lg:w-2/12' : 'lg:w-[4%]' %>">
+        class="relative aside-default md:flex lg:block <%= cookies['asideState'] ? 'lg:w-2/12' : 'lg:w-[4%]' %> gap-8">
         <!--LOGO--->
-        <%= render UI::Logo.new(link: root_path, logo: 'gramola-logo.png') %>
+        <%= render UI::Logo.new(link: root_path, logo: 'gramola-logo-transparent.png') %>
         <!-- toggle button -->
         <%= active_link_to '', 
             data: { action: 'click->decrease#toggle' },
@@ -38,7 +38,7 @@
         </div>
 
         <!---LINK OPTIONS-->
-        <nav class="w-full flex flex-col items-center border-t border-gray-700 gap-8">
+        <nav class="w-full flex flex-col items-center border-t border-gray-700 gap-8 mt-8">
           <% aside_items.each do |item| %>
             <%= render UI::Navbar::NavItem.new(path: item[:path], title: item[:title], icon: item[:icon]) %>
           <% end %>

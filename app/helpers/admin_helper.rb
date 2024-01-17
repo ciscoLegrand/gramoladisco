@@ -49,12 +49,6 @@ module AdminHelper
     [
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
-        link: { path: admin_root_path, class: 'w-full flex justify-start items-center gap-4' },
-        title: { text: 'Panel de control', class: 'text-white font-semibold' },
-        icon: { svg: 'icons/user/mood-cog.svg', class: 'w-6 h-6 text-white' }
-      },
-      {
-        li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
         link: { path: edit_user_registration_path, class: 'w-full flex justify-start items-center gap-4' },
         title: { text: 'Editar perfil', class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-cog.svg', class: 'w-6 h-6 text-white' }
@@ -64,6 +58,17 @@ module AdminHelper
         link: { path: destroy_user_session_path, class: 'w-full flex justify-start items-center gap-4' },
         title: { text: 'Cerrar sesión', class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-x.svg', class: 'w-6 h-6 text-white' }
+      }
+    ]
+  end
+
+  def user_card_admin_links
+    [
+      {
+        li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
+        link: { path: admin_root_path, class: 'w-full flex justify-start items-center gap-4' },
+        title: { text: 'Panel de control', class: 'text-white font-semibold' },
+        icon: { svg: 'icons/user/mood-cog.svg', class: 'w-6 h-6 text-white' }
       }
     ]
   end
