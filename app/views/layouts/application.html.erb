@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -15,7 +16,6 @@
     <!-- navbar -->
     <%= render 'layouts/shared/navbar' %>
     <%= render 'layouts/shared/notification' %>
-
     <main class="w-full main-h-screen bg-gray-800 mx-auto flex-grow flex flex-col">
       <%= yield %>
     </main>
