@@ -10,5 +10,5 @@
 
 
 .main-h-screen {
-  min-height: calc(100vh - 129px);
+  min-height: calc(100vh - 104px - 104px);
 }
