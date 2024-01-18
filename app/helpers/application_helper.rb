@@ -39,13 +39,13 @@ module ApplicationHelper
     [
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
-        link: { path: new_user_session_path, class: 'w-full flex justify-start items-center gap-4' },
+        link: { path: new_user_session_path, data: { turbo_frame: 'modal' }, class: 'w-full flex justify-start items-center gap-4' },
         title: { text: 'Iniciar sesión', class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-up.svg', class: 'w-6 h-6 text-white' }
       },
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
-        link: { path: new_user_registration_path, class: 'w-full flex justify-start items-center gap-4' },
+        link: { path: new_user_registration_path, data: { turbo_frame: 'modal' }, class: 'w-full flex justify-start items-center gap-4' },
         title: { text: 'Registrarse', class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-plus.svg', class: 'w-6 h-6 text-white' }
       }

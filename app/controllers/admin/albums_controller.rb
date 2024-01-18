@@ -3,6 +3,7 @@ class Admin::AlbumsController < Admin::BaseController
 
   # GET /admin/albums or /admin/albums.json
   def index
+    add_breadcrumb 'Albums'
     @albums = Album.all.order(date_event: :desc)
     @years  = @albums.pluck(:date_event).map(&:year).uniq.sort.reverse
     @albums = Album.draft                   if params[:draft].present?
@@ -21,15 +22,21 @@ class Admin::AlbumsController < Admin::BaseController
 
   # GET /admin/albums/1 or /admin/albums/1.json
   def show
+    add_breadcrumb 'Albums', admin_albums_path
+    add_breadcrumb @album.title
   end
 
   # GET /admin/albums/new
   def new
+    add_breadcrumb 'Albums', admin_albums_path
+    add_breadcrumb 'Crear'
     @album = Album.new
   end
 
   # GET /admin/albums/1/edit
   def edit
+    add_breadcrumb 'Albums', admin_albums_path
+    add_breadcrumb 'Editar'
   end
 
   # POST /admin/albums or /admin/albums.json
