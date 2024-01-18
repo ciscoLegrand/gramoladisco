@@ -1,0 +1,31 @@
+<aside  data-controller='decrease'
+  data-decrease-target='aside'
+  class="relative aside-default md:flex lg:block <%= cookies['asideState'] ? 'lg:w-2/12' : 'lg:w-[4%]' %> gap-8">
+  <!--LOGO--->
+  <%= render UI::Logo.new(link: root_path, logo: 'gramola-logo-transparent.png') %>
+  <!-- toggle button -->
+  <%= active_link_to '', 
+      data: { action: 'click->decrease#toggle' },
+      class: 'absolute top-3 -right-4 nav-link p-1 text-center rounded-full border border-slate-600 bg-white hover:bg-slate-200 text-indigo-500 shadow-md shadow-slate-300 z-10' do %>
+    <%= inline_svg_tag('icons/aside/chevron-left.svg', class: 'w-6 h-6', data: { 'decrease-target': 'iconLeft' }) %>
+    <%= inline_svg_tag('icons/aside/chevron-right.svg', class: 'w-6 h-6 hidden', data: { 'decrease-target': 'iconRight' }) %>
+  <% end %>
+  <!-- mobile close button -->
+  <div class="w-full fixed top-2 right-[40%] flex justify-end md:hidden z-10">
+    <button class="w-10 ml-5 group focus:outline-none">
+      <div class="rounded-xl bg-black h-1 w-8 my-1 relative top-2 rotate-45 "></div>
+      <div class=""></div>
+      <div class="rounded-xl bg-black h-1 w-8 my-1 relative -rotate-45 top"></div>
+    </button>
+  </div>
+
+  <!---LINK OPTIONS-->
+  <nav class="w-full flex flex-col items-center border-t border-gray-700 gap-8 mt-8">
+    <% aside_items.each do |item| %>
+      <%= render UI::Navbar::NavItem.new(path: item[:path], title: item[:title], icon: item[:icon]) %>
+    <% end %>
+  </nav>
+
+  <!-- user card -->
+  <%#= render UI::Cards::User.new( user: nil, options: aside_user_card_options, actions: user_card_signed_links) %>
+</aside>
