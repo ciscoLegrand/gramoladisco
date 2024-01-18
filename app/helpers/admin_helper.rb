@@ -55,7 +55,7 @@ module AdminHelper
       },
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
-        link: { path: destroy_user_session_path, class: 'w-full flex justify-start items-center gap-4' },
+        link: { path: destroy_user_session_path, data: { turbo_method: :delete }, class: 'w-full flex justify-start items-center gap-4' },
         title: { text: 'Cerrar sesión', class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-x.svg', class: 'w-6 h-6 text-white' }
       }
