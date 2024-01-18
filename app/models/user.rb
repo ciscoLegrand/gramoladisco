@@ -19,6 +19,14 @@ class User < ApplicationRecord
             presence: true,
             inclusion: { in: roles.keys }
 
+  validates :name,
+            presence: true,
+            length: { minimum: 3, maximum: 70 }
+
+  validates :surname,
+            presence: true,
+            length: {minimum:3, maximum:150 }
+
   validates :email,
             presence: true,
             uniqueness: true,
