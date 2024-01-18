@@ -18,7 +18,7 @@
     <ul class="w-full h-full flex flex-col justify-end items-start gap-5">
       <% actions.each do |action| %>
         <li class="<%= action.dig(:li, :class) %>">
-          <%= link_to action.dig(:link, :path), class: action.dig(:link, :class) do %>
+          <%= link_to action.dig(:link, :path), data: action.dig(:link, :data), class: action.dig(:link, :class) do %>
             <%= inline_svg_tag(action.dig(:icon, :svg), class: action.dig(:icon, :class)) %>
             <span class="<%= action.dig(:title, :class) %>"><%= action.dig(:title, :text) %></span>
           <% end %>
