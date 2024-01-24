@@ -1,6 +1,7 @@
-<div class="mx-auto md:w-2/3 w-full">
-
-  <%= render "form", album: @album %>
-
-
-</div>
+<%= turbo_frame_tag dom_id(@album) do %>
+  <%= render UI::Modal.new do %>
+    <div data-action="turbo:submit-end->dialog#submitEnd" class="bg-gray-800 p-12 text-white rounded-xl">
+      <%= render "form", album: @album %>
+    </div>
+  <% end %>
+<% end %>

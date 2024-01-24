@@ -1,27 +1,26 @@
-  <li id="<%= dom_id album %>" 
-      data-target="search_results"
-      class="odd:bg-slate-200 even:bg-white dark:odd:bg-gray-800 dark:even:bg-slate-900 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
-    <section class="grid grid-cols-6 gap-4 text-sm p-2">
-      <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
+  <li id="<%= dom_id(album) %>"
+      class="w-full odd:bg-slate-200 even:bg-white dark:odd:bg-gray-800 dark:even:bg-slate-900 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
+    <section class="grid grid-cols-6 gap-4 text-sm p-3">
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
         <%= link_to album.title, admin_album_path(album) %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
         <%= album&.images.size.presence || 0 %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
         <%= album.password %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
         <% begin %>
         <%= album&.published_at.strftime('%d-%m-%y') %>
         <% rescue %>
         <% album.published_at.presence || 'no data'%>
         <% end %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg py-4 px-2">
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
         <%= album.date_event.strftime('%d-%m-%y') %>
       </div>
-      <div class="flex-1 flex justify-end items-center text-lg py-4 px-2 gap-4">
+      <div class="flex-1 flex justify-end items-center text-lg px-2 gap-4">
         <% if action_name != "show" %>
           <% if album.draft? %>
             <%= button_to publish_admin_album_path(album), method: :patch, class: "shadow hover:shadow-lg shadow-amber-400 hover:shadow-amber-200 border-4 border-amber-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-amber-600 text-amber-500 hover:text-white" do %>
