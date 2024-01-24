@@ -34,7 +34,7 @@ module Gramoladisco
     # config.eager_load_paths << Rails.root.join("extras")
     config.active_storage.variant_processor = :vips
     config.time_zone = 'Europe/Madrid'
-    config.i18n.available_locales = %i[es en]
+    config.i18n.available_locales = %i[es en gl]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
   end
