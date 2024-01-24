@@ -1,0 +1,38 @@
+en:
+  breadcrumbs:
+    admin:
+      home: Home
+    contacts:
+      index: Contacts
+      show: Contact
+    albums:
+      index: Albums
+      show: Album
+      new: New album
+      edit: Edit album
+
+es:
+  breadcrumbs:
+    admin:
+      home: Inicio
+    contacts:
+      index: Contactos
+      show: Contacto
+    albums:
+      index: Álbumes
+      show: Álbum
+      new: Nuevo álbum
+      edit: Editar álbum
+
+gl:
+  breadcrumbs:
+    admin:
+      home: Inicio
+    contacts:
+      index: Contactos
+      show: Contacto
+    albums:
+      index: Álbumes
+      show: Álbum
+      new: Novo álbum
+      edit: Editar álbum

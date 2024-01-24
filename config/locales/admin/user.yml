@@ -1,0 +1,99 @@
+en:
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        name: Name
+        surname: Surname
+        role: Role
+        avatar: Avatar
+        confirmation_sent_at: Confirmation sent at
+        confirmation_token: Confirmation token
+        confirmed_at: Confirmed at
+        created_at: Created at
+        current_password: Current password
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in ip
+        email: Email
+        encrypted_password: Encrypted password
+        failed_attempts: Failed attempts
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in ip
+        locked_at: Locked at
+        password: Password
+        password_confirmation: Password confirmation
+        remember_created_at: Remember created at
+        remember_me: Remember me
+        reset_password_sent_at: Reset password sent at
+        reset_password_token: Reset password token
+        sign_in_count: Sign in count
+        unconfirmed_email: Unconfirmed email
+        unlock_token: Unlock token
+        updated_at: Updated at
+es:
+  activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        name: "Nombre"
+        surname: "Apellido"
+        role: "Rol"
+        avatar: "Avatar"
+        confirmation_sent_at: Confirmación enviada a
+        confirmation_token: Código de confirmación
+        confirmed_at: Confirmado en
+        created_at: Creado en
+        current_password: Contraseña actual
+        current_sign_in_at: Fecha del ingreso actual
+        current_sign_in_ip: IP del ingreso actual
+        email: Email
+        encrypted_password: Contraseña cifrada
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Fecha del último ingreso
+        last_sign_in_ip: IP del último inicio
+        locked_at: Fecha de bloqueo
+        password: Contraseña
+        password_confirmation: Confirmación de la contraseña
+        remember_created_at: Fecha de 'Recordarme'
+        remember_me: Recordarme
+        reset_password_sent_at: Fecha de envío de código para contraseña
+        reset_password_token: Código para restablecer contraseña
+        sign_in_count: Cantidad de ingresos
+        unconfirmed_email: Email no confirmado
+        unlock_token: Código de desbloqueo
+        updated_at: Actualizado en
+gl:
+  activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        name: Nome
+        surname: Apelido
+        role: Rol
+        avatar: Avatar
+        confirmation_sent_at: Confirmación enviada a
+        confirmation_token: Código de confirmación
+        confirmed_at: Confirmado en
+        created_at: Creado en
+        current_password: Contrasinal actual
+        current_sign_in_at: Data do inicio actual
+        current_sign_in_ip: IP do inicio actual
+        email: Email
+        encrypted_password: Contrasinal cifrado
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Data do último inicio
+        last_sign_in_ip: IP do último inicio
+        locked_at: Data de bloqueo
+        password: Contrasinal
+        password_confirmation: Confirmación do contrasinal
+        remember_created_at: Data de 'Recordarme'
+        remember_me: Recordarme
+        reset_password_sent_at: Data de envío de código para contrasinal
+        reset_password_token: Código para restablecer contrasinal
+        sign_in_count: Cantidade de inicios
+        unconfirmed_email: Email non confirmado
+        unlock_token: Código de desbloqueo
+        updated_at: Actualizado en
