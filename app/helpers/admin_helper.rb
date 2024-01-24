@@ -69,6 +69,12 @@ module AdminHelper
         link: { path: admin_root_path, class: 'w-full flex justify-start items-center gap-4' },
         title: { text: 'Panel de control', class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/mood-cog.svg', class: 'w-6 h-6 text-white' }
+      },
+      {
+        li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
+        link: { path: new_admin_album_path, class: 'w-full flex justify-start items-center gap-4' },
+        title: { text: 'Añadir album', class: 'text-white font-semibold' },
+        icon: { svg: 'icons/shared/photo-plus.svg', class: 'w-6 h-6 text-white' }
       }
     ]
   end

@@ -1,3 +1,6 @@
+/* import notification component css */
+@import "components/notification";
+
 /* Application styles */
 @keyframes customPulse {
   0% { opacity: 0; }
