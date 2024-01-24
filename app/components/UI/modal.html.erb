@@ -1,0 +1,13 @@
+<%= turbo_frame_tag :modal do %>
+  <dialog data-controller="dialog" data-action="click->dialog#clickOutside"
+          class="backdrop:backdrop-filter backdrop:backdrop-blur-lg z-10 flex justify-center items-center bg-transparent transition-all duration-300 ease-in-out p-12">
+    <div class="p-4">
+      <button class="border border-slate-950 rounded-full p-1 flex justify-center items-center" data-action="dialog#close">
+        <%= inline_svg_tag('icons/notification/close.svg', class: 'w-4 h-4 stroke-4 stroke-slate-920')%>
+      </button>
+
+      <%= content %>
+
+    </div>
+  </dialog>
+<% end %>

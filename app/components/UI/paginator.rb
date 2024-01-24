@@ -1,6 +1,7 @@
 class UI::Paginator < ViewComponent::Base
-  def initialize(items:)
+  def initialize(items:, url:)
     @items = items
+    @url = url
   end
 
   def call
@@ -25,7 +26,7 @@ class UI::Paginator < ViewComponent::Base
       content_tag :div, class: 'flex flex-col justify-center items-center gap-5' do
         ['10', '25', '50', '100', '500'].each do |item|
           next if @items.eql? item
-          concat link_to(item, admin_contacts_path(items: item), data: { turbo: 'search_results' },class: 'font-semibold hover:cursor-pointer hover:scale-125 hover:text-blue-400 hover:transition-all hover:duration-300 hover:ease-in-out transition-all duration-300 ease-in-out')
+          concat link_to(item, @url.call(items: item), data: { turbo: 'search_results' },class: 'font-semibold hover:cursor-pointer hover:scale-125 hover:text-blue-400 hover:transition-all hover:duration-300 hover:ease-in-out transition-all duration-300 ease-in-out')
         end
       end
     end
