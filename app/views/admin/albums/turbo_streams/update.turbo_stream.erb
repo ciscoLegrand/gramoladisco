@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend('search_results', partial: "admin/albums/album", locals: { album: @album })%>
+<%= turbo_stream.append("notification", partial: "layouts/shared/notification") %>
