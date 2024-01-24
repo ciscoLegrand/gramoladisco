@@ -1,15 +1,54 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @album %>
-
-    <%= link_to 'Edit this album', edit_admin_album_path(@album), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this album', admin_album_path(@album), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<section class="mx-auto md:w-2/3 w-full flex flex-col justify-start items-center gap-12">
+  <div class="w-full flex flex-col border-0 rounded-xl overflow-hidden mt-8">
+    <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-6 gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800">
+      <% @headers.each do |header| %>
+        <div class="col-span-1 capitalize px-3 text-sm xl:text-xl whitespace-nowrap">
+          <%= t(".#{header}") %>
+        </div>
+      <% end %>
+      <div class="col-span-1 flex justify-end items-center gap-5 py-2 px-4"><%= t('.actions')%></div>
+    </header>
+    <div class="w-full grid grid-cols-6 gap-4 text-white text-lg font-semibold p-4 bg-slate-950">
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+        <%= link_to @album.title, admin_album_path(@album) %>
+      </div>
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+        <%= @album&.images.size.presence || 0 %>
+      </div>
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+        <%= @album.password %>
+      </div>
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+        <% begin %>
+        <%= @album&.published_at.strftime('%d-%m-%y') %>
+        <% rescue %>
+        <% @album.published_at.presence || 'no data'%>
+        <% end %>
+      </div>
+      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+        <%= @album.date_event.strftime('%d-%m-%y') %>
+      </div>
+      <div class="flex-1 flex justify-end items-center text-lg px-2 gap-4">
+        <% if @album.draft? %>
+          <%= button_to publish_admin_album_path(@album), method: :patch, class: "shadow hover:shadow-lg shadow-amber-400 hover:shadow-amber-200 border-4 border-amber-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-amber-600 text-amber-500 hover:text-white" do %>
+            <%= inline_svg_tag('icons/form/share-3.svg', class: 'w-6 h-6')%>
+          <% end %>
+        <% else %>
+          <span class=" transition-colors duration-300 text-green-500">
+            <%= inline_svg_tag('icons/form/circle-check.svg', class: 'w-12 h-12')%>
+          </span>
+        <% end %>
+        <%#= link_to "Show", admin_album_path(album), class: "rounded-lg py-2 px-4 bg-blue-500 text-white inline-block font-medium transition-colors duration-500 hover:bg-blue-600" %>
+        <%= link_to edit_admin_album_path(@album), class: "shadow hover:shadow-lg shadow-blue-400 hover:shadow-blue-200 border-4 border-blue-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-blue-600 text-blue-500 hover:text-white" do %>
+          <%= inline_svg_tag('icons/form/edit.svg', class: 'w-6 h-6')%>
+        <% end %>
+        <%= button_to admin_album_path(@album), form: { data: { turbo_confirm: 'Are you sure?' } }, method: :delete, class: "shadow hover:shadow-lg shadow-red-400 hover:shadow-red-200 border-4 border-red-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-red-600 text-red-500 hover:text-white" do %>
+          <%= inline_svg_tag('icons/form/trash.svg', class: 'w-6 h-6')%>
+        <% end %>
+      </div>
     </div>
-    <%= link_to 'Back to albums', admin_albums_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
-</div>
+
+  <%= render 'frontend/albums/images/album', collection: @album.images %>
+
+</section>

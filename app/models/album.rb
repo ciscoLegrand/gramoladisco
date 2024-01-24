@@ -8,7 +8,7 @@ class Album < ApplicationRecord
     attachable.variant :desktop, resize_to_limit: [1280, 1024]
     attachable.variant :widescreen, resize_to_limit: [1920, 1080]
   end
-  
+
   enum status: { draft: 'draft', publish: 'publish' }
 
   validates :title,
@@ -26,7 +26,11 @@ class Album < ApplicationRecord
   end
 
   def update_status!
-    published! if published_at.present? && published_at <= Time.now
+    if published_at.present? && published_at <= Time.now
+      published!
+    else
+      errors.add(:published_at, 'must be in the past')
+    end
   end
 
   scope :published, -> { where(status: :publish).order(published_at: :desc) }
