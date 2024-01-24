@@ -4,38 +4,35 @@ class Admin::AlbumsController < Admin::BaseController
   # GET /admin/albums or /admin/albums.json
   def index
     add_breadcrumb 'Albums'
-    @albums = Album.all.order(date_event: :desc)
+    @albums = Album.all.order(created_at: :desc)
     @years  = @albums.pluck(:date_event).map(&:year).uniq.sort.reverse
     @albums = Album.draft                   if params[:draft].present?
     @albums = Album.published               if params[:published].present?
     @albums = Album.by_year(params[:year])  if params[:year].present?
 
-    @total_records = @albums.count
-    @pagy, @albums = pagy(@albums, items: 5)
+    @headers = %w[title images password published_at date_event]
 
-    respond_to do |format|
-      format.html # GET
-      format.turbo_stream # POST
-      format.json { render json: @albums }
-    end
+    @total_records = @albums.count
+    @pagy, @albums = pagy(@albums)
   end
 
   # GET /admin/albums/1 or /admin/albums/1.json
   def show
-    add_breadcrumb 'Albums', admin_albums_path
+    add_breadcrumb 'Albums', admin_albums_path(items: params[:items].presence || 10)
     add_breadcrumb @album.title
+    @headers = %w[title images password published_at date_event]
   end
 
   # GET /admin/albums/new
   def new
-    add_breadcrumb 'Albums', admin_albums_path
+    add_breadcrumb 'Albums', admin_albums_path(items: params[:items].presence || 10)
     add_breadcrumb 'Crear'
     @album = Album.new
   end
 
   # GET /admin/albums/1/edit
   def edit
-    add_breadcrumb 'Albums', admin_albums_path
+    add_breadcrumb 'Albums', admin_albums_path(items: params[:items].presence || 10)
     add_breadcrumb 'Editar'
   end
 
@@ -43,14 +40,15 @@ class Admin::AlbumsController < Admin::BaseController
   def create
     @album = Album.new(album_params)
     @album.current_host    = request.host
-    @album.current_user_id = 1 #current_user&.id
+    @album.current_user_id = current_user&.id
     respond_to do |format|
       if @album.save
-        format.html { redirect_to edit_admin_album_url(@album), success: {title: 'Correcto', body: 'Has creado un nuevo album'} }#{ title: t('admin.albums.create.success.title'), body: t('admin.albums.create.success.body') } }
-        format.json { render :show, status: :created, location: @album }
+        flash.now[:success] = { title: t('.success.title'), body: t('.success.body')}
+        format.turbo_stream
+        format.html { redirect_to admin_albums_path(items: params[:items].presence || 10) }
       else
-        format.html { redirect_to new_admin_album_url, alert: { title: t('admin.albums.create.success.title'), body: @album.errors.full_messages } }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
+        flash.now[:error] = { title: t('.error.title'), body: t('.error.body', errors: @album.errors.full_messages.presence || '')}
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -61,65 +59,53 @@ class Admin::AlbumsController < Admin::BaseController
     @album.current_user_id  = current_user&.id
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to admin_albums_path, success: { title: t('admin.albums.update.success.title', name: @album.title), body: t('admin.albums.update.success.body') } }
-        format.turbo_stream do
-          flash.now[:success] = { title: t('admin.albums.update.success.title', name: @album.title), body:t('admin.albums.update.success.body') }
-          render 'admin/albums/turbo_streams/update'
-        end
-        format.json { render :show, status: :ok, location: @album }
+        flash.now[:success] = { title: t('.success.title'), body: t('.success.body')}
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
+        flash.now[:error] = { title: t('.error.title'), body: t('.error.body', errors: @album.errors.full_messages.presence || '')}
       end
+      format.turbo_stream
     end
   end
 
   # DELETE /admin/albums/1 or /admin/albums/1.json
   def destroy
     name = @album.title
-    PurgeImagesJob.perform_later(@album)
+    # PurgeImagesJob.perform_later(@album)
 
     respond_to do |format|
-      format.html { redirect_to admin_albums_url, success: {title: t('admin.albums.destroy.success.title', name: name), body: t('admin.albums.destroy.success.body') } }
-      format.turbo_stream do
-        flash.now[:success] = { title: t('admin.albums.destroy.success.title', name: name), body: t('admin.albums.destroy.success.body') }
-        render 'admin/albums/turbo_streams/destroy'
+      if @album.destroy
+        flash.now[:success] = { title: t('.success.title', name: name), body: t('.success.body')}
+      else
+        flash.now[:error] = { title: t('.alert.title', name: name), body: t('.alert.body', errors: @album.errors.full_messages.presence || '')}
       end
-      format.json { head :no_content }
+      format.turbo_stream
+      format.html { redirect_to admin_albums_path(items: params[:items].presence || 10) }
     end
   end
 
+  # POST /admin/albums/1/publish
   def publish
     respond_to do |format|
       if @album.images.attached?
         @album.publish!
-        PublishAlbumJob.perform_later(@album)
-        format.html { redirect_to admin_album_url(@album), success: { title: t('admin.albums.publish.success.title', name: @album.title), body: t('admin.albums.publish.success.body') } }
-        format.turbo_stream do
-          flash.now[:success] = { title: t('admin.albums.publish.success.title', name: @album.title), body: t('admin.albums.publish.success.body')}
-          render 'admin/albums/turbo_streams/publish'
-        end
-        format.json { render :show, status: :ok, location: @album }
+        # PublishAlbumJob.perform_later(@album)
+        flash.now[:success] = { title: t('.success.title', name: @album.title), body: t('.success.body')}
       else
-        format.html { redirect_to admin_albums_path, alert: { title: t('admin.albums.publish.alert.title', name: @album.title), body: t('admin.albums.publish.alert.body') } }
-        format.turbo_stream do
-          flash.now[:alert] = { title: t('admin.albums.publish.alert.title', name: @album.title), body: t('admin.albums.publish.alert.body') }
-          render 'admin/albums/turbo_streams/publish'
-        end
-        format.json { render :show, status: :unprocessable_entity, location: @album }
+        flash.now[:alert] = { title: t('.alert.title', name: @album.title), body: t('.alert.body', errors: @album.errors.full_messages.presence || '') }
+        Rails.logger.info "ERRORS: #{flash.now[:alert]} #{@album.errors.full_messages}"
       end
+      format.turbo_stream
+      format.html { redirect_to admin_albums_path(items: params[:items].presence || 10) }
     end
   end
 
   # POST /admin/albums/search
   def search
     @albums = Album.all
-    text_fragment = params[:title]
+    text_fragment = params[:title].to_s
     @filtered_albums = @albums.select { |e| e.title.upcase.include?(text_fragment.upcase) }
     respond_to do |format|
-      format.turbo_stream do
-        render 'admin/albums/turbo_streams/search_results'
-      end
+      format.turbo_stream
     end
   end
 
