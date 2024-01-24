@@ -1,0 +1,29 @@
+en:
+  counter:
+    contacts:
+      zero: "Contacts: %{count}"
+      one: "Contact: %{count}"
+      other: "Contacts: %{count}"
+
+  breadcrumbs:
+    admin:
+      home: Home
+    contacts:
+      index: Contacts
+      show: Contact
+
+  admin:
+    contacts:
+      contact:
+        confirm_destroy: Are you sure you want to delete %{resource} contact?
+      index:
+        counter: "Contacts: %{count}"
+        title: Title
+        actions: Actions
+        email: Email
+        created_at: Received at
+      show:
+        title: Contacts
+        actions: Actions
+        email: Email
+        created_at: Received at
