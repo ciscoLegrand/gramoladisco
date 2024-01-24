@@ -13,6 +13,6 @@ class UI::TitleCount < ViewComponent::Base
   private
 
   def title_with_count
-    I18n.t("counter.#{@title}", count: @count)
+    I18n.t("counter.title", resource: @title.capitalize, count: @count)
   end
 end
