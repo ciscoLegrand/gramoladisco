@@ -1,4 +1,4 @@
-<%= form_with(model: [:admin, album], html: { id: 'album-form', class: "contents grid grid-cols-1 md:grid-cols-2 gap-8 dark:bg-dark-gray dark:text-white" }) do |form| %>
+<%= form_with(model: [:admin, album], html: { id: 'album-form', class: "contents grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-950" }) do |form| %>
   <% if album.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full", 'data-upload-target': 'input' %>
+  <div class="my-5 flex flex-col gap-4">
+    <%= form.label :title, class: 'label' %>
+    <%= form.text_field :title, class: "w-full block bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
   </div>
 
-  <div class="my-5 md:col-span-2">
-    <%= form.label :password %>
-    <%= form.text_field :password, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
-    <%= form.label :emails, class: "mt-4" %>
-    <%= form.text_field :emails, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 md:col-span-2 grid grid-cols-2 gap-4">
+    <div class="col-span-1 flex flex-col gap-4">
+      <%= form.label :password, class: 'label' %>
+      <%= form.text_field :password, class: "w-full block bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+    </div>
+    <div class="col-span-1 flex flex-col gap-4">
+      <%= form.label :emails, class: "label" %>
+      <%= form.text_field :emails, class: "w-full block bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+    </div>
   </div>
 
-  <div class="my-5 md:col-span-2">
-    <%= form.label :date_event %>
-    <%= form.date_field :date_event, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
-    <%= form.label :published_at, class: "mt-4" %>
-    <%= form.date_field :published_at, class: "block shadow rounded-md border border-gray-200 bg-slate-300 text-slate-800 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 md:col-span-2 grid grid-cols-2 gap-4">
+    <div class="col-span-1 flex flex-col gap-4">
+      <%= form.label :date_event, class: 'label' %>
+      <%= form.date_field :date_event, class: "w-full bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+    </div>
+    <div class="col-span-1 flex flex-col gap-4">
+      <%= form.label :published_at, class: "label" %>
+      <%= form.date_field :published_at, class: "w-full bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+    </div>
   </div>
 
   <div class="inline">
@@ -37,7 +45,7 @@
       <%= button_to "Eliminar #{album.images.size} fotos", admin_delete_all_path(album), method: :delete, class: 'rounded-lg py-3 px-5 bg-orange-600 text-white inline-block font-medium cursor-pointer'%>
     <% end %>
 
-    <%= link_to 'Back to albums', :back, class: "ml-2 rounded-lg py-3 px-5 bg-slate-300 text-slate-800 inline-block font-medium" %>
+    <%= link_to 'Back to albums', :back, data: { action: 'dialog#close' }, class: "ml-2 rounded-lg py-3 px-5 bg-slate-300 text-slate-800 inline-block font-medium" %>
   </div>
 
   
