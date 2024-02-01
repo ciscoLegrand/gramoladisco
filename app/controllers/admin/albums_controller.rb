@@ -18,22 +18,22 @@ class Admin::AlbumsController < Admin::BaseController
 
   # GET /admin/albums/1 or /admin/albums/1.json
   def show
-    add_breadcrumb 'Albums', admin_albums_path(items: params[:items].presence || 10)
+    add_breadcrumb t('breadcrumbs.album.index'), admin_albums_path(items: params[:items].presence || 10)
     add_breadcrumb @album.title
     @headers = %w[title images password published_at date_event]
   end
 
   # GET /admin/albums/new
   def new
-    add_breadcrumb 'Albums', admin_albums_path(items: params[:items].presence || 10)
-    add_breadcrumb 'Crear'
+    add_breadcrumb t('breadcrumbs.album.index'), admin_albums_path(items: params[:items].presence || 10)
+    add_breadcrumb t('breadcrumbs.album.new')
     @album = Album.new
   end
 
   # GET /admin/albums/1/edit
   def edit
-    add_breadcrumb 'Albums', admin_albums_path(items: params[:items].presence || 10)
-    add_breadcrumb 'Editar'
+    add_breadcrumb t('breadcrumbs.album.index'), admin_albums_path(items: params[:items].presence || 10)
+    add_breadcrumb t('breadcrumbs.album.edit', name: @album.title)
   end
 
   # POST /admin/albums or /admin/albums.json
@@ -88,11 +88,10 @@ class Admin::AlbumsController < Admin::BaseController
     respond_to do |format|
       if @album.images.attached?
         @album.publish!
-        # PublishAlbumJob.perform_later(@album)
+        PublishAlbumJob.perform_later(@album)
         flash.now[:success] = { title: t('.success.title', name: @album.title), body: t('.success.body')}
       else
         flash.now[:alert] = { title: t('.alert.title', name: @album.title), body: t('.alert.body', errors: @album.errors.full_messages.presence || '') }
-        Rails.logger.info "ERRORS: #{flash.now[:alert]} #{@album.errors.full_messages}"
       end
       format.turbo_stream
       format.html { redirect_to admin_albums_path(items: params[:items].presence || 10) }
