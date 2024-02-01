@@ -1,6 +1,6 @@
 @layer components {
   .input {
-    @apply  block bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-500 focus:shadow-outline focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200
+    @apply  block bg-slate-950 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200
   }
 
   .label {
