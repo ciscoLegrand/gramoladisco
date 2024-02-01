@@ -32,7 +32,7 @@ class User < ApplicationRecord
             uniqueness: true,
             format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  validates :phone_number,
-            uniqueness: true,
-            format: { with: /\A(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}\z/ }
+  # validates :phone_number,
+  #           uniqueness: true,
+  #           format: { with: /\A(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}\z/ }
 end
