@@ -24,6 +24,13 @@ en:
         actions: Actions
         hidden: Hidden
         published: Published
+      publish:
+        success:
+          title: Album %{name}
+          body: Was published successfully ✅
+        error:
+          title: Album
+          body: "❌ Was not published: %{errors}"
 es:
   active_record:
     models:

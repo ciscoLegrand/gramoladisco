@@ -2,11 +2,23 @@ en:
   breadcrumbs:
     admin:
       home: Home
+    album:
+      index: Albums
+      new: New album
+      edit: Edit %{name}
 es:
   breadcrumbs:
     admin:
       home: Inicio
+    album:
+      index: Álbumes
+      new: Nuevo álbum
+      edit: Editar %{name}
 gl:
   breadcrumbs:
     admin:
       home: Inicio
+    album:
+      index: Álbumes
+      new: Novo álbum
+      edit: Editar %{name}
