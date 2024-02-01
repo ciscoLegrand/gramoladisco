@@ -4,11 +4,18 @@ class Admin::AlbumsController < Admin::BaseController
   # GET /admin/albums or /admin/albums.json
   def index
     add_breadcrumb 'Albums'
-    @albums = Album.all.order(created_at: :desc)
+    items = params[:items]
+    sort_column = params[:sort] || 'created_at'
+    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+
+    @albums = Album.order_by(sort_column, sort_direction)
+    @albums = Album.ordered_by_image_count(sort_direction) if sort_column.eql?('images')
+
     @years  = @albums.pluck(:date_event).map(&:year).uniq.sort.reverse
     @albums = Album.draft                   if params[:draft].present?
     @albums = Album.published               if params[:published].present?
     @albums = Album.by_year(params[:year])  if params[:year].present?
+
 
     @headers = %w[title images password published_at date_event]
 

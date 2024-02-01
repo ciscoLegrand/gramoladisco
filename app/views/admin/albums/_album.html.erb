@@ -1,23 +1,23 @@
   <li id="<%= dom_id(album) %>"
       class="w-full odd:bg-slate-200 even:bg-white dark:odd:bg-gray-800 dark:even:bg-slate-900 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
-    <section class="grid grid-cols-6 gap-4 text-sm p-3">
+    <section class="grid grid-cols-6 gap-8 text-sm p-3">
       <div class="flex-1 flex justify-start items-center  text-lg px-2">
         <%= link_to album.title, admin_album_path(album) %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+      <div class="flex-1 text-lg px-4 text-right">
         <%= album&.images.size.presence || 0 %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+      <div class="flex-1 text-lg px-4 text-right">
         <%= album.password %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+      <div class="flex-1 text-lg px-4 text-right">
         <% begin %>
         <%= album&.published_at.strftime('%d-%m-%y') %>
         <% rescue %>
         <% album.published_at.presence || 'no data'%>
         <% end %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+      <div class="flex-1 text-lg px-4 text-right">
         <%= album.date_event.strftime('%d-%m-%y') %>
       </div>
       <div class="flex-1 flex justify-end items-center text-lg px-2 gap-4">

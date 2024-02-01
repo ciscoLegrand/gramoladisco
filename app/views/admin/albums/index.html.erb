@@ -32,8 +32,11 @@
   <div class="w-full flex flex-col justify-start items-center">
     <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-6 gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl">
       <% @headers.each do |header| %>
-        <div class="col-span-1 capitalize px-3 text-sm xl:text-xl whitespace-nowrap">
-          <%= t(".#{header}") %>
+        <% hidden = 'hidden lg:block' if header.eql?('title')%>
+        <% style = 'text-center 2xl:text-right' if %w[images password published date_event].include?(header)%>
+        <% sort = params[:direction] == 'desc' && params[:sort] == header ? {direction: 'asc', arrow: '🔻' } : {direction: 'desc', arrow: '🔺' } %>
+        <div class="capitalize px-3 <%= style %> <%= hidden %> text-sm xl:text-xl whitespace-nowrap">
+          <%= link_to "#{t(".#{header}")} #{sort[:arrow]}", admin_albums_path(sort: header, direction: sort[:direction], items: params[:items]) %>
         </div>
       <% end %>
       <div class="col-span-1 flex justify-end items-center gap-5 py-2 px-4"><%= t('.actions')%></div>
