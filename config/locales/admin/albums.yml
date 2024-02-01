@@ -24,6 +24,13 @@ en:
         actions: Actions
         hidden: Hidden
         published: Published
+      destroy:
+        success:
+          title: Album %{name}
+          body: Was deleted successfully ✅
+        error:
+          title: Album
+          body: "❌ Was not deleted: %{errors}"
       publish:
         success:
           title: Album %{name}
@@ -57,6 +64,20 @@ es:
         actions: Acciones
         hidden: Ocultos
         published: Publicados
+      destroy:
+        success:
+          title: Álbum %{name}
+          body: Fue eliminado correctamente ✅
+        error:
+          title: Álbum
+          body: "❌ No fue eliminado: %{errors}"
+      publish:
+        success:
+          title: Álbum %{name}
+          body: Fue publicado correctamente ✅
+        error:
+          title: Álbum
+          body: "❌ No fue publicado: %{errors}"
 gl:
   active_record:
     models:
@@ -83,3 +104,17 @@ gl:
         actions: Accións
         hidden: Ocultos
         published: Publicados
+      destroy:
+        success:
+          title: Álbum %{name}
+          body: Foi eliminado correctamente ✅
+        error:
+          title: Álbum
+          body: "❌ Non foi eliminado: %{errors}"
+      publish:
+        success:
+          title: Álbum %{name}
+          body: Foi publicado correctamente ✅
+        error:
+          title: Álbum
+          body: "❌ Non foi publicado: %{errors}"
