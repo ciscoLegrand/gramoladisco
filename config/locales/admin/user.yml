@@ -1,0 +1,201 @@
+en:
+  active_record:
+    models:
+      user: User
+    attributes:
+      name: Name
+      surname: Surname
+      email: Email
+      role: Role
+      password: Password
+      password_confirmation: Password confirmation
+      reset_password_token: Reset password token
+      reset_password_sent_at: Reset password sent at
+      remember_created_at: Remember created at
+      sign_in_count: Sign in count
+      current_sign_in_at: Current sign in at
+      last_sign_in_at: Last sign in at
+      current_sign_in_ip: Current sign in ip
+      last_sign_in_ip: Last sign in ip
+      created_at: Created at
+      updated_at: Updated at
+      confirmation_token: Confirmation token
+      confirmed_at: Confirmed at
+      confirmation_sent_at: Confirmation sent at
+      unconfirmed_email: Unconfirmed email
+      failed_attempts: Failed attempts
+      unlock_token: Unlock token
+      locked_at: Locked at
+      authentication_token: Authentication token
+      provider: Provider
+
+  helpers:
+    label:
+      user:
+        name: "Name"
+        surname: "Surname"
+        email: "Email"
+        role: "Role"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        reset_password_token: "Reset password token"
+        reset_password_sent_at: "Reset password sent at"
+        remember_created_at: "Remember created at"
+        sign_in_count: "Sign in count"
+        current_sign_in_at: "Current sign in at"
+        last_sign_in_at: "Last sign in at"
+        current_sign_in_ip: "Current sign in ip"
+        last_sign_in_ip: "Last sign in ip"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        confirmation_token: "Confirmation token"
+        confirmed_at: "Confirmed at"
+        confirmation_sent_at: "Confirmation sent at"
+        unconfirmed_email: "Unconfirmed email"
+        failed_attempts: "Failed attempts"
+        unlock_token: "Unlock token"
+        locked_at: "Locked at"
+        authentication_token: "Authentication token"
+        provider: "Provider"
+    placeholder:
+      user:
+        name: "Add name"
+        surname: "Add surname"
+        email: "Add email"
+        role: "Add role"
+        password: "Add password"
+        
+es:
+  active_record:
+    models:
+      user: Usuario
+    attributes:
+      name: Nombre
+      surname: Apellido
+      email: Email
+      role: Rol
+      password: Contraseña
+      password_confirmation: Confirmación de contraseña
+      reset_password_token: Token de restablecimiento de contraseña
+      reset_password_sent_at: Restablecer contraseña enviado en
+      remember_created_at: Recordar creado en
+      sign_in_count: Inicio de sesión cuenta
+      current_sign_in_at: Inicio de sesión actual en
+      last_sign_in_at: Último inicio de sesión en
+      current_sign_in_ip: Inicio de sesión actual ip
+      last_sign_in_ip: Último inicio de sesión ip
+      created_at: Creado en
+      updated_at: Actualizado en
+      confirmation_token: Token de confirmación
+      confirmed_at: Confirmado en
+      confirmation_sent_at: Confirmación enviado en
+      unconfirmed_email: Email no confirmado
+      failed_attempts: Intentos fallidos
+      unlock_token: Token de desbloqueo
+      locked_at: Bloqueado en
+      authentication_token: Token de autenticación
+      provider: Proveedor
+
+  helpers:
+    labels:
+      user:
+        name: "Nombre"
+        surname: "Apellido"
+        email: "Email"
+        role: "Rol"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+        reset_password_token: "Token de restablecimiento de contraseña"
+        reset_password_sent_at: "Restablecer contraseña enviado en"
+        remember_created_at: "Recordar creado en"
+        sign_in_count: "Inicio de sesión cuenta"
+        current_sign_in_at: "Inicio de sesión actual en"
+        last_sign_in_at: "Último inicio de sesión en"
+        current_sign_in_ip: "Inicio de sesión actual ip"
+        last_sign_in_ip: "Último inicio de sesión ip"
+        created_at: "Creado en"
+        updated_at: "Actualizado en"
+        confirmation_token: "Token de confirmación"
+        confirmed_at: "Confirmado en"
+        confirmation_sent_at: "Confirmación enviado en"
+        unconfirmed_email: "Email no confirmado"
+        failed_attempts: "Intentos fallidos"
+        unlock_token: "Token de desbloqueo"
+        locked_at: "Bloqueado en"
+        authentication_token: "Token de autenticación"
+        provider: "Proveedor"
+    placeholder:
+      user:
+        name: "Introduce nombre"
+        surname: "Introduce apellido"
+        email: "Introduce email"
+        role: "Introduce rol"
+        password: "Introduce contraseña"
+        phone_number: "Introduce número de teléfono"
+
+gl:
+  active_record:
+    models:
+      user: Usuario
+    attributes:
+      name: Nome
+      surname: Apelido
+      email: Email
+      role: Rol
+      password: Contrasinal
+      password_confirmation: Confirmación de contrasinal
+      reset_password_token: Token de restablecemento de contrasinal
+      reset_password_sent_at: Restablecer contrasinal enviado en
+      remember_created_at: Recordar creado en
+      sign_in_count: Inicio de sesión conta
+      current_sign_in_at: Inicio de sesión actual en
+      last_sign_in_at: Último inicio de sesión en
+      current_sign_in_ip: Inicio de sesión actual ip
+      last_sign_in_ip: Último inicio de sesión ip
+      created_at: Creado en
+      updated_at: Actualizado en
+      confirmation_token: Token de confirmación
+      confirmed_at: Confirmado en
+      confirmation_sent_at: Confirmación enviado en
+      unconfirmed_email: Email non confirmado
+      failed_attempts: Intentos fallidos
+      unlock_token: Token de desbloqueo
+      locked_at: Bloqueado en
+      authentication_token: Token de autenticación
+      provider: Proveedor
+  
+  helpers:
+    label:
+      user:
+        name: "Nome"
+        surname: "Apelido"
+        email: "Email"
+        role: "Rol"
+        password: "Contrasinal"
+        password_confirmation: "Confirmación de contrasinal"
+        reset_password_token: "Token de restablecemento de contrasinal"
+        reset_password_sent_at: "Restablecer contrasinal enviado en"
+        remember_created_at: "Recordar creado en"
+        sign_in_count: "Inicio de sesión conta"
+        current_sign_in_at: "Inicio de sesión actual en"
+        last_sign_in_at: "Último inicio de sesión en"
+        current_sign_in_ip: "Inicio de sesión actual ip"
+        last_sign_in_ip: "Último inicio de sesión ip"
+        created_at: "Creado en"
+        updated_at: "Actualizado en"
+        confirmation_token: "Token de confirmación"
+        confirmed_at: "Confirmado en"
+        confirmation_sent_at: "Confirmación enviado en"
+        unconfirmed_email: "Email non confirmado"
+        failed_attempts: "Intentos fallidos"
+        unlock_token: "Token de desbloqueo"
+        locked_at: "Bloqueado en"
+        authentication_token: "Token de autenticación"
+        provider: "Proveedor"
+    placeholder:
+      user:
+        name: "Engadir nome"
+        surname: "Engadir apelido"
+        email: "Engadir email"
+        role: "Engadir rol"
+        password: "Engadir contrasinal"
