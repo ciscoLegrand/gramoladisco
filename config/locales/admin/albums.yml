@@ -24,20 +24,30 @@ en:
         actions: Actions
         hidden: Hidden
         published: Published
+      show:
+        title: Album
+        images: Images
+        password: Password
+        published_at: Published
+        date_event: Date event
+        actions: Actions
+        hidden: Hidden
+        published: Published
+
       destroy:
         success:
           title: Album %{name}
-          body: Was deleted successfully ✅
+          body: Was deleted successfully
         error:
           title: Album
-          body: "❌ Was not deleted: %{errors}"
+          body: "Was not deleted: %{errors}"
       publish:
         success:
           title: Album %{name}
-          body: Was published successfully ✅
+          body: Was published successfully
         error:
           title: Album
-          body: "❌ Was not published: %{errors}"
+          body: "Was not published: %{errors}"
 es:
   active_record:
     models:
@@ -64,20 +74,30 @@ es:
         actions: Acciones
         hidden: Ocultos
         published: Publicados
+      show:
+        title: Álbum
+        images: Imágenes
+        password: Contraseña
+        published_at: Publicado
+        date_event: Fecha evento
+        actions: Acciones
+        hidden: Ocultos
+        published: Publicados
+
       destroy:
         success:
           title: Álbum %{name}
-          body: Fue eliminado correctamente ✅
+          body: Fue eliminado correctamente
         error:
           title: Álbum
-          body: "❌ No fue eliminado: %{errors}"
+          body: "No fue eliminado: %{errors}"
       publish:
         success:
           title: Álbum %{name}
-          body: Fue publicado correctamente ✅
+          body: Fue publicado correctamente
         error:
           title: Álbum
-          body: "❌ No fue publicado: %{errors}"
+          body: "No fue publicado: %{errors}"
 gl:
   active_record:
     models:
@@ -104,17 +124,26 @@ gl:
         actions: Accións
         hidden: Ocultos
         published: Publicados
+      show:
+        title: Álbum
+        images: Imaxes
+        password: Contrasinal
+        published_at: Publicado
+        date_event: Data evento
+        actions: Accións
+        hidden: Ocultos
+        published: Publicados
       destroy:
         success:
           title: Álbum %{name}
-          body: Foi eliminado correctamente ✅
+          body: Foi eliminado correctamente
         error:
           title: Álbum
-          body: "❌ Non foi eliminado: %{errors}"
+          body: "Non foi eliminado: %{errors}"
       publish:
         success:
           title: Álbum %{name}
-          body: Foi publicado correctamente ✅
+          body: Foi publicado correctamente
         error:
           title: Álbum
-          body: "❌ Non foi publicado: %{errors}"
+          body: "Non foi publicado: %{errors}"
