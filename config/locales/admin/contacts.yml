@@ -1,0 +1,29 @@
+en:
+  admin:
+    contact:
+      confirm_destroy: Are you sure?
+    contacts:
+      index:
+        email: Email
+        title: Title
+        created_at: Created at
+
+es:
+  admin:
+    contacts:
+      contact:
+        confirm_destroy: ¿Estás seguro?
+      index:
+        email: Correo electrónico
+        title: Título
+        created_at: Creado en
+
+gl:
+  admin:
+    contacts:
+      contact:
+        confirm_destroy: ¿Estás seguro?
+      index:
+        email: Correo electrónico
+        title: Título
+        created_at: Creado en
