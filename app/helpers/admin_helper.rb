@@ -1,4 +1,9 @@
 module AdminHelper
+  def get_first_error(errors)
+    "#{errors.messages.first[0].to_s.upcase} ERROR: #{errors.messages.first[1][0]}"
+    errors.messages.map { |key, messages| "#{t(".#{key}")}: #{messages.first}" }.join("<br>").html_safe
+  end
+
   def admin_navbar_user_card_options
     {
       container: {
