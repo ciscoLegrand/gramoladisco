@@ -14,8 +14,6 @@ Faker::Config.locale = 'es'
 user = User.create!(name: 'cisco', surname: 'gonzalez', email: 'cisco.glez@gmail.com', phone_number: '+34123456789', password: 'test123', password_confirmation: 'test123', role: 'admin')
 user.confirm
 
-Album.create!(title: 'UNDEFINED', password: 'admin', date_event: Time.zone.now, emails: [user.email])
-
 # Establece la fecha de inicio hace 15 meses
 start_date = 3.months.ago.to_date
 
