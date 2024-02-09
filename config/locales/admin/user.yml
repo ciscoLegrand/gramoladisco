@@ -1,5 +1,34 @@
 en:
-  active_record:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email can't be blank"
+              taken: "Email already exists"
+              invalid: "Email is invalid"
+            password:
+              blank: "Password can't be blank"
+              confirmation: "Password confirmation doesn't match Password"
+              too_short: "Password is too short (minimum is 6 characters)"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+              too_short: "Password confirmation is too short (minimum is 6 characters)"
+            name:
+              blank: "Name can't be blank"
+              too_short: "Name is too short (minimum is 3 characters)"
+              too_long: "Name is too long (maximum is 70 characters)"
+            surname:
+              blank: "Surname can't be blank"
+              too_short: "Surname is too short (minimum is 3 characters)"
+              too_long: "Surname is too long (maximum is 70 characters)"
+            role:
+              blank: "Role can't be blank"
+              inclusion: "Role is not included in the list"
+            phone_number:
+              format: "Phone number is invalid"
+              uniqueness: "Phone number already exists"
     models:
       user: User
     attributes:
@@ -64,9 +93,38 @@ en:
         email: "Add email"
         role: "Add role"
         password: "Add password"
-        
+
 es:
-  active_record:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email no puede estar en blanco"
+              taken: "Email ya existe"
+              invalid: "Email es inválido"
+            password:
+              blank: "La contraseña no puede estar en blanco"
+              confirmation: "La confirmación de la contraseña no coincide con la contraseña"
+              too_short: "La contraseña es demasiado corta (mínimo es 6 caracteres)"
+            password_confirmation:
+              blank: "La confirmación de la contraseña no puede estar en blanco"
+              too_short: "La confirmación de la contraseña es demasiado corta (mínimo es 6 caracteres)"
+            name:
+              blank: "El nombre no puede estar en blanco"
+              too_short: "El nombre es demasiado corto (mínimo es 3 caracteres)"
+              too_long: "El nombre es demasiado largo (máximo es 70 caracteres)"
+            surname:
+              blank: "El apellido no puede estar en blanco"
+              too_short: "El apellido es demasiado corto (mínimo es 3 caracteres)"
+              too_long: "El apellido es demasiado largo (máximo es 70 caracteres)"
+            role:
+              blank: "El rol no puede estar en blanco"
+              inclusion: "El rol no está incluido en la lista"
+            phone_number:
+              format: "El número de teléfono es inválido"
+              uniqueness: "El número de teléfono ya existe"
     models:
       user: Usuario
     attributes:
@@ -134,7 +192,36 @@ es:
         phone_number: "Introduce número de teléfono"
 
 gl:
-  active_record:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email non pode estar en branco"
+              taken: "Email xa existe"
+              invalid: "Email é inválido"
+            password:
+              blank: "O contrasinal non pode estar en branco"
+              confirmation: "A confirmación do contrasinal non coincide co contrasinal"
+              too_short: "O contrasinal é demasiado curto (mínimo é 6 caracteres)"
+            password_confirmation:
+              blank: "A confirmación do contrasinal non pode estar en branco"
+              too_short: "A confirmación do contrasinal é demasiado curto (mínimo é 6 caracteres)"
+            name:
+              blank: "O nome non pode estar en branco"
+              too_short: "O nome é demasiado curto (mínimo é 3 caracteres)"
+              too_long: "O nome é demasiado longo (máximo é 70 caracteres)"
+            surname:
+              blank: "O apelido non pode estar en branco"
+              too_short: "O apelido é demasiado curto (mínimo é 3 caracteres)"
+              too_long: "O apelido é demasiado longo (máximo é 70 caracteres)"
+            role:
+              blank: "O rol non pode estar en branco"
+              inclusion: "O rol non está incluído na lista"
+            phone_number:
+              format: "O número de teléfono é inválido"
+              uniqueness: "O número de teléfono xa existe"
     models:
       user: Usuario
     attributes:

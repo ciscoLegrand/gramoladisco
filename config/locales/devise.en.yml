@@ -2,10 +2,19 @@
 
 en:
   devise:
+    shared:
+      links:
+        login: "Log in"
+        registration: "Sign up"
+        recover_password: "Forgot your password?"
+        confirmation: "Didn't receive confirmation instructions?"
+        unlock_instructions: "Didn't receive unlock instructions?"
+        signed_provider: "Signed in with %{provider}"
     confirmations:
       new:
         login: "Log in"
         registration: "Sign up"
+        signed_provider: "Signed in with %{provider}"
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
@@ -43,11 +52,13 @@ en:
         login: "Log in"
         registration: "Sign up"
         send_instructions: 'Send me the email with instructions!'
+        signed_provider: "Signed in with %{provider}"
     registrations:
       new:
         login: "Log in"
         registration: "Sign up"
         confirmation: "Didn't receive confirmation instructions?"
+        signed_provider: "Signed in with %{provider}"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -62,6 +73,7 @@ en:
         registration: "Sign up"
         forgot_password: "Forgot your password?"
         send_instructions: 'Send me the email with instructions!'
+        signed_provider: "Signed in with %{provider}"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
@@ -82,10 +94,19 @@ en:
 
 es:
   devise:
+    shared:
+      links:
+        login: "Iniciar sesión"
+        registration: "Registrarse"
+        recover_password: "¿Olvidó su contraseña?"
+        confirmation: "¿No recibió las instrucciones de confirmación?"
+        unlock_instructions: "¿No recibió las instrucciones de desbloqueo?"
+        signed_provider: "Inició sesión con %{provider}"
     confirmations:
       new:
         login: "Iniciar sesión"
         registration: "Registrarse"
+        signed_provider: "Inicio de sesión con %{provider}"
       confirmed: "Su dirección de correo electrónico ha sido confirmada con éxito."
       send_instructions: "Recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en unos minutos."
       send_paranoid_instructions: "Si su dirección de correo electrónico existe en nuestra base de datos, recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en unos minutos."
@@ -123,11 +144,13 @@ es:
         login: "Iniciar sesión"
         registration: "Registrarse"
         send_instructions: '¡Envíame el email con instrucciones!'
+        signed_provider: "Inicio de sesión con %{provider}"
     registrations:
       new:
         login: "Iniciar sesión"
         registration: "Registrarse"
         confirmation: "¿No recibió las instrucciones de confirmación?"
+        signed_provider: "Inicio de sesión con %{provider}"
       destroyed: "¡Adiós! Su cuenta ha sido cancelada con éxito. Esperamos verte de nuevo pronto."
       signed_up: "¡Bienvenido! Se ha registrado con éxito."
       signed_up_but_inactive: "Se ha registrado con éxito. Sin embargo, no pudimos iniciar sesión porque su cuenta aún no está activada."
@@ -142,6 +165,7 @@ es:
         registration: "Registrarse"
         forgot_password: "¿Olvidó su contraseña?"
         send_instructions: '¡Envíame el email con instrucciones!'
+        signed_provider: "Inicio de sesión con %{provider}"
       signed_in: "Sesión iniciada con éxito."
       signed_out: "Sesión cerrada con éxito."
       already_signed_out: "Sesión cerrada con éxito."
@@ -162,10 +186,19 @@ es:
 
 gl:
   devise:
+    shared:
+      links:
+        login: "Iniciar sesión"
+        registration: "Rexistrarse"
+        recover_password: "¿Esqueceu o seu contrasinal?"
+        confirmation: "¿Non recibiu as instrucións de confirmación?"
+        unlock_instructions: "¿Non recibiu as instrucións de desbloqueo?"
+        signed_provider: "Inicia sesión con %{provider}"
     confirmations:
       new:
         login: "Iniciar sesión"
         registration: "Rexistrarse"
+        signed_provider: "Inicia sesión con %{provider}"
       confirmed: "A súa dirección de correo electrónico foi confirmada con éxito."
       send_instructions: "Recibirá un correo electrónico con instrucións sobre como confirmar a súa dirección de correo electrónico en uns minutos."
       send_paranoid_instructions: "Se a súa dirección de correo electrónico existe na nosa base de datos, recibirá un correo electrónico con instrucións sobre como confirmar a súa dirección de correo electrónico en uns minutos."
@@ -203,11 +236,13 @@ gl:
         login: "Iniciar sesión"
         registration: "Rexistrarse"
         send_instructions: '¡Envíame o email coas instruccións!'
+        signed_provider: "Inicia sesión con %{provider}"
     registrations:
       new:
         login: "Iniciar sesión"
         registration: "Rexistrarse"
         confirmation: "¿Non recibiu as instrucións de confirmación?"
+        signed_provider: "Inicia sesión con %{provider}"
       destroyed: "¡Adeus! A súa conta foi cancelada con éxito. Agardamos velo de novo pronto."
       signed_up: "¡Benvido! Rexistrouse con éxito."
       signed_up_but_inactive: "Rexistrouse con éxito. Con todo, non puidemos iniciar sesión porque a súa conta aínda non está activada."
@@ -222,6 +257,7 @@ gl:
         registration: "Rexistrarse"
         forgot_password: "Esqueceu o seu contrasinal?"
         send_instructions: 'Enviame el email con instrucciones!'
+        signed_provider: "Inicia sesión con %{provider}"
       signed_in: "Sesión iniciada con éxito."
       signed_out: "Sesión pechada con éxito."
       already_signed_out: "Sesión pechada con éxito."
