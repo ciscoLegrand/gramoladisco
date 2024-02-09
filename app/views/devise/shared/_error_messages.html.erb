@@ -7,8 +7,8 @@
        %>
     </h2>
     <ul class="w-full flex flex-col gap-4">
-      <% resource.errors.full_messages.each do |message| %>
-        <li class="w-full text-red-800-700 bg-red-200 rounded-lg p-2">⚠️ <%= message %></li>
+      <% resource.errors.messages.each do |attribute, messages| %>
+        <li class="w-full text-red-800-700 bg-red-200 rounded-lg p-2">⚠️ <%= messages.first %></li>
       <% end %>
     </ul>
   </div>

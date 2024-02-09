@@ -11,10 +11,10 @@
       <%= user.email[0] %>
     </span>
   </button>
-    
+
   <dropdown data-dropdown-target="dropdownContent"
             class="<%= dropdown[:position] %> <%= dropdown[:style] %>">
-    <h3 class="w-full text-indigo-700 font-semibold text-center  border-b-2 border-b-indigo-700 pb-2"><%= user.email %></h3>
+    <h3 class="w-full text-indigo-700 font-semibold text-center  border-b-2 border-b-indigo-700 pb-2"><%= user.email %> | <%= user.oauth_access_token.provider %></h3>
     <ul class="w-full h-full flex flex-col justify-end items-start gap-5">
       <% actions.each do |action| %>
         <li class="<%= action.dig(:li, :class) %>">
@@ -27,5 +27,3 @@
     </ul>
   </dropdown>
 </div>
-
-
