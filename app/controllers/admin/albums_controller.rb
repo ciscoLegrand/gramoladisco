@@ -94,7 +94,7 @@ class Admin::AlbumsController < Admin::BaseController
   def publish
     respond_to do |format|
       if @album.images.attached?
-        @album.publish!
+        @album.update!(published_at: Time.zone.now, status: 'publish')
         PublishAlbumJob.perform_later(@album)
         flash.now[:success] = { title: t('.success.title', name: @album.title), body: t('.success.body')}
       else
