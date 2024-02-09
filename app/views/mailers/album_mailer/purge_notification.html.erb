@@ -1,0 +1,9 @@
+<h1>Eliminación de imágenes del álbum</h1>
+
+<p>Se ha eliminado el álbum <%= @album_name %>.</p>
+
+<p>Número de imágenes eliminadas: <%= @images_count %></p>
+
+<% if @message.present? %>
+  <p>Se ha producido el siguiente error: <%= @message %></p>
+<% end %>
