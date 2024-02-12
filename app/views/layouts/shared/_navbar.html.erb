@@ -24,14 +24,18 @@
     </div>
 
     <!-- User Card -->
-    
     <% if user_signed_in? %>
       <% actions = user_card_signed_links %>
       <% actions.unshift(*user_card_admin_links) if current_user.admin? %>
+      <%= render(UI::Cards::User.new(user: current_user, options: navbar_user_card_options, actions: actions)) %>
     <% else %>
-      <% actions = user_card_unsigned_links%>
+      <div class="w-full flex justify-end items-center">
+        <%= link_to inline_svg_tag('icons/user/user-up.svg', class: 'w-10 h-10 text-white'),
+                    new_user_session_path,
+                    data: { turbo_frame: 'modal' },
+                    class: 'w-12 h-12 flex justify-end items-center gap-4 shadow shadow-indigo-500 bg-slate-800 hover:bg-slate-700 border-4 hover:scale-110 border-indigo-400 p-2 rounded-full transition-all ease-in-out duration-300' %>
+      </div>
     <% end %>
     
-    <%= render(UI::Cards::User.new(user: current_user, options: navbar_user_card_options, actions: actions)) %>
   <% end %>
 </header>

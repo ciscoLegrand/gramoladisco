@@ -1,42 +1,46 @@
   <li id="<%= dom_id(album) %>"
       class="w-full odd:bg-slate-200 even:bg-white dark:odd:bg-gray-800 dark:even:bg-slate-900 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
-    <section class="grid grid-cols-6 gap-4 text-sm p-3">
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+    <section class="grid grid-cols-10 gap-8 text-sm p-3">
+      <div class="col-span-4 flex-1 flex justify-start items-center text-lg px-2 whitespace-nowrap truncate">
         <%= link_to album.title, admin_album_path(album) %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+      <div class="col-span-1 flex-1 text-lg px-4 text-right">
         <%= album&.images.size.presence || 0 %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
+      <div class="col-span-1 flex-1 text-lg px-4 text-right">
         <%= album.password %>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
-        <% begin %>
-        <%= album&.published_at.strftime('%d-%m-%y') %>
-        <% rescue %>
-        <% album.published_at.presence || 'no data'%>
-        <% end %>
+      <div class="col-span-1 flex-1 text-lg px-4">
+        <time datetime="<%= album&.published_at.presence ||'' %>" class="whitespace-nowrap text-right">
+          <% begin %>
+              <%= album&.published_at.strftime('%d-%m-%y') %>
+          <% rescue %>
+            <% album.published_at.presence || 'no data'%>
+          <% end %>
+        </time>
       </div>
-      <div class="flex-1 flex justify-start items-center  text-lg px-2">
-        <%= album.date_event.strftime('%d-%m-%y') %>
+      <div class="col-span-1 flex-1 text-lg px-4">
+        <time datetime="<%= album&.date_event.presence ||'' %>" class="whitespace-nowrap text-right">
+          <%= album.date_event.strftime('%d-%m-%y') %>
+        </time>
       </div>
-      <div class="flex-1 flex justify-end items-center text-lg px-2 gap-4">
+      <div class="col-span-2 flex-1 flex justify-end items-center text-lg px-2 gap-4">
         <% if action_name != "show" %>
           <% if album.draft? %>
-            <%= button_to publish_admin_album_path(album), method: :patch, class: "shadow hover:shadow-lg shadow-amber-400 hover:shadow-amber-200 border-4 border-amber-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-amber-600 text-amber-500 hover:text-white" do %>
-              <%= inline_svg_tag('icons/form/share-3.svg', class: 'w-6 h-6')%>
+            <%= button_to publish_admin_album_path(album), method: :patch, class: "btn-wrap-publish" do %>
+              <%= inline_svg_tag('icons/form/share-3.svg', class: 'icon-wrapped')%>
             <% end %>
           <% else %>
             <span class=" transition-colors duration-300 text-green-500">
-              <%= inline_svg_tag('icons/form/circle-check.svg', class: 'w-12 h-12')%>
+              <%= inline_svg_tag('icons/form/circle-check.svg', class: 'w-8 h-8')%>
             </span>
           <% end %>
           <%#= link_to "Show", admin_album_path(album), class: "rounded-lg py-2 px-4 bg-blue-500 text-white inline-block font-medium transition-colors duration-500 hover:bg-blue-600" %>
-          <%= link_to edit_admin_album_path(album), class: "shadow hover:shadow-lg shadow-blue-400 hover:shadow-blue-200 border-4 border-blue-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-blue-600 text-blue-500 hover:text-white" do %>
-            <%= inline_svg_tag('icons/form/edit.svg', class: 'w-6 h-6')%>
+          <%= link_to edit_admin_album_path(album), class: "btn-wrap-edit" do %>
+            <%= inline_svg_tag('icons/form/edit.svg', class: 'icon-wrapped')%>
           <% end %>
-          <%= button_to admin_album_path(album), form: { data: { turbo_confirm: 'Are you sure?' } }, method: :delete, class: "shadow hover:shadow-lg shadow-red-400 hover:shadow-red-200 border-4 border-red-500 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-red-600 text-red-500 hover:text-white" do %>
-            <%= inline_svg_tag('icons/form/trash.svg', class: 'w-6 h-6')%>
+          <%= button_to admin_album_path(album), form: { data: { turbo_confirm: 'Are you sure?' } }, method: :delete, class: "btn-wrap-delete" do %>
+            <%= inline_svg_tag('icons/form/trash.svg', class: 'icon-wrapped')%>
           <% end %>
         <% end %>
       </div>

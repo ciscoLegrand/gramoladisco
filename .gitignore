@@ -41,5 +41,6 @@
 # Ignore application configuration
 /config/application.yml
 /lib/tasks/backup_v2/csv_import/*
+/lib/tasks/backup_v2/file_recovery/*
 
 .vscode

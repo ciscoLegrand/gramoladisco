@@ -1,0 +1,288 @@
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email can't be blank"
+              taken: "Email already exists"
+              invalid: "Email is invalid"
+            password:
+              blank: "Password can't be blank"
+              confirmation: "Password confirmation doesn't match Password"
+              too_short: "Password is too short (minimum is 6 characters)"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+              too_short: "Password confirmation is too short (minimum is 6 characters)"
+            name:
+              blank: "Name can't be blank"
+              too_short: "Name is too short (minimum is 3 characters)"
+              too_long: "Name is too long (maximum is 70 characters)"
+            surname:
+              blank: "Surname can't be blank"
+              too_short: "Surname is too short (minimum is 3 characters)"
+              too_long: "Surname is too long (maximum is 70 characters)"
+            role:
+              blank: "Role can't be blank"
+              inclusion: "Role is not included in the list"
+            phone_number:
+              format: "Phone number is invalid"
+              uniqueness: "Phone number already exists"
+    models:
+      user: User
+    attributes:
+      name: Name
+      surname: Surname
+      email: Email
+      role: Role
+      password: Password
+      password_confirmation: Password confirmation
+      reset_password_token: Reset password token
+      reset_password_sent_at: Reset password sent at
+      remember_created_at: Remember created at
+      sign_in_count: Sign in count
+      current_sign_in_at: Current sign in at
+      last_sign_in_at: Last sign in at
+      current_sign_in_ip: Current sign in ip
+      last_sign_in_ip: Last sign in ip
+      created_at: Created at
+      updated_at: Updated at
+      confirmation_token: Confirmation token
+      confirmed_at: Confirmed at
+      confirmation_sent_at: Confirmation sent at
+      unconfirmed_email: Unconfirmed email
+      failed_attempts: Failed attempts
+      unlock_token: Unlock token
+      locked_at: Locked at
+      authentication_token: Authentication token
+      provider: Provider
+
+  helpers:
+    label:
+      user:
+        name: "Name"
+        surname: "Surname"
+        email: "Email"
+        role: "Role"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        reset_password_token: "Reset password token"
+        reset_password_sent_at: "Reset password sent at"
+        remember_created_at: "Remember created at"
+        sign_in_count: "Sign in count"
+        current_sign_in_at: "Current sign in at"
+        last_sign_in_at: "Last sign in at"
+        current_sign_in_ip: "Current sign in ip"
+        last_sign_in_ip: "Last sign in ip"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        confirmation_token: "Confirmation token"
+        confirmed_at: "Confirmed at"
+        confirmation_sent_at: "Confirmation sent at"
+        unconfirmed_email: "Unconfirmed email"
+        failed_attempts: "Failed attempts"
+        unlock_token: "Unlock token"
+        locked_at: "Locked at"
+        authentication_token: "Authentication token"
+        provider: "Provider"
+    placeholder:
+      user:
+        name: "Add name"
+        surname: "Add surname"
+        email: "Add email"
+        role: "Add role"
+        password: "Add password"
+
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email no puede estar en blanco"
+              taken: "Email ya existe"
+              invalid: "Email es inválido"
+            password:
+              blank: "La contraseña no puede estar en blanco"
+              confirmation: "La confirmación de la contraseña no coincide con la contraseña"
+              too_short: "La contraseña es demasiado corta (mínimo es 6 caracteres)"
+            password_confirmation:
+              blank: "La confirmación de la contraseña no puede estar en blanco"
+              too_short: "La confirmación de la contraseña es demasiado corta (mínimo es 6 caracteres)"
+            name:
+              blank: "El nombre no puede estar en blanco"
+              too_short: "El nombre es demasiado corto (mínimo es 3 caracteres)"
+              too_long: "El nombre es demasiado largo (máximo es 70 caracteres)"
+            surname:
+              blank: "El apellido no puede estar en blanco"
+              too_short: "El apellido es demasiado corto (mínimo es 3 caracteres)"
+              too_long: "El apellido es demasiado largo (máximo es 70 caracteres)"
+            role:
+              blank: "El rol no puede estar en blanco"
+              inclusion: "El rol no está incluido en la lista"
+            phone_number:
+              format: "El número de teléfono es inválido"
+              uniqueness: "El número de teléfono ya existe"
+    models:
+      user: Usuario
+    attributes:
+      name: Nombre
+      surname: Apellido
+      email: Email
+      role: Rol
+      password: Contraseña
+      password_confirmation: Confirmación de contraseña
+      reset_password_token: Token de restablecimiento de contraseña
+      reset_password_sent_at: Restablecer contraseña enviado en
+      remember_created_at: Recordar creado en
+      sign_in_count: Inicio de sesión cuenta
+      current_sign_in_at: Inicio de sesión actual en
+      last_sign_in_at: Último inicio de sesión en
+      current_sign_in_ip: Inicio de sesión actual ip
+      last_sign_in_ip: Último inicio de sesión ip
+      created_at: Creado en
+      updated_at: Actualizado en
+      confirmation_token: Token de confirmación
+      confirmed_at: Confirmado en
+      confirmation_sent_at: Confirmación enviado en
+      unconfirmed_email: Email no confirmado
+      failed_attempts: Intentos fallidos
+      unlock_token: Token de desbloqueo
+      locked_at: Bloqueado en
+      authentication_token: Token de autenticación
+      provider: Proveedor
+
+  helpers:
+    labels:
+      user:
+        name: "Nombre"
+        surname: "Apellido"
+        email: "Email"
+        role: "Rol"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+        reset_password_token: "Token de restablecimiento de contraseña"
+        reset_password_sent_at: "Restablecer contraseña enviado en"
+        remember_created_at: "Recordar creado en"
+        sign_in_count: "Inicio de sesión cuenta"
+        current_sign_in_at: "Inicio de sesión actual en"
+        last_sign_in_at: "Último inicio de sesión en"
+        current_sign_in_ip: "Inicio de sesión actual ip"
+        last_sign_in_ip: "Último inicio de sesión ip"
+        created_at: "Creado en"
+        updated_at: "Actualizado en"
+        confirmation_token: "Token de confirmación"
+        confirmed_at: "Confirmado en"
+        confirmation_sent_at: "Confirmación enviado en"
+        unconfirmed_email: "Email no confirmado"
+        failed_attempts: "Intentos fallidos"
+        unlock_token: "Token de desbloqueo"
+        locked_at: "Bloqueado en"
+        authentication_token: "Token de autenticación"
+        provider: "Proveedor"
+    placeholder:
+      user:
+        name: "Introduce nombre"
+        surname: "Introduce apellido"
+        email: "Introduce email"
+        role: "Introduce rol"
+        password: "Introduce contraseña"
+        phone_number: "Introduce número de teléfono"
+
+gl:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email non pode estar en branco"
+              taken: "Email xa existe"
+              invalid: "Email é inválido"
+            password:
+              blank: "O contrasinal non pode estar en branco"
+              confirmation: "A confirmación do contrasinal non coincide co contrasinal"
+              too_short: "O contrasinal é demasiado curto (mínimo é 6 caracteres)"
+            password_confirmation:
+              blank: "A confirmación do contrasinal non pode estar en branco"
+              too_short: "A confirmación do contrasinal é demasiado curto (mínimo é 6 caracteres)"
+            name:
+              blank: "O nome non pode estar en branco"
+              too_short: "O nome é demasiado curto (mínimo é 3 caracteres)"
+              too_long: "O nome é demasiado longo (máximo é 70 caracteres)"
+            surname:
+              blank: "O apelido non pode estar en branco"
+              too_short: "O apelido é demasiado curto (mínimo é 3 caracteres)"
+              too_long: "O apelido é demasiado longo (máximo é 70 caracteres)"
+            role:
+              blank: "O rol non pode estar en branco"
+              inclusion: "O rol non está incluído na lista"
+            phone_number:
+              format: "O número de teléfono é inválido"
+              uniqueness: "O número de teléfono xa existe"
+    models:
+      user: Usuario
+    attributes:
+      name: Nome
+      surname: Apelido
+      email: Email
+      role: Rol
+      password: Contrasinal
+      password_confirmation: Confirmación de contrasinal
+      reset_password_token: Token de restablecemento de contrasinal
+      reset_password_sent_at: Restablecer contrasinal enviado en
+      remember_created_at: Recordar creado en
+      sign_in_count: Inicio de sesión conta
+      current_sign_in_at: Inicio de sesión actual en
+      last_sign_in_at: Último inicio de sesión en
+      current_sign_in_ip: Inicio de sesión actual ip
+      last_sign_in_ip: Último inicio de sesión ip
+      created_at: Creado en
+      updated_at: Actualizado en
+      confirmation_token: Token de confirmación
+      confirmed_at: Confirmado en
+      confirmation_sent_at: Confirmación enviado en
+      unconfirmed_email: Email non confirmado
+      failed_attempts: Intentos fallidos
+      unlock_token: Token de desbloqueo
+      locked_at: Bloqueado en
+      authentication_token: Token de autenticación
+      provider: Proveedor
+  
+  helpers:
+    label:
+      user:
+        name: "Nome"
+        surname: "Apelido"
+        email: "Email"
+        role: "Rol"
+        password: "Contrasinal"
+        password_confirmation: "Confirmación de contrasinal"
+        reset_password_token: "Token de restablecemento de contrasinal"
+        reset_password_sent_at: "Restablecer contrasinal enviado en"
+        remember_created_at: "Recordar creado en"
+        sign_in_count: "Inicio de sesión conta"
+        current_sign_in_at: "Inicio de sesión actual en"
+        last_sign_in_at: "Último inicio de sesión en"
+        current_sign_in_ip: "Inicio de sesión actual ip"
+        last_sign_in_ip: "Último inicio de sesión ip"
+        created_at: "Creado en"
+        updated_at: "Actualizado en"
+        confirmation_token: "Token de confirmación"
+        confirmed_at: "Confirmado en"
+        confirmation_sent_at: "Confirmación enviado en"
+        unconfirmed_email: "Email non confirmado"
+        failed_attempts: "Intentos fallidos"
+        unlock_token: "Token de desbloqueo"
+        locked_at: "Bloqueado en"
+        authentication_token: "Token de autenticación"
+        provider: "Proveedor"
+    placeholder:
+      user:
+        name: "Engadir nome"
+        surname: "Engadir apelido"
+        email: "Engadir email"
+        role: "Engadir rol"
+        password: "Engadir contrasinal"

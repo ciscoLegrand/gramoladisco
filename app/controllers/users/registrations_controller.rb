@@ -38,6 +38,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def update_resource(resource, params)
+    if resource.provider.eql?('google_oauth2')
+      params.delete('current_password')
+      resource.password = params['password']
+      resource.ivebeenupdated = true
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

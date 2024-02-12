@@ -2,7 +2,7 @@ class Admin::BaseController < ApplicationController
   layout "admin"
   # before_action :authenticate_user!
   before_action :set_locale
-  add_breadcrumb I18n.t('.breadcrumbs.admin.home'), :admin_root_path
+  add_breadcrumb I18n.t('breadcrumbs.admin.home'), :admin_root_path
 
   private
 

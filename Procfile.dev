@@ -1,2 +1,5 @@
 web: env RUBY_DEBUG_OPEN=true bin/rails server -p 3000
 css: bin/rails tailwindcss:watch
+redis: redis-server
+worker: bundle exec sidekiq
+solargraph: solargraph socket --port 7658

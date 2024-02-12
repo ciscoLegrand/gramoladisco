@@ -4,8 +4,8 @@
     <article class="relative p-4 sm:p-10 lg:p-20 bg-white dark:bg-gray-900 shadow-lg sm:rounded-3xl">
       <div class="mx-auto sm:max-w-md">
         <header class="w-full flex flex-nowrap justify-between items-center gap-8">
-          <%=  link_to "Login", new_session_path(resource_name), class: 'text-2xl font-semibold text-gray-900 dark:text-gray-100' %>
-          <h1 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 border-b border-b-white">Register</h1>
+          <%=  link_to t('.login'), new_session_path(resource_name), class: 'text-2xl font-semibold text-gray-900 dark:text-gray-100' %>
+          <h1 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 border-b border-b-white"><%= t('.registration')%></h1>
         </header>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "divide-y divide-gray-200 dark:divide-gray-700") do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,39 +13,40 @@
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <div class="rounded-md shadow-sm -space-y-px">
               <div>
-                <%= f.text_field :name, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Name" %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
               <div>
-                <%= f.text_field :surname, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Surname" %>
+                <%= f.text_field :surname, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
               <div>
-                <%= f.phone_field :phone_number, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Phone number" %>
+                <%= f.phone_field :phone_number, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
               <div>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all ease-in-out duration-300", placeholder: "Email address" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all ease-in-out duration-300", placeholder: true %>
               </div>
               <div>
-                <%= f.password_field :password, autocomplete: "new-password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Password" %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
             </div>
             <div class="relative flex flex-col justify-between items-center gap-4">
 
               <%= button_to nil, class: "w-full flex justify-start items-center bg-blue-500 text-white rounded-lg px-4 py-2 mx-2 gap-4" do %>
                 <%= inline_svg_tag 'icons/login/email.svg', class: 'h-4 w-4'%>
-                Register
+                <span><%= t('.registration')%></span>
               <% end %>
 
               <div class="w-full flex justify-center items-center gap-8">
-                <button class="flex justify-start items-center ">
-                  <%= inline_svg_tag 'icons/brands/facebook.svg', class: 'h-8 w-8 hover:scale-110 transition-all ease-in-out duration-300'%>
-                </button>
-                <button class="flex justify-start items-center ">
-                  <%= inline_svg_tag 'icons/brands/google.svg', class: 'h-8 w-8 hover:scale-110 transition-all ease-in-out duration-300'%>
-                </button>
+                <%- if devise_mapping.omniauthable? %>
+                  <%- resource_class.omniauth_providers.each do |provider| %>
+                    <% icon = provider.to_s.include?('google') ? 'google' : provider.to_s.include?('facebook') ? 'facebook' : 'github' %>
+                    <%= form_for "Login", url: omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: 'false' } do |form| %>
+                      <%= button_tag(type: 'submit', class: 'w-12 h-12 flex justify-center items-center') do %>
+                        <%= inline_svg_tag("icons/brands/#{icon}.svg", class: 'w-8 h-8')%>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
               </div>
-            </div>
-            <div class="text-sm flex flex-col gap-2 text-center">
-              <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
             </div>
           </div>
         <% end %>

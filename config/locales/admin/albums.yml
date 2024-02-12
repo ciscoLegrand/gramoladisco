@@ -1,0 +1,149 @@
+en:
+  active_record:
+    models:
+      album: Album
+    attributes:
+      album:
+        title: Title
+        password: Password
+        emails: Emails
+        date_event: Date event
+        published_at: Published
+        created_at: Created at
+        updated_at: Updated at
+  admin:
+    albums:
+      index:
+        search: Search albums
+        new: New album
+        title: Albums
+        images: Images
+        password: Password
+        published_at: Published
+        date_event: Date event
+        actions: Actions
+        hidden: Hidden
+        published: Published
+      show:
+        title: Album
+        images: Images
+        password: Password
+        published_at: Published
+        date_event: Date event
+        actions: Actions
+        hidden: Hidden
+        published: Published
+
+      destroy:
+        success:
+          title: Album %{name}
+          body: Was deleted successfully
+        error:
+          title: Album
+          body: "Was not deleted: %{errors}"
+      publish:
+        success:
+          title: Album %{name}
+          body: Was published successfully
+        error:
+          title: Album
+          body: "Was not published: %{errors}"
+es:
+  active_record:
+    models:
+      album: Álbum
+    attributes:
+      album:
+        title: Título
+        password: Contraseña
+        emails: Emails
+        date_event: Fecha evento
+        published_at: Publicado
+        created_at: Creado
+        updated_at: Actualizado
+  admin:
+    albums:
+      index:
+        search: Buscar álbumes
+        new: Nuevo álbum
+        title: Álbumes
+        images: Imágenes
+        password: Contraseña
+        published_at: Publicado
+        date_event: Fecha evento
+        actions: Acciones
+        hidden: Ocultos
+        published: Publicados
+      show:
+        title: Álbum
+        images: Imágenes
+        password: Contraseña
+        published_at: Publicado
+        date_event: Fecha evento
+        actions: Acciones
+        hidden: Ocultos
+        published: Publicados
+
+      destroy:
+        success:
+          title: Álbum %{name}
+          body: Fue eliminado correctamente
+        error:
+          title: Álbum
+          body: "No fue eliminado: %{errors}"
+      publish:
+        success:
+          title: Álbum %{name}
+          body: Fue publicado correctamente
+        error:
+          title: Álbum
+          body: "No fue publicado: %{errors}"
+gl:
+  active_record:
+    models:
+      album: Álbum
+    attributes:
+      album:
+        title: Título
+        password: Contrasinal
+        emails: Emails
+        date_event: Data evento
+        published_at: Publicado
+        created_at: Creado
+        updated_at: Actualizado
+  admin:
+    albums:
+      index:
+        search: Buscar álbums
+        new: Novo álbum
+        title: Álbums
+        images: Imaxes
+        password: Contrasinal
+        published_at: Publicado
+        date_event: Data evento
+        actions: Accións
+        hidden: Ocultos
+        published: Publicados
+      show:
+        title: Álbum
+        images: Imaxes
+        password: Contrasinal
+        published_at: Publicado
+        date_event: Data evento
+        actions: Accións
+        hidden: Ocultos
+        published: Publicados
+      destroy:
+        success:
+          title: Álbum %{name}
+          body: Foi eliminado correctamente
+        error:
+          title: Álbum
+          body: "Non foi eliminado: %{errors}"
+      publish:
+        success:
+          title: Álbum %{name}
+          body: Foi publicado correctamente
+        error:
+          title: Álbum
+          body: "Non foi publicado: %{errors}"

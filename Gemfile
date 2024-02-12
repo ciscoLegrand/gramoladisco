@@ -94,3 +94,5 @@ gem "sentry-ruby", "~> 5.14"
 gem "sentry-rails", "~> 5.14"
 
 gem 'devise'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'

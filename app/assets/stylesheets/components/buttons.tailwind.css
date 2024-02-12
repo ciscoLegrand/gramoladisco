@@ -6,4 +6,32 @@
   .btn-success {
     @apply hover:bg-green-500 hover:duration-500 hover:ease-in-out;
   }
+
+  .btn-wrap-publish {
+    @apply shadow shadow-amber-400 border-4 border-amber-500 rounded-full p-1 inline-block transition-colors duration-300  text-amber-500 lg:border-2 sm:border;
+  }
+
+  .btn-wrap-publish:hover {
+    @apply shadow-lg shadow-amber-200 bg-amber-600 text-white
+  }
+
+  .btn-wrap-edit {
+    @apply shadow shadow-blue-400 border-4 border-blue-500 rounded-full p-1 inline-block transition-colors duration-300  text-blue-500 lg:border-2 sm:border;
+  }
+
+  .btn-wrap-edit:hover {
+    @apply shadow-lg shadow-blue-200 bg-blue-600 text-white
+  }
+
+  .btn-wrap-delete {
+    @apply shadow shadow-red-400 border-4 border-red-500 rounded-full p-1 inline-block transition-colors duration-300  text-red-500 lg:border-2 sm:border;
+  }
+
+  .btn-wrap-delete:hover {
+    @apply shadow-lg shadow-red-200 bg-red-600 text-white
+  }
+
+  .icon-wrapped {
+    @apply w-6 h-6 lg:w-5 lg:h-5 md:w-4 md:h-4 sm:w-3 sm:h-3;
+  }
 }

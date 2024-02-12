@@ -1,4 +1,9 @@
 module AdminHelper
+  def get_first_error(errors)
+    "#{errors.messages.first[0].to_s.upcase} ERROR: #{errors.messages.first[1][0]}"
+    errors.messages.map { |key, messages| "#{t(".#{key}")}: #{messages.first}" }.join("<br>").html_safe
+  end
+
   def admin_navbar_user_card_options
     {
       container: {
@@ -38,7 +43,7 @@ module AdminHelper
   def aside_items
     [
       { path: admin_root_path, title: 'Inicio', icon: 'icons/aside/home.svg' },
-      { path: admin_albums_path, title: 'Albums', icon: 'icons/aside/photo.svg' },
+      { path: admin_albums_path(items: params[:items].presence || 10), title: 'Albums', icon: 'icons/aside/photo.svg' },
       { path: '#', title: 'Categories', icon: 'icons/aside/category.svg' },
       { path: '#', title: 'Products', icon: 'icons/aside/dj.svg' },
       { path: admin_contacts_path(items: params[:items].presence || 10), title: 'Contact', icon: 'icons/contact/inbox.svg' }

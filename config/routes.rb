@@ -1,5 +1,12 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  devise_for :users,
+  controllers: {
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   scope module: 'frontend' do
     root 'pages#index'
@@ -12,19 +19,22 @@ Rails.application.routes.draw do
     end
     resources :contacts, only: %i[index new create]
   end
-  namespace :admin do
-    root 'dashboard#index'
-    resources :albums do
-      patch :publish, on: :member
-      post  :search, on: :collection
-    end
-    resources :contacts do
-      post :search, on: :collection
-    end
-    resources :images, only: %i[create]
-    delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
-  end
 
+  authenticate :user, lambda { |u| u.admin? || u.superadmin? } do
+    mount Sidekiq::Web => '/sidekiq'
+    namespace :admin do
+      root 'dashboard#index'
+      resources :albums do
+        patch :publish, on: :member
+        post  :search, on: :collection
+      end
+      resources :contacts do
+        post :search, on: :collection
+      end
+      resources :images, only: %i[create]
+      delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

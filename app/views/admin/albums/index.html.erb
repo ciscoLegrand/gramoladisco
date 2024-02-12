@@ -10,7 +10,7 @@
           path: search_admin_albums_path,
           attribute: :text,
           options: {
-            placeholder: 'Buscar album...',
+            placeholder: t('.search'),
             regex: params[:text]
           })
         )%>
@@ -24,19 +24,22 @@
       <% @years.each do |year|%>
         <%= link_to year, admin_albums_path(year: year, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
       <% end %>
-      <%= link_to 'Ocultos', admin_albums_path(draft: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
-      <%= link_to 'Publicados', admin_albums_path(published: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
+      <%= link_to t('.hidden'), admin_albums_path(draft: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
+      <%= link_to t('.published'), admin_albums_path(published: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
     </div>
   </div>
 
   <div class="w-full flex flex-col justify-start items-center">
-    <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-6 gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl">
+    <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-10 gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl">
       <% @headers.each do |header| %>
-        <div class="col-span-1 capitalize px-3 text-sm xl:text-xl whitespace-nowrap">
-          <%= t(".#{header}") %>
+        <% hidden = 'hidden lg:block' if header.eql?('title')%>
+        <% style = %w[images password published_at date_event].include?(header) ? 'text-center 2xl:text-right col-span-1' : 'col-span-4' %>
+        <% sort = params[:direction] == 'desc' && params[:sort] == header ? {direction: 'asc', arrow: '🔻' } : {direction: 'desc', arrow: '🔺' } %>
+        <div class="capitalize px-3 <%= style %> <%= hidden %> text-sm xl:text-xl whitespace-nowrap ">
+          <%= link_to "#{t(".#{header}")} #{sort[:arrow]}", admin_albums_path(sort: header, direction: sort[:direction], items: params[:items]) %>
         </div>
       <% end %>
-      <div class="col-span-1 flex justify-end items-center gap-5 py-2 px-4"><%= t('.actions')%></div>
+      <div class="col-span-2 flex justify-end items-center gap-5 py-2 px-4"><%= t('.actions')%></div>
     </header>
     <%= turbo_frame_tag :new_album %>
     <ul id="search_results" class="w-full flex flex-col mb-4 [&>li:last-child]:border-b [&>li:last-child]:border-b-gray-950 [&>li:last-child]:rounded-b-xl shadow-lg shadow-gray-950 rounded-xl">

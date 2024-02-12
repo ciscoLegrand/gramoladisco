@@ -35,7 +35,16 @@ class Album < ApplicationRecord
 
   scope :published, -> { where(status: :publish).order(published_at: :desc) }
   scope :draft, -> { where(status: :draft).order(date_event: :desc) }
-  scope :by_year, ->(year) { where('extract(year from published_at) = ?', year) }
+  scope :by_year, ->(year) { where('extract(year from date_event) = ?', year) }
+
+  scope :order_by, ->(column, direction) { order("#{column} #{direction}") }
+
+  # sort by total of attachments
+  scope :ordered_by_image_count, -> (order = :desc) {
+    left_joins(images_attachments: :blob)
+    .group('albums.id')
+    .order(Arel.sql("COUNT(active_storage_blobs.id) #{order}"))
+  }
 
   private
 
