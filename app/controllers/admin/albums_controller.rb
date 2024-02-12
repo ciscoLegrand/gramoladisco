@@ -64,6 +64,7 @@ class Admin::AlbumsController < Admin::BaseController
   def update
     @album.current_host     = request.host
     @album.current_user_id  = current_user&.id
+
     respond_to do |format|
       if @album.update(album_params)
         flash.now[:success] = { title: t('.success.title'), body: t('.success.body')}
@@ -93,8 +94,12 @@ class Admin::AlbumsController < Admin::BaseController
   # POST /admin/albums/1/publish
   def publish
     respond_to do |format|
-      if @album.images.attached?
-        @album.update!(published_at: Time.zone.now, status: 'publish')
+      if @album.images.attached? && @album.draft?
+        @album.update!  published_at: Time.zone.now,
+                        status: 'publish',
+                        current_host: request.host,
+                        current_user_id: current_user&.id
+
         PublishAlbumJob.perform_later(@album)
         flash.now[:success] = { title: t('.success.title', name: @album.title), body: t('.success.body')}
       else
