@@ -33,7 +33,20 @@ en:
         actions: Actions
         hidden: Hidden
         published: Published
-
+      create:
+        success:
+          title: Album %{name}
+          body: Was created successfully
+        error:
+          title: Album
+          body: "Was not created: %{errors}"
+      update:
+        success:
+          title: Album %{name}
+          body: Was updated successfully
+        error:
+          title: Album
+          body: "Was not updated: %{errors}"
       destroy:
         success:
           title: Album %{name}
@@ -83,7 +96,20 @@ es:
         actions: Acciones
         hidden: Ocultos
         published: Publicados
-
+      create:
+        success:
+          title: Álbum %{name}
+          body: Fue creado correctamente
+        error:
+          title: Álbum
+          body: "No fue creado: %{errors}"
+      update:
+        success:
+          title: Álbum %{name}
+          body: Fue actualizado correctamente
+        error:
+          title: Álbum
+          body: "No fue actualizado: %{errors}"
       destroy:
         success:
           title: Álbum %{name}
@@ -133,6 +159,20 @@ gl:
         actions: Accións
         hidden: Ocultos
         published: Publicados
+      create:
+        success:
+          title: Álbum %{name}
+          body: Foi creado correctamente
+        error:
+          title: Álbum
+          body: "Non foi creado: %{errors}"
+      update:
+        success:
+          title: Álbum %{name}
+          body: Foi actualizado correctamente
+        error:
+          title: Álbum
+          body: "Non foi actualizado: %{errors}"
       destroy:
         success:
           title: Álbum %{name}
