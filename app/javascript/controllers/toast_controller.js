@@ -13,6 +13,6 @@ export default class extends Controller {
     this.containerTarget.classList.add('toast-fade-out');
     setTimeout(() => {
       this.containerTarget.remove();
-    }, 2000);
+    }, 500);
   }
 }
