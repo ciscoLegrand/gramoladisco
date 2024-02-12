@@ -24,7 +24,6 @@
     </div>
 
     <!-- User Card -->
-    
     <% if user_signed_in? %>
       <% actions = user_card_signed_links %>
       <% actions.unshift(*user_card_admin_links) if current_user.admin? %>
