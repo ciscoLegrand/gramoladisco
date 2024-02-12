@@ -2,8 +2,8 @@ class PublishAlbumJob < ApplicationJob
   queue_as :default
 
   def perform(album)
-    return Rails.logger.info('🔥🔥Album ya publicado') if album.publish?
-    Rails.logger.info "🔥🔥Album: #{album.title} publicado🔥🔥"
+    album.update!(published_at: Time.zone.now, status: 'publish') if album.draft?
+    Rails.logger.info "El album #{album.title} está con status: #{album.status} con fecha #{album.published_at.strftime('%d/%m/%Y')}"
     album_name = album.title
     magic_link = Rails.application
                       .routes
@@ -14,5 +14,8 @@ class PublishAlbumJob < ApplicationJob
                .publish_notification
                .deliver_later
     Rails.logger.info("🔥🔥Email para #{album_name} enviado🔥🔥")
+  rescue StandardError => e
+    Rails.logger.info "Ha ocurrido un error en la ejecucion del job #{e.message}"
+    raise e
   end
 end
