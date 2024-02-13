@@ -16,7 +16,7 @@ class UI::Navbar::NavItem < ViewComponent::Base
   private
 
   def title_content
-    content_tag(:span, @title, class: 'w-full text-lg transition-all ease-in-out duration-1000', data: { 'decrease-target': 'title' })
+    content_tag(:span, t(".#{@title}"), class: 'w-full text-lg transition-all ease-in-out duration-1000', data: { 'decrease-target': 'title' })
   end
 
   def icon_content

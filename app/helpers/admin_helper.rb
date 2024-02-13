@@ -42,10 +42,8 @@ module AdminHelper
 
   def aside_items
     [
-      { path: admin_root_path, title: 'Inicio', icon: 'icons/aside/home.svg' },
+      { path: admin_root_path, title: 'home', icon: 'icons/aside/home.svg' },
       { path: admin_albums_path(items: params[:items].presence || 10), title: 'Albums', icon: 'icons/aside/photo.svg' },
-      { path: '#', title: 'Categories', icon: 'icons/aside/category.svg' },
-      { path: '#', title: 'Products', icon: 'icons/aside/dj.svg' },
       { path: admin_contacts_path(items: params[:items].presence || 10), title: 'Contact', icon: 'icons/contact/inbox.svg' }
     ]
   end
@@ -54,14 +52,14 @@ module AdminHelper
     [
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
-        link: { path: edit_user_registration_path, class: 'w-full flex justify-start items-center gap-4' },
-        title: { text: 'Editar perfil', class: 'text-white font-semibold' },
+        link: { path: user_path(current_user.email), class: 'w-full flex justify-start items-center gap-4' },
+        title: { text: t('.profile'), class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-cog.svg', class: 'w-6 h-6 text-white' }
       },
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
         link: { path: destroy_user_session_path, data: { turbo_method: :delete }, class: 'w-full flex justify-start items-center gap-4' },
-        title: { text: 'Cerrar sesión', class: 'text-white font-semibold' },
+        title: { text: t('.logout'), class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-x.svg', class: 'w-6 h-6 text-white' }
       }
     ]
@@ -72,13 +70,13 @@ module AdminHelper
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
         link: { path: admin_root_path, class: 'w-full flex justify-start items-center gap-4' },
-        title: { text: 'Panel de control', class: 'text-white font-semibold' },
+        title: { text: t('.control_panel'), class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/mood-cog.svg', class: 'w-6 h-6 text-white' }
       },
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
         link: { path: new_admin_album_path, class: 'w-full flex justify-start items-center gap-4' },
-        title: { text: 'Añadir album', class: 'text-white font-semibold' },
+        title: { text: t('.new_album'), class: 'text-white font-semibold' },
         icon: { svg: 'icons/shared/photo-plus.svg', class: 'w-6 h-6 text-white' }
       }
     ]

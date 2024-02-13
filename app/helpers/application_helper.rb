@@ -29,9 +29,9 @@ module ApplicationHelper
 
   def navbar_items
     [
-      { path: root_path, title: 'Inicio' },
-      { path: albums_path, title: 'Galleries' },
-      { path: contacts_path, title: 'Contact' },
+      { path: root_path, title: 'home' },
+      { path: albums_path, title: 'galleries' },
+      { path: contacts_path, title: 'contact' },
     ]
   end
 
@@ -51,5 +51,4 @@ module ApplicationHelper
       }
     ]
   end
-
 end

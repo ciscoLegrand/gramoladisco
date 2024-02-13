@@ -1,0 +1,52 @@
+en:
+  UI:
+    navbar:
+      nav_item:
+        home: "Home"
+        galleries: "Galleries"
+        contact: "Contact"
+  layouts:
+    shared:
+      navbar:
+        profile: "Profile"
+        logout: "Logout"
+        control_panel: "Control Panel"
+        new_album: "New Album"
+    admin:
+      profile: "Profile"
+      logout: "Logout"
+
+es:
+  UI:
+    navbar:
+      nav_item:
+        home: "Inicio"
+        galleries: "Galerías"
+        contact: "Contacto"
+  layouts:
+    shared:
+      navbar:
+        profile: "Perfil"
+        logout: "Salir"
+        control_panel: "Panel de Control"
+        new_album: "Nuevo Álbum"
+    admin:
+      profile: "Perfil"
+      logout: "Salir"
+gl:
+  UI:
+    navbar:
+      nav_item:
+        home: "Inicio"
+        galleries: "Galerías"
+        contact: "Contacto"
+  layouts:
+    shared:
+      navbar:
+        profile: "Perfil"
+        logout: "Sair"
+        control_panel: "Panel de Control"
+        new_album: "Novo Álbum"
+    admin:
+      profile: "Perfil"
+      logout: "Sair"
