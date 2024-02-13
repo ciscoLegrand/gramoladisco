@@ -1,5 +1,4 @@
 class Frontend::AlbumsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[ index show verify_password ]
   before_action :set_album, only: %i[ show verify_password]
 
   # GET /albums or /albums.json
