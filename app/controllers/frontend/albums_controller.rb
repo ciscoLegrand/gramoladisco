@@ -1,5 +1,5 @@
 class Frontend::AlbumsController < ApplicationController
-  before_action :set_album, only: %i[ show verify_password]
+  before_action :set_album, only: %i[show verify_password]
 
   # GET /albums or /albums.json
   def index
@@ -27,26 +27,9 @@ class Frontend::AlbumsController < ApplicationController
     if @album.password.eql?(session[:album_password])
       @images = @album.images
       @pagy, @images = pagy_countless(@images, items: 4)
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            :modal,
-            partial: "frontend/albums/images/album",
-            locals: { album: @album }
-          )
-        end
-      end
+      redirect_to album_path(@album)
     else
-      flash.now[:error] = { title: "Alert", body: "Wrong password, please try again." }
-
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace(:modal, partial: "frontend/albums/images/verify_password", locals: { album: @album }),
-            turbo_stream.prepend(:notification, partial: "layouts/shared/notification")
-          ]
-        end
-      end
+      redirect_to albums_path, error: { title: "Alert", body: "Wrong password, please try again." }
     end
   end
 
