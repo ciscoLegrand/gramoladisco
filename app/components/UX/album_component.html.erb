@@ -14,14 +14,6 @@
             <%= album.date_event.strftime("%d-%m-%Y") if album.date_event.present?%>
           </time>
         </p>
-        <% if 1 == 0 %>
-          <%= form_tag verify_password_album_path(album), method: :post, class: 'w-full flex flex-col gap-4 justify-center items-center' do %>
-              <div class="w-full">
-                <%= text_field_tag :password, params[:password], class: 'w-full border rounded' %>
-              </div>
-              <%= submit_tag nil, :name => nil, class: 'w-full px-4 py-2 rounded bg-blue-500 text-white' %>
-          <% end %>
-        <% end %>
       </div>
     <% end %>
   </div>

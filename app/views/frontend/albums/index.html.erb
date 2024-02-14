@@ -2,7 +2,7 @@
   <div id="next_link">
     <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
   </div>
-  <section id="albums" class="grid grid-cols-4 gap-8">
-    <%= render UX::AlbumComponent.with_collection(@albums)%>
+  <section id="albums" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
+    <%= render UX::AlbumComponent.with_collection(@albums) %>
   </section>
 </div>
