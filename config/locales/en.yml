@@ -1,10 +1,18 @@
 en:
+  support:
+    array:
+      words_connector: "and"
+      two_words_connector: "and"
+      last_word_connector: "and"
 es:
-  
-    activerecord:
-      models:
-        user:
-          attributes:
-            phone_number:
-              invalid: "Invalid phone number"
+  support:
+    array:
+      words_connector: "y"
+      two_words_connector: "y"
+      last_word_connector: "y"
 gl:
+  support:
+    array:
+      words_connector: "e"
+      two_words_connector: "e"
+      last_word_connector: "e"

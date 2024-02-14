@@ -4,7 +4,7 @@
     SESSION: <%= session[:album_password] %>
     Password: <%= @album.password %>
   </div>
-  <%= render 'frontend/albums/images/album', collection: @album.images %>
+  <%= render 'frontend/albums/images/album', collection: @images %>
 <% else %>
     <%= render 'frontend/albums/images/verify_password' %>
 <% end %>

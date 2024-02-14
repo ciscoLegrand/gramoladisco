@@ -27,8 +27,8 @@ en:
               blank: "Role can't be blank"
               inclusion: "Role is not included in the list"
             phone_number:
-              format: "Phone number is invalid"
-              uniqueness: "Phone number already exists"
+              invalid: "Invalid phone number"
+
     models:
       user: User
     attributes:
