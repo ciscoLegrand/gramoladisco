@@ -16,7 +16,6 @@ class Admin::AlbumsController < Admin::BaseController
     @albums = Album.published               if params[:published].present?
     @albums = Album.by_year(params[:year])  if params[:year].present?
 
-
     @headers = %w[title images password published_at date_event]
 
     @total_records = @albums.count
