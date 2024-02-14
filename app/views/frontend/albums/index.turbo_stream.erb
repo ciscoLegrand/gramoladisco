@@ -1,12 +1,17 @@
-<div class="container flex flex-col gap-8 my-12 mx-auto px-8">
-  <%= turbo_stream.update "next_link" do %>
-    <% if @pagy.next.present? %>
-      <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
-    <% end %>
+
+<%= turbo_stream.update "prev_link" do %>
+  <% if @pagy.prev.present? %>
+    <%= button_to "prev", pagy_url_for(@pagy, @pagy.prev), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
   <% end %>
-  <%= turbo_stream.replace "albums" do %>
-    <section id="albums" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
-      <%= render UX::AlbumComponent.with_collection(@albums)%>
-    </section>
+<% end %>
+<%= turbo_stream.update "next_link" do %>
+  <% if @pagy.next.present? %>
+    <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
   <% end %>
-</div>
+<% end %>
+<%= turbo_stream.replace "albums" do %>
+  <section id="albums" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
+    <%= render UX::AlbumComponent.with_collection(@albums)%>
+  </section>
+<% end %>
+
