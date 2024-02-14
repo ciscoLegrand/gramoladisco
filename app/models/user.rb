@@ -7,7 +7,7 @@ class User < ApplicationRecord
         :recoverable, :rememberable,
         :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
   has_one :oauth_access_token, dependent: :destroy
 
   # enum fields
@@ -61,6 +61,7 @@ class User < ApplicationRecord
     )
 
     user.google_access_token(access_token) if access_token.provider.eql?('google_oauth2')
+    user.attach_avatar_from_omniauth(access_token) if access_token.info.image.present?
     user
   end
 
@@ -86,6 +87,20 @@ class User < ApplicationRecord
       else
         Rails.logger.info "#{prefix}#{key}: #{value}"
       end
+    end
+  end
+
+  def attach_avatar_from_omniauth(access_token)
+    return unless avatar.attached? == false
+
+    begin
+      avatar.attach(
+        io: URI.open(access_token.info.image),
+        filename: "avatar-#{email.tr('@.', '')}.jpg",
+        content_type: 'image/jpg'
+      )
+    rescue OpenURI::HTTPError => e
+      Rails.logger.error "Error al adjuntar avatar desde OmniAuth: #{e} 💀💀💀"
     end
   end
 
@@ -118,7 +133,10 @@ class User < ApplicationRecord
   def generate_slug
     not_unique_primary_slug = User.where(slug: "#{name}").any?
     not_unique_compose_slug = User.where(slug: "#{name}-#{surname}").any?
+    self.slug = "#{name}" unless not_unique_primary_slug
     self.slug = "#{name}-#{surname}" if not_unique_primary_slug
-    slug = "#{name}-#{surname}-#{SecureRandom.uuid}" if not_unique_compose_slug
+    self.slug = "#{name}-#{surname}-#{SecureRandom.uuid}" if not_unique_compose_slug
   end
+
+
 end

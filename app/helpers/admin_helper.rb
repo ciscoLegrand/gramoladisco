@@ -52,7 +52,7 @@ module AdminHelper
     [
       {
         li: { class: 'nav-link w-full flex justify-start items-center py-2 px-6 transition-all ease-in-out duration-1000' },
-        link: { path: user_path(current_user.email), class: 'w-full flex justify-start items-center gap-4' },
+        link: { path: user_path(current_user.slug), class: 'w-full flex justify-start items-center gap-4' },
         title: { text: t('.profile'), class: 'text-white font-semibold' },
         icon: { svg: 'icons/user/user-cog.svg', class: 'w-6 h-6 text-white' }
       },
