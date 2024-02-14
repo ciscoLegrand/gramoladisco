@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       end
     end
     resources :contacts, only: %i[index new create]
+    resources :users, only: %i[show]
   end
 
   authenticate :user, lambda { |u| u.admin? || u.superadmin? } do

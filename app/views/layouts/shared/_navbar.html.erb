@@ -26,7 +26,7 @@
     <!-- User Card -->
     <% if user_signed_in? %>
       <% actions = user_card_signed_links %>
-      <% actions.unshift(*user_card_admin_links) if current_user.admin? %>
+      <% actions.unshift(*user_card_admin_links) if current_user.admin? || current_user.superadmin? %>
       <%= render(UI::Cards::User.new(user: current_user, options: navbar_user_card_options, actions: actions)) %>
     <% else %>
       <div class="w-full flex justify-end items-center">
