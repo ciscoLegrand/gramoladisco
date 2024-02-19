@@ -59,6 +59,8 @@ en:
         registration: "Sign up"
         confirmation: "Didn't receive confirmation instructions?"
         signed_provider: "Signed in with %{provider}"
+      edit:
+        update: "Update"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -151,6 +153,8 @@ es:
         registration: "Registrarse"
         confirmation: "¿No recibió las instrucciones de confirmación?"
         signed_provider: "Inicio de sesión con %{provider}"
+      edit:
+        update: "Actualizar"
       destroyed: "¡Adiós! Su cuenta ha sido cancelada con éxito. Esperamos verte de nuevo pronto."
       signed_up: "¡Bienvenido! Se ha registrado con éxito."
       signed_up_but_inactive: "Se ha registrado con éxito. Sin embargo, no pudimos iniciar sesión porque su cuenta aún no está activada."
@@ -243,6 +247,8 @@ gl:
         registration: "Rexistrarse"
         confirmation: "¿Non recibiu as instrucións de confirmación?"
         signed_provider: "Inicia sesión con %{provider}"
+      edit:
+        update: "Actualizar"
       destroyed: "¡Adeus! A súa conta foi cancelada con éxito. Agardamos velo de novo pronto."
       signed_up: "¡Benvido! Rexistrouse con éxito."
       signed_up_but_inactive: "Rexistrouse con éxito. Con todo, non puidemos iniciar sesión porque a súa conta aínda non está activada."

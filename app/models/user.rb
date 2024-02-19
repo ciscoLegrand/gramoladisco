@@ -1,11 +1,14 @@
 class User < ApplicationRecord
-  has_one_attached :avatar
-  has_one :oauth_access_token, dependent: :destroy
+  include FriendlyId
+  friendly_id :name, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
         :recoverable, :rememberable,
         :omniauthable, omniauth_providers: [:google_oauth2]
+
+  has_one_attached :avatar, dependent: :destroy
+  has_one :oauth_access_token, dependent: :destroy
 
   # enum fields
   enum role: {
@@ -16,6 +19,9 @@ class User < ApplicationRecord
     admin: "ADMIN",
     superadmin: "SUPERADMIN"
   }
+
+  before_create :generate_slug
+  after_create :gramola_access_token, if: -> { oauth_access_token.nil? }
 
   # Validations
   validates :role,
@@ -55,6 +61,7 @@ class User < ApplicationRecord
     )
 
     user.google_access_token(access_token) if access_token.provider.eql?('google_oauth2')
+    user.attach_avatar_from_omniauth(access_token) if access_token.info.image.present?
     user
   end
 
@@ -83,19 +90,36 @@ class User < ApplicationRecord
     end
   end
 
+  def attach_avatar_from_omniauth(access_token)
+    return unless avatar.attached? == false
+
+    begin
+      avatar.attach(
+        io: URI.open(access_token.info.image),
+        filename: "avatar-#{email.tr('@.', '')}.jpg",
+        content_type: 'image/jpg'
+      )
+    rescue OpenURI::HTTPError => e
+      Rails.logger.error "Error al adjuntar avatar desde OmniAuth: #{e} 💀💀💀"
+    end
+  end
+
   private
 
   def generate_access_token
     loop do
       token = SecureRandom.hex
-      break token unless User.where(access_token: token).exists?
+      break token unless OauthAccessToken.where(access_token: token).exists?
     end
   end
 
   def gramola_access_token
     oauth_access_token.destroy if oauth_access_token
-    max_uid = User.maximum(:uid)
-    oauth_access_token.new(
+
+    max_uid = OauthAccessToken.where(provider: :lagramoladisco)
+                              .maximum(:uid).to_i
+
+    create_oauth_access_token(
       provider: 'lagramoladisco',
       uid: (max_uid ? max_uid + 1 : 1).to_s.rjust(10, '0'),
       access_token: generate_access_token,
@@ -105,4 +129,14 @@ class User < ApplicationRecord
       expires_at: 15.days.from_now
     )
   end
+
+  def generate_slug
+    not_unique_primary_slug = User.where(slug: "#{name}").any?
+    not_unique_compose_slug = User.where(slug: "#{name}-#{surname}").any?
+    self.slug = "#{name}" unless not_unique_primary_slug
+    self.slug = "#{name}-#{surname}" if not_unique_primary_slug
+    self.slug = "#{name}-#{surname}-#{SecureRandom.uuid}" if not_unique_compose_slug
+  end
+
+
 end

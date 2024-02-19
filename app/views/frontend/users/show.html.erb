@@ -1,0 +1,40 @@
+<section class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words w-full mb-6 font-bold px-12 py-2 flex flex-col gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950 mt-28">
+  <article class="w-full mx-auto relative flex flex-wrap justify-center">
+    <div class="w-full absolute -top-8 mx-auto flex flex-col justify-center items-center gap-16 ">
+      <div class="h-24 w-24 flex justify-center items-center">
+        <% if @user.avatar.attached? %>
+          <%= image_tag url_for(@user.avatar),
+                        width: 80,
+                        height: 80,
+                        data: { src: "#{rails_blob_url(@user.avatar)}"},
+                        class: "object-cover shadow-lg rounded-full max-w-full h-auto align-middle border-none"%>
+        <% else %>
+          <%= @user.email[0] %>
+        <% end %>
+      </div>
+    </div>
+  </article>
+  <article class="w-full text-center mt-16">
+    <div class="flex justify-center lg:pt-4 pt-8 pb-0">
+      <div class="p-3 text-center">
+        <span class="text-xl font-bold block uppercase tracking-wide text-slate-700 invisible">3,360</span>
+        <span class="text-sm text-slate-400">
+          <%= link_to 'editar', edit_user_registration_path, data: { turbo_frame: :edit_profile } %>
+        </span>
+      </div>
+      <div class="p-3 text-center">
+        <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">2,454</span>
+        <span class="text-sm text-slate-400">Followers</span>
+      </div>
+
+      <div class="p-3 text-center">
+        <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">564</span>
+        <span class="text-sm text-slate-400">Following</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+
+
+<%= turbo_frame_tag :edit_profile %>
