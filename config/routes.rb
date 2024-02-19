@@ -13,9 +13,8 @@ Rails.application.routes.draw do
     resources :albums do
       get :verify_password, on: :member
       post :verify_password, on: :member
-      collection do
-        post :index
-      end
+      post :index, on: :collection
+      post :search, on: :collection
     end
     resources :contacts, only: %i[index new create]
     resources :users, only: %i[show]
