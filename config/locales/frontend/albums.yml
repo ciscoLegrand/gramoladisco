@@ -1,0 +1,15 @@
+en:
+  frontend:
+    albums:
+      index:
+        search: "Search Album"
+es:
+  frontend:
+    albums:
+      index:
+        search: "Buscar Álbum"
+gl:
+  frontend:
+    albums:
+      index:
+        search: "Buscar Álbum"
