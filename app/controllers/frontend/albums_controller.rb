@@ -3,7 +3,8 @@ class Frontend::AlbumsController < ApplicationController
 
   # GET /albums or /albums.json
   def index
-    albums = Album.published.order_by('date_event', 'desc')
+    albums = Album.search(params[:text]) if params[:text].present?
+    albums = Album.published unless params[:text].present?
     @pagy, @albums = pagy_countless(albums, items: 12)
     respond_to do |format|
       format.html # GET
@@ -31,15 +32,6 @@ class Frontend::AlbumsController < ApplicationController
       redirect_to album_path(@album)
     else
       redirect_to albums_path, error: { title: "Alert", body: "Wrong password, please try again." }
-    end
-  end
-
-
-  # POST /albums/search
-  def search
-    @albums = Album.published.where('title ILIKE ?', "%#{params[:title]}%")
-    respond_to do |format|
-      format.turbo_stream
     end
   end
 
