@@ -245,6 +245,9 @@ GEM
     orm_adapter (0.5.0)
     pagy (6.1.0)
     pg (1.5.4)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     propshaft (0.8.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -406,6 +409,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   pagy
   pg (~> 1.1)
+  pg_search
   propshaft
   puma (>= 5.0)
   rails (~> 7.1.1)
