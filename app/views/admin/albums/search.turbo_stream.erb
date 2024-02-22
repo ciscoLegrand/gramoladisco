@@ -1,6 +1,6 @@
 <%= turbo_stream.update(
     'search_results',
     partial: 'admin/albums/search_results',
-    locals: { albums: @filtered_albums }
+    locals: { albums: @albums }
     ) %>
-<%= turbo_stream.replace 'count', UI::TitleCount.new(title: 'albums', count: Album.count).call %>
+<%= turbo_stream.replace 'count', UI::TitleCount.new(title: 'albums', count: @albums.count).call %>

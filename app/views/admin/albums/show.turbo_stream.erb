@@ -1,0 +1,9 @@
+
+  <%= turbo_stream.append "images" do %>
+    <%= render partial: "frontend/albums/images/image", collection: @images %>
+  <% end %>
+  <% if @pagy.next.present? %>
+    <%= turbo_stream.replace "pagination" do %>
+      <%= turbo_frame_tag "pagination", src: album_path(@album, page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+    <% end %>
+  <% end %>
