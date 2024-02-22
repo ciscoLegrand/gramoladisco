@@ -1,10 +1,6 @@
 
 <% if @album.password.eql?(session[:album_password]) %>
-  <div class="w-full text-center text-4xl">
-    SESSION: <%= session[:album_password] %>
-    Password: <%= @album.password %>
-  </div>
   <%= render 'frontend/albums/images/album', collection: @images %>
 <% else %>
-    <%= render 'frontend/albums/images/verify_password' %>
+  <%= render 'frontend/albums/images/verify_password' %>
 <% end %>
