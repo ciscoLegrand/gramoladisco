@@ -1,5 +1,6 @@
 class Album < ApplicationRecord
-  include FriendlyId
+  include PgSearch::Model
+  extend FriendlyId
   friendly_id :title, use: :scoped, scope: :date_event
 
   has_many_attached :images do |attachable|
@@ -44,6 +45,12 @@ class Album < ApplicationRecord
     left_joins(images_attachments: :blob)
     .group('albums.id')
     .order(Arel.sql("COUNT(active_storage_blobs.id) #{order}"))
+  }
+
+  # ! pgsearch busqueda por campos de texto
+
+  pg_search_scope :search, against: %i[title emails slug], using: {
+    tsearch: { prefix: true }
   }
 
   private
