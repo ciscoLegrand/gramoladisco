@@ -8,7 +8,7 @@
         </div>
       </div>
     <% elsif @albums.size < 1 %>
-      <div class="w-full flex justify-start my-2 p-2  hover:text-blue-500 dark:text-gray-800 dark:hover:text-gray-300 bg-yellow-300 dark:hover:bg-gray-700 hover:bg-indigo-50 rounded-xl ">
+      <div id="albums" class="w-full flex justify-start my-2 p-2  hover:text-blue-500 bg-slate-950 rounded-xl ">
         <div class="text-xl ml-3 w-full flex justify-between">
           <%= highlight('0 resultados', '0 resultados', highlighter: '<div class="p-2" >\1</div>') %>
         </div>
@@ -20,16 +20,18 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= turbo_stream.update "prev_link" do %>
-    <% if @pagy.prev.present? %>
-      <%= button_to "prev", pagy_url_for(@pagy, @pagy.prev), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
+  <div class="flex-1 flex justify-between items-center gap-8">
+    <%= turbo_stream.update "prev_link" do %>
+      <% if @pagy.prev.present? %>
+        <%= button_to "prev", pagy_url_for(@pagy, @pagy.prev), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= turbo_stream.update "next_link" do %>
-    <% if @pagy.next.present? %>
-      <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
+    <%= turbo_stream.update "next_link" do %>
+      <% if @pagy.next.present? %>
+        <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: 'border border-blue-600 rounded-lg hover:bg-blue-600 text-blue-600 hover:text-white px-4 py-2' %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <%= turbo_stream.replace "albums" do %>
     <section id="albums" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
       <%= render UX::AlbumComponent.with_collection(@albums)%>
