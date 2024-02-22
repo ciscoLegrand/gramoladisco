@@ -8,7 +8,9 @@
                 'searcher-target': 'input'
               }  do |form| %>
               
-  <%#= form.hidden_field :kind, value: kind if kind.present? %>
+  <%= form.hidden_field :items, value: params[:items] if params[:items].present? %>
+  <%= form.hidden_field :page, value: params[:page] if params[:page].present? %>
+  <%= form.hidden_field :sort, value: params[:sort] if params[:sort].present? %>
   <div class="relative flex justify-end">
     <%= form.search_field attribute.to_sym,
                           value: regex,
