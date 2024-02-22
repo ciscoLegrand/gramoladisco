@@ -66,7 +66,7 @@ class Admin::AlbumsController < Admin::BaseController
 
     respond_to do |format|
       if @album.update(album_params)
-        flash.now[:success] = { title: t('.success.title'), body: t('.success.body')}
+        flash.now[:success] = { title: t('.success.title', name: @album.title), body: t('.success.body')}
       else
         flash.now[:error] = { title: t('.error.title'), body: t('.error.body', errors: @album.errors.full_messages.presence || '')}
       end
@@ -111,9 +111,21 @@ class Admin::AlbumsController < Admin::BaseController
 
   # POST /admin/albums/search
   def search
-    @albums = Album.all
-    text_fragment = params[:title].to_s
-    @filtered_albums = @albums.select { |e| e.title.upcase.include?(text_fragment.upcase) }
+    if params[:text].present?
+      @albums = Album.search(params[:text])
+    else
+      items = params[:items]
+      sort_column = params[:sort] || 'created_at'
+      sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+      @albums = Album.order_by(sort_column, sort_direction)
+      @albums = Album.ordered_by_image_count(sort_direction) if sort_column.eql?('images')
+
+      @years  = @albums.pluck(:date_event).map(&:year).uniq.sort.reverse
+      @albums = Album.draft                   if params[:draft].present?
+      @albums = Album.published               if params[:published].present?
+      @albums = Album.by_year(params[:year])  if params[:year].present?
+    end
+    @pagy, @albums = pagy(@albums)
     respond_to do |format|
       format.turbo_stream
     end
