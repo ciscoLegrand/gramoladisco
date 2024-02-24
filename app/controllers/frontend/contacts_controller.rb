@@ -2,7 +2,7 @@ class Frontend::ContactsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index; end
-  def new; end
+
   def create
     @contact = Contact.new(contact_params)
     respond_to do |format|
@@ -11,7 +11,7 @@ class Frontend::ContactsController < ApplicationController
         format.html { redirect_to frontend_contacts_path }
         format.turbo_stream
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
