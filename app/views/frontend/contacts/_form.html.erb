@@ -1,20 +1,8 @@
 <%= form_with(model: contact, url: contacts_path, data: { controller: 'validator' }, class: "contents") do |form| %>
-  <% if contact.errors.any? %>
-    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Oops!</strong>
-      <span class="block sm:inline"><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</span>
-      <ul class="list-disc list-inside">
-        <% contact.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="flex justify-center items-center gap-8">
-    <div class="flex flex-col justify-center items-start gap-4">
+  <div class="flex flex-col lg:flex-row justify-center items-center gap-8">
+    <div class="w-full flex flex-col justify-center items-start gap-4">
       <div class="flex justify-between gap-4">
-        <%= form.label :title, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.label :title, t('.title'), class: "block text-gray-700 text-sm font-bold mb-2" %>
         <span data-validator="message"></span>
       </div>
       <%= form.text_field :title,
@@ -29,9 +17,9 @@
                           placeholder: 'Asunto a tratar',
                           class: "shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-lg" %>
     </div>
-    <div class="flex flex-col justify-center items-start gap-4">
+    <div class="w-full flex flex-col justify-center items-start gap-4">
       <div class="flex justify-between gap-4">
-        <%= form.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.label :email, t('.email'), class: "block text-gray-700 text-sm font-bold mb-2" %>
         <span data-validator="message"></span>
       </div>
       <%= form.email_field :email,
@@ -48,7 +36,7 @@
 
   <div class="mb-6">
     <div class="flex justify-between gap-4">
-      <%= form.label :subject, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.label :subject, t('.subject'), class: "block text-gray-700 text-sm font-bold mb-2" %>
       <span data-validator="message"></span>
     </div>
     <div id="blank-toolbar" hidden></div>
