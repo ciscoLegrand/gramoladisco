@@ -1,5 +1,5 @@
 
-  <%= turbo_stream.append "images" do %>
+  <%= turbo_stream.append "gallery--zoom-transition" do %>
     <%= render partial: "frontend/albums/images/image", collection: @images %>
   <% end %>
   <% if @pagy.next.present? %>

@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe/dist/photoswipe.css">
+<% end %>
 
 <% if @album.password.eql?(session[:album_password]) %>
   <%= render 'frontend/albums/images/album', collection: @images %>
