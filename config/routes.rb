@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   scope module: 'frontend' do
     root 'pages#index'
+    get 'privacy', to: 'pages#privacy'
     resources :albums do
       get :verify_password, on: :member
       post :verify_password, on: :member
