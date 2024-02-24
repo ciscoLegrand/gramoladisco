@@ -1,5 +1,5 @@
 class Frontend::AlbumsController < ApplicationController
-  before_action :set_album, only: %i[show verify_password]
+  before_action :set_album, only: %i[show verify_password download_image]
 
   # GET /albums or /albums.json
   def index
@@ -32,6 +32,16 @@ class Frontend::AlbumsController < ApplicationController
       redirect_to album_path(@album)
     else
       redirect_to albums_path, error: { title: "Alert", body: "Wrong password, please try again." }
+    end
+  end
+
+  def download_image
+    blob = ActiveStorage::Blob.find_by(id: params[:image_id])
+    if blob
+      redirect_to rails_blob_url(blob, disposition: "attachment")
+    else
+      flash[:alert] = "Imagen no encontrada"
+      redirect_to album_path(@album)
     end
   end
 
