@@ -1,2 +1,23 @@
-<div id="images" class="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mx-auto"></div>
+<div id="gallery--zoom-transition"
+        data-controller="photoswipe"
+        data-photoswipe-target="album"
+        class="container grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mx-auto my-20">
+</div>
+
 <%= turbo_frame_tag "pagination", src: album_path(@album, format: :turbo_stream), loading: :lazy %>
+
+<style>
+  .pswp__button, .pswp__counter
+   {
+    --pswp-icon-color: #fff;
+    --pswp-icon-color-secondary: #333;
+  }
+  .pswp__counter {
+    font-size: 1.3em !important;
+    font-weight: 600 !important;
+  }
+
+  section.pswp__scroll-wrap {
+    padding: 15% 25% !important;
+  }
+</style>

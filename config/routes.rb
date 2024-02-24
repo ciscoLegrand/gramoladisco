@@ -12,10 +12,11 @@ Rails.application.routes.draw do
     root 'pages#index'
     get 'privacy', to: 'pages#privacy'
     resources :albums do
-      get :verify_password, on: :member
-      post :verify_password, on: :member
-      post :index, on: :collection
-      post :search, on: :collection
+      get :verify_password,       on: :member
+      get :download_image,        on: :member
+      post :verify_password,      on: :member
+      post :index,                on: :collection
+      post :search,               on: :collection
     end
     resources :contacts, only: %i[index new create]
     resources :users, only: %i[show]
