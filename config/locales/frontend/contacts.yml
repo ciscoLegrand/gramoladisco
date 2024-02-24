@@ -1,0 +1,48 @@
+en:
+  frontend:
+    contacts:
+      index:
+        title: "Contact Us"
+        description: "If you have any questions, feel free to ask, complete the form with your details and we will get back to you as soon as possible."
+      form:
+        title: "Subject"
+        email: "Email"
+        subject: "Message"
+        submit: "Send"
+      create:
+        success:
+          title: "Thank you for contacting us"
+          message: "We will get back to you as soon as possible."
+
+es:
+  frontend:
+    contacts:
+      index:
+        title: "Contáctenos"
+        description: "Si tienes alguna consulta, sientete libre de preguntar, completa el formulario con tus datos y te responderemos lo antes posible."
+      form:
+        title: Asunto
+        email: "Correo electrónico"
+        subject: "Mensaje"
+        submit: "Enviar"
+      create:
+        success:
+          title: "Gracias por contactarnos"
+          message: "Nos pondremos en contacto lo antes posible."
+
+gl:
+  frontend:
+    contacts:
+      index:
+        title: "Contacte connosco"
+        description: "Se tes algunha consulta, sinte libre de preguntar, completa o formulario cos teus datos e responderemosche o antes posible."
+      form:
+        title: Asunto
+        email: "Correo electrónico"
+        subject: "Mensaje"
+        submit: "Enviar"
+      create:
+        success:
+          title: "Grazas por contactar connosco"
+          message: "Poremonos en contacto o antes posible."
+
