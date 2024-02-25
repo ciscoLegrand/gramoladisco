@@ -5,6 +5,7 @@ en:
         home: "Home"
         galleries: "Galleries"
         contact: "Contact"
+        users: "Users"
   layouts:
     shared:
       navbar:
@@ -23,6 +24,7 @@ es:
         home: "Inicio"
         galleries: "Galerías"
         contact: "Contacto"
+        users: "Usuarios"
   layouts:
     shared:
       navbar:
@@ -40,6 +42,7 @@ gl:
         home: "Inicio"
         galleries: "Galerías"
         contact: "Contacto"
+        users: "Usuarios"
   layouts:
     shared:
       navbar:
