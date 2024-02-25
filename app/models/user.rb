@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include PgSearch::Model
   include FriendlyId
   friendly_id :name, use: :slugged
   # Include default devise modules. Others available are:
@@ -14,7 +15,7 @@ class User < ApplicationRecord
   enum role: {
     user: "USER",
     customer: "CUSTOMER",
-    worker: "WORKER",
+    employee: "EMPLOYEE",
     manager: "MANAGER",
     admin: "ADMIN",
     superadmin: "SUPERADMIN"
@@ -50,6 +51,13 @@ class User < ApplicationRecord
               case_sensitive: false,
               allow_blank: true
             }
+
+  scope :order_by, ->(column, direction) { order("#{column} #{direction}") }
+  scope :by_role, ->(role) { where(role: role) }
+
+  pg_search_scope :search, against: %i[name surname email], using: {
+    tsearch: { prefix: true }
+  }
 
   def self.from_omniauth(access_token)
     user = User.find_by(email: access_token.info.email)
