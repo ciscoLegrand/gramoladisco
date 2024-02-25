@@ -1,0 +1,4 @@
+
+
+<%= turbo_stream.prepend('search_results', partial: "admin/users/user", locals: { user: @user })%>
+<%= turbo_stream.append("notification", partial: "layouts/shared/notification") %>
