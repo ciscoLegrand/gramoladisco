@@ -94,6 +94,27 @@ en:
         role: "Add role"
         password: "Add password"
 
+  admin:
+    users:
+      user:
+        confirm_destroy: "Are you sure you want to delete this user?"
+        confirm_role: "Are you sure you want to change the role of this user?"
+      index:
+        search: "Search"
+        new: "New user"
+        employees: "Employees"
+        customers: "Customers"
+        users: "Users"
+        name: "Name"
+        surname: "Surname"
+        email: "Email"
+        role: "Role"
+        actions: "Actions"
+      update:
+        success:
+          title: "%{name} updated"
+          body: "The user has been updated successfully"
+
 es:
   activerecord:
     errors:
@@ -191,6 +212,26 @@ es:
         password: "Introduce contraseña"
         phone_number: "Introduce número de teléfono"
 
+  admin:
+    users:
+      user:
+        confirm_destroy: "¿Estás seguro de que quieres eliminar este usuario?"
+        confirm_role: "¿Estás seguro de que quieres cambiar el rol de este usuario?"
+      index:
+        search: "Buscar usuarios..."
+        new: "Nuevo usuario"
+        employees: "Empleados"
+        customers: "Clientes"
+        users: "Usuarios"
+        name: "Nombre"
+        surname: "Apellido"
+        email: "Email"
+        role: "Rol"
+        actions: "Acciones"
+      update:
+        success:
+          title: "%{name} actualizado"
+          body: "El usuario ha sido actualizado correctamente"
 gl:
   activerecord:
     errors:
@@ -286,3 +327,22 @@ gl:
         email: "Engadir email"
         role: "Engadir rol"
         password: "Engadir contrasinal"
+  users:
+    user: 
+      confirm_destroy: "Estás seguro de que queres eliminar este usuario?"
+      confirm_role: "Estás seguro de que queres cambiar o rol deste usuario?"
+    index:
+      search: "Buscar usuarios..."
+      new: "Novo usuario"
+      employees: "Empregados"
+      customers: "Clientes"
+      users: "Usuarios"
+      name: "Nome"
+      surname: "Apelido"
+      email: "Email"
+      role: "Rol"
+      actions: "Accións"
+    update:
+      success:
+        title: "%{name} actualizado"
+        body: "O usuario foi actualizado correctamente"
