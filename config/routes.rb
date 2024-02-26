@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[show]
   end
 
-  authenticate :user, lambda { |u| u.admin? || u.superadmin? } do
+  authenticate :user, lambda { |u| u.admin? || u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
     namespace :admin do
       root 'dashboard#index'
@@ -32,6 +32,11 @@ Rails.application.routes.draw do
       end
       resources :contacts do
         post :search, on: :collection
+      end
+      resources :dashboard, only: %i[index] do
+        get :tasks, on: :collection
+        get :settings, on: :collection
+        post :execute_task, on: :collection, as: :execute_task
       end
       resources :images, only: %i[create]
       resources :users, only: %i[index show update] do
