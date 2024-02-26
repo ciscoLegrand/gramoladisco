@@ -22,7 +22,7 @@
         <!-- navbar -->
         <%= render UI::Navbar::Menu.new(orientation: :horizontal, style: {navbar: 'container mx-auto grid grid-cols-1 lg:grid-cols-3 py-2 px-10 gap-4'}) do |menu| %>
           <div id="breadcrumbs" class="breadcrumb">
-            <%= render_breadcrumbs tag: :stapn, separator: " 👉 " %> 
+            <%= render_breadcrumbs tag: :span, separator: " 👉 " %> 
           </div>
           <div></div>
           <%= render(UI::Cards::User.new(user: current_user, options: navbar_user_card_options, actions: user_card_signed_links)) %>
