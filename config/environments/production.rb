@@ -70,8 +70,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :mailjet
   config.action_mailer.mailjet_settings = {
-    api_key: Rails.application.credentials.dig(:mailjet, :api_key),
-    secret_key: Rails.application.credentials.dig(:mailjet, :secret_key)
+    api_key: Rails.application.credentials.dig(:MAILJET_API_KEY),
+    secret_key: Rails.application.credentials.dig(:MAILJET_SECRET_KEY),
   }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
