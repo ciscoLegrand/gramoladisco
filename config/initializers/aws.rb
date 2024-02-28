@@ -1,6 +1,6 @@
 require 'aws-sdk-s3'
 
-$spaces = Aws::S3::Client.new(
+Aws::S3::Client.new(
   region: Rails.application.credentials.dig(:DO_REGION),
   endpoint: Rails.application.credentials.dig(:DO_ENDPOINT),
   access_key_id: Rails.application.credentials.dig(:DO_ACCESS_KEY_ID),
