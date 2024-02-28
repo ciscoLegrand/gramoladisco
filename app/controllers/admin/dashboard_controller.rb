@@ -18,6 +18,9 @@ class Admin::DashboardController < Admin::BaseController
     ]
   end
 
+  def spaces
+  end
+
   def execute_task
     @logs = []
     15.times do |i|
@@ -25,7 +28,6 @@ class Admin::DashboardController < Admin::BaseController
     end
     ActionCable.server.broadcast("task_logs_channel", { logs: @logs })
     puts "Transmitiendo logs: #{@logs.inspect}"
-
   end
 
   private
