@@ -1,8 +1,8 @@
 default: &default
   host: <%= `ip route | awk '/default/ { print $3 }'`.strip %>
   port: 5432
-  user: <%= Rails.application.credentials.dig(:database, user) %>
-  password: <%= Rails.application.credentials.dig(:database, password) %>
+  user: <%= Rails.application.credentials.dig(:database, :user) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
