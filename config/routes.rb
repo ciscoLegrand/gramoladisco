@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       end
       resources :images, only: %i[create]
       resources :users, only: %i[index show update] do
-        post :search, on: :collection
+        post :index, on: :collection
       end
       delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
     end
