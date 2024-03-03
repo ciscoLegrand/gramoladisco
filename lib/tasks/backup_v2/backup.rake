@@ -6,6 +6,11 @@ namespace :backup do
     error_records= []
 
     Album.destroy_all
+    puts 'All Albums destroyed'
+    ActiveStorage::Blob.destroy_all
+    puts 'All Blobs destroyed'
+    ActiveStorage::Attachment.destroy_all
+    puts 'All Attachments destroyed'
 
     puts 'Read csv'
     aux = 0
@@ -100,7 +105,6 @@ namespace :backup do
     end
     generate_error_report(error_records) unless error_records.empty?
   end
-
 
   desc 'Reassign Active Storage Attachments from galleries to albums'
   task active_storage_attachments: :environment do

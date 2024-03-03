@@ -30,7 +30,9 @@
 !/tmp/storage/.keep
 
 /public/assets
-/public/reports
+reports/*
+!reports/.gitkeep
+
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
