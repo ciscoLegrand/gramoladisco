@@ -7,7 +7,7 @@
 
       <div class="my-5 flex flex-col gap-4">
         <%= f.label t('.name'), class: 'label' %>
-        <%= f.text_field :name, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+        <%= f.text_field :name, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
 
       <div class="my-5 flex flex-col gap-4">
@@ -17,12 +17,12 @@
 
       <div class="my-5 flex flex-col gap-4">
         <%= f.label t('.phone_number'), class: 'label' %>
-        <%= f.phone_field :phone_number, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+        <%= f.phone_field :phone_number, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
 
       <div class="my-5 flex flex-col gap-4">
         <%= f.label t('.email'), class: 'label' %>
-        <%= f.email_field :email, class: "w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+        <%= f.email_field :email, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -30,7 +30,7 @@
 
       <div class="my-5 flex flex-col gap-4">
         <%= f.label t('.password'), class: 'label' %>
-        <%= f.password_field :password, autocomplete: "new-password", class: 'w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200' %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
         <% if @minimum_password_length %>
           <br />
           <em><%= @minimum_password_length %> characters minimum</em>
@@ -40,13 +40,13 @@
 
       <div class="my-5 flex flex-col gap-4">
         <%= f.label t('.password_confirmation'), class: 'label' %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
       <hr class="border-b-2 border-slate-400 rounded-full my-3">
       
       <div class="my-5 flex flex-col gap-4">
         <%= f.label :current_password, class: 'label' %>
-        <%= f.password_field :current_password, autocomplete: "current-password", class: 'w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200' %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
         <i><%= t('.current_password_advice')%></i>
       </div>
       <div class="relative flex flex-col justify-between items-center gap-4">
