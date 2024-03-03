@@ -1,5 +1,4 @@
 <section class="container mx-auto py-28 flex flex-col lg:grid lg:grid-col-6 gap-8">
-  <%= render 'layouts/shared/log', log: @log %>
   <article class="w-full flex-1 lg:col-span-2 flex flex-col justify-start items-center">
     <header class="w-full flex justify-between items-center lg:grid lg:grid-cols-10 gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl px-8">
       <div class="col-span-3 px-3 text-sm xl:text-xl">Tareas de Backup</div>
@@ -24,8 +23,5 @@
         </li>
       <% end %>
     </ul>
-  </article>
-  <article class="flex-1 lg:col-span-2">
-    <%= render UI::Terminal.new(code: nil, language: 'bash')%>
   </article>
 </section>

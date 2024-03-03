@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         post :search, on: :collection
       end
       resources :dashboard, only: %i[index] do
+        get :spaces, on: :collection
         get :tasks, on: :collection
         get :settings, on: :collection
         post :execute_task, on: :collection, as: :execute_task
