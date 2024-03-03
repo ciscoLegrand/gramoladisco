@@ -1,4 +1,4 @@
-<section class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words w-full mb-6 font-bold px-12 py-2 flex flex-col gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950 mt-28">
+<section class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words w-full mb-6 font-bold px-12 py-2 flex flex-col gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950 mt-20">
   <article class="w-full mx-auto relative flex flex-wrap justify-center">
     <div class="w-full absolute -top-8 mx-auto flex flex-col justify-center items-center gap-16 ">
       <div class="h-24 w-24 flex justify-center items-center">
@@ -9,32 +9,25 @@
                         data: { src: "#{rails_blob_url(@user.avatar)}"},
                         class: "object-cover shadow-lg rounded-full max-w-full h-auto align-middle border-none"%>
         <% else %>
-          <%= @user.email[0] %>
+          <div class="flex justify-center items-center h-24 w-24 bg-indigo-800 border-2 border-indigo-500 bg-slate-800 rounded-full shadow-md shadow-indigo-500">
+            <span class="text-3xl text-slate-200">
+              <%= @user.email[0].upcase %>
+            </span>
+          </div>
         <% end %>
       </div>
     </div>
   </article>
-  <article class="w-full text-center mt-16">
-    <div class="flex justify-center lg:pt-4 pt-8 pb-0">
-      <div class="p-3 text-center">
-        <span class="text-xl font-bold block uppercase tracking-wide text-slate-700 invisible">3,360</span>
-        <span class="text-sm text-slate-400">
-          <%= link_to 'editar', edit_user_registration_path, data: { turbo_frame: :edit_profile } %>
-        </span>
+  <article class="w-full text-center mt-8">
+    <div class="flex justify-center items-center lg:pt-4 pt-8 pb-0 gap-8">
+      <div class="flex-1 flex justify-center items-center gap-3 py-3">
+        <%= inline_svg_tag('icons/user/mood-cog.svg', class: 'w-8 h-8 text-slate-400  p-1')%>
+        <%#= link_to t('.edit'), edit_user_registration_path, data: { turbo_frame: :edit_profile }, class: 'text-lg text-slate-400 text-center' %>
+        <%= content_tag :span, t('.edit'), class: 'text-lg text-slate-400 text-center' %>
       </div>
-      <div class="p-3 text-center">
-        <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">2,454</span>
-        <span class="text-sm text-slate-400">Followers</span>
-      </div>
-
-      <div class="p-3 text-center">
-        <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">564</span>
-        <span class="text-sm text-slate-400">Following</span>
-      </div>
-    </div>
   </article>
 </section>
 
-
-
-<%= turbo_frame_tag :edit_profile %>
+<section class="mb-20">
+  <%= turbo_frame_tag :edit_profile, src: edit_user_registration_path %>
+</section>
