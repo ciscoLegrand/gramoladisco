@@ -1,0 +1,6 @@
+<%= turbo_stream.update(
+    'search_results',
+    partial: 'admin/users/search_results',
+    locals: { users: @user }
+    ) %>
+<%= turbo_stream.replace 'count', UI::TitleCount.new(title: 'users', count: @users.count).call %>

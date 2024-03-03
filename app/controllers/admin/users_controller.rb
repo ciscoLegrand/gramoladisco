@@ -9,10 +9,16 @@ class Admin::UsersController < Admin::BaseController
 
     @users = User.order_by(sort_column, sort_direction)
     @users = User.by_role(params[:role]) if params[:role].present?
+    @users = User.search(params[:text]) if params[:text].present?
     @headers = %w[name surname email role]
 
-    @total_records = @users.count
-    @pagy, @albums = pagy(@users)
+    @roles = User.all.pluck(:role).uniq.reject { |role| role == 'superadmin' }
+
+    @pagy, @users = pagy(@users, items: items)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def show; end
