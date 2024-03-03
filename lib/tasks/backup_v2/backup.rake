@@ -5,7 +5,6 @@ namespace :backup do
     csv_path = Rails.root.join('lib', 'tasks', 'backup_v2', 'csv_import', 'recovered_albums.csv')
     error_records= []
 
-
     Album.destroy_all
 
     puts 'Read csv'
@@ -69,9 +68,15 @@ namespace :backup do
       begin
         attributes = row.to_hash.slice('id', 'key', 'filename', 'content_type', 'metadata', 'byte_size', 'checksum', 'created_at')
 
-        begin
-          attributes['metadata'] = attributes['metadata'].present? && attributes['metadata'] != 'NULL' ? JSON.parse(attributes['metadata']) : {}
-        rescue JSON::ParserError
+        # Asegurarse de que metadata no sea 'NULL' antes de intentar analizarlo
+        if attributes['metadata'].present? && attributes['metadata'] != 'NULL'
+          begin
+            attributes['metadata'] = JSON.parse(attributes['metadata'])
+          rescue JSON::ParserError
+            attributes['metadata'] = {}
+            puts "Advertencia: El valor de 'metadata' para la fila con id #{attributes['id']} no es un JSON válido."
+          end
+        else
           attributes['metadata'] = {}
         end
 
@@ -95,6 +100,7 @@ namespace :backup do
     end
     generate_error_report(error_records) unless error_records.empty?
   end
+
 
   desc 'Reassign Active Storage Attachments from galleries to albums'
   task active_storage_attachments: :environment do
