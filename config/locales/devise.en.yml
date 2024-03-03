@@ -60,6 +60,15 @@ en:
         confirmation: "Didn't receive confirmation instructions?"
         signed_provider: "Signed in with %{provider}"
       edit:
+        name: "Name"
+        surname: "Surname"
+        email: "Email"
+        phone_number: "Phone number"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        current_password: "Current password"
+        current_password_advice: (we need your current password to confirm your changes)
+        new_password_advice: (leave blank if you don't want to change it)
         update: "Update"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -154,6 +163,15 @@ es:
         confirmation: "¿No recibió las instrucciones de confirmación?"
         signed_provider: "Inicio de sesión con %{provider}"
       edit:
+        name: "Nombre"
+        surname: "Apellido"
+        email: "Correo electrónico"
+        phone_number: "Número de teléfono"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+        current_password: "Contraseña actual"
+        current_password_advice: (necesitamos su contraseña actual para confirmar sus cambios)
+        new_password_advice: (déjelo en blanco si no desea cambiarlo)
         update: "Actualizar"
       destroyed: "¡Adiós! Su cuenta ha sido cancelada con éxito. Esperamos verte de nuevo pronto."
       signed_up: "¡Bienvenido! Se ha registrado con éxito."
@@ -248,6 +266,15 @@ gl:
         confirmation: "¿Non recibiu as instrucións de confirmación?"
         signed_provider: "Inicia sesión con %{provider}"
       edit:
+        name: "Nome"
+        surname: "Apelido"
+        email: "Correo electrónico"
+        phone_number: "Número de teléfono"
+        password: "Contrasinal"
+        password_confirmation: "Confirmación de contrasinal"
+        current_password: "Contrasinal actual"
+        current_password_advice: (precisamos o seu contrasinal actual para confirmar os seus cambios)
+        new_password_advice: (deixe en branco se non quere cambialo)
         update: "Actualizar"
       destroyed: "¡Adeus! A súa conta foi cancelada con éxito. Agardamos velo de novo pronto."
       signed_up: "¡Benvido! Rexistrouse con éxito."

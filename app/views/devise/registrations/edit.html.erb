@@ -2,26 +2,26 @@
 <div class="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words w-full mb-6 font-bold px-12 py-8 flex flex-col gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-950") do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 flex flex-col gap-4">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
       <div class="my-5 flex flex-col gap-4">
-        <%= f.label :name, class: 'label' %>
+        <%= f.label t('.name'), class: 'label' %>
         <%= f.text_field :name, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
 
       <div class="my-5 flex flex-col gap-4">
-        <%= f.label :surname, class: 'label' %>
+        <%= f.label t('.surname'), class: 'label' %>
         <%= f.text_field :surname, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-950 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
 
       <div class="my-5 flex flex-col gap-4">
-        <%= f.label :phone_number, class: 'label' %>
+        <%= f.label t('.phone_number'), class: 'label' %>
         <%= f.phone_field :phone_number, class: "w-full block bg-slate-900 text-white border-0 border-slate-950 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
 
       <div class="my-5 flex flex-col gap-4">
-        <%= f.label :email, class: 'label' %>
+        <%= f.label t('.email'), class: 'label' %>
         <%= f.email_field :email, class: "w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -29,11 +29,27 @@
       <% end %>
 
       <div class="my-5 flex flex-col gap-4">
-        <%= f.label :password, class: 'label' %>
-        <%= f.password_field :password, class: "w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200" %>
+        <%= f.label t('.password'), class: 'label' %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200' %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+        <i><%= t('.new_password_advice')%></i>
+      </div>
+
+      <div class="my-5 flex flex-col gap-4">
+        <%= f.label t('.password_confirmation'), class: 'label' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200' %>
+      </div>
+      <hr class="border-b-2 border-slate-400 rounded-full my-3">
+      
+      <div class="my-5 flex flex-col gap-4">
+        <%= f.label :current_password, class: 'label' %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'w-full block bg-slate-900 text-white border-0 border-slate-900 shadow-lg shadow-slate-900 rounded-xl p-3 duration-500 focus:duration-500 focus:transition-all focus:shadow-lg focus:outline-none focus:ring-slate-900 active:text-white placeholder-gray-600 focus:placeholder-gray-200' %>
+        <i><%= t('.current_password_advice')%></i>
       </div>
       <div class="relative flex flex-col justify-between items-center gap-4">
-
         <%= button_to nil, class: "w-full flex justify-start items-center bg-blue-500 text-white rounded-lg px-4 py-2 mx-2 gap-4" do %>
           <%= inline_svg_tag 'icons/login/email.svg', class: 'h-4 w-4'%>
           <span><%= t('.update')%></span>

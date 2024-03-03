@@ -1,0 +1,20 @@
+en:
+  frontend:
+    users:
+      show:
+        edit: "Edit"
+        images: "Images"
+
+es:
+  frontend:
+    users:
+      show:
+        edit: "Editar"
+        images: "Imágenes"
+
+gl:
+  frontend:
+    users:
+      show:
+        edit: "Editar"
+        images: "Imaxes"
