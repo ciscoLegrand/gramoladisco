@@ -43,9 +43,9 @@ module AdminHelper
   def aside_items
     [
       { path: admin_root_path, title: 'home', icon: 'icons/aside/home.svg' },
-      { path: admin_albums_path(items: params[:items].presence || 10), title: 'galleries', icon: 'icons/aside/photo.svg' },
-      { path: admin_users_path(items: params[:items].presence || 10), title: 'users', icon: 'icons/user/users.svg' },
-      { path: admin_contacts_path(items: params[:items].presence || 10), title: 'contact', icon: 'icons/contact/inbox.svg' },
+      { path: admin_albums_path(items: params[:items].presence || 10),    title: 'galleries', icon: 'icons/aside/photo.svg' },
+      { path: admin_users_path(items: params[:items].presence || 10),     title: 'users',     icon: 'icons/user/users.svg' },
+      { path: admin_contacts_path(items: params[:items].presence || 10),  title: 'contact',   icon: 'icons/contact/inbox.svg' },
     ]
   end
 
