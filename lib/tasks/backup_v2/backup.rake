@@ -68,9 +68,13 @@ namespace :backup do
     CSV.foreach(csv_path, headers: true) do |row|
       begin
         attributes = row.to_hash.slice('id', 'key', 'filename', 'content_type', 'metadata', 'byte_size', 'checksum', 'created_at')
-        attributes['metadata'] = attributes['metadata'].present? ? JSON.parse(attributes['metadata']) : {}
 
-        # Verificar si el blob ya existe
+        begin
+          attributes['metadata'] = attributes['metadata'].present? && attributes['metadata'] != 'NULL' ? JSON.parse(attributes['metadata']) : {}
+        rescue JSON::ParserError
+          attributes['metadata'] = {}
+        end
+
         unless ActiveStorage::Blob.exists?(id: attributes['id'], key: attributes['key'])
           blob = ActiveStorage::Blob.new(attributes)
 
@@ -84,7 +88,6 @@ namespace :backup do
           puts "❌ El blob con ID #{attributes['id']} ya existe."
           error_records << { id: attributes['id'], title: attributes['filename'], key: attributes['key'], error: "El blob #{attributes['key']} ya existe." }
         end
-
       rescue StandardError => e
         puts "❌ Error procesando fila #{row.inspect}: #{e.message}"
         error_records << { id: row['id'], title: row['filename'], error: e.message }
