@@ -1,20 +1,22 @@
-<li id="<%= dom_id user %>"
-    data-target="search_results"
-    class="min-w-full flex fustify-between items-center lg:grid lg:grid-cols-5 py-2 text-slate-100 hover:bg-indigo-800  transition-colors ease-in-out duration-500">
-  <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.name %></div>
-  <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.surname %></div>
-  <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.email %></div>
-  <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.role %></div>
-  <div class="flex justify-end items-center gap-5 py-2 px-4">
-    <%= button_to inline_svg_tag('icons/user/user-shield.svg', class:'w-6 h-6'),
-                  admin_user_path(user, role: 'admin'),
-                  method: :patch,
-                  data: { turbo_confirm: t('.confirm_role', resource: user.name) },
-                  class: "shadow hover:shadow-lg shadow-amber-400 hover:shadow-amber-200 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-amber-600 text-amber-500 hover:text-white" %>
-    <%= button_to inline_svg_tag('icons/shared/trash.svg', class:'w-6 h-6'),
-                  admin_user_path(user),
-                  method: :delete,
-                  data: { turbo_confirm: t('.confirm_destroy', resource: user.name) },
-                  class: "shadow hover:shadow-lg shadow-red-400 hover:shadow-red-200 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-red-600 text-red-500 hover:text-white" %>
-  </div>
-</li>
+<% unless user.superadmin? %>
+  <li id="<%= dom_id user %>"
+      data-target="search_results"
+      class="min-w-full flex fustify-between items-center lg:grid lg:grid-cols-5 py-2 text-slate-100 hover:bg-indigo-800 even:bg-slate-700 odd:bg-slate-800 transition-colors ease-in-out duration-500">
+    <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.name %></div>
+    <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.surname %></div>
+    <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.email %></div>
+    <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= user.role %></div>
+    <div class="flex justify-end items-center gap-5 py-2 px-4"> 
+      <%= button_to inline_svg_tag('icons/user/user-shield.svg', class:'w-6 h-6'),
+                    admin_user_path(user, role: 'admin'),
+                    method: :patch,
+                    data: { turbo_confirm: t('.confirm_role', resource: user.name) },
+                    class: "shadow hover:shadow-lg shadow-amber-400 hover:shadow-amber-200 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-amber-600 text-amber-500 hover:text-white" %>
+      <%= button_to inline_svg_tag('icons/shared/trash.svg', class:'w-6 h-6'),
+                    admin_user_path(user),
+                    method: :delete,
+                    data: { turbo_confirm: t('.confirm_destroy', resource: user.name) },
+                    class: "shadow hover:shadow-lg shadow-red-400 hover:shadow-red-200 rounded-full p-1 inline-block transition-colors duration-300 hover:bg-red-600 text-red-500 hover:text-white" %>
+    </div>
+  </li>
+<% end %>

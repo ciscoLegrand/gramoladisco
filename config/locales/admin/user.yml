@@ -110,6 +110,11 @@ en:
         email: "Email"
         role: "Role"
         actions: "Actions"
+        user: "Users"
+        customer: "Customers"
+        employee: "Employees"
+        admin: "Admins"
+        all: "All"
       update:
         success:
           title: "%{name} updated"
@@ -228,6 +233,11 @@ es:
         email: "Email"
         role: "Rol"
         actions: "Acciones"
+        user: "Usuarios"
+        customer: "Clientes"
+        employee: "Empleados"
+        admin: "Admins"
+        all: "Todos"
       update:
         success:
           title: "%{name} actualizado"
@@ -342,6 +352,11 @@ gl:
       email: "Email"
       role: "Rol"
       actions: "Accións"
+      user: "Usuarios"
+      customer: "Clientes"
+      employee: "Empregados"
+      admin: "Admins"
+      all: "Todos"
     update:
       success:
         title: "%{name} actualizado"
