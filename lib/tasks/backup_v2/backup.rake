@@ -7,10 +7,6 @@ namespace :backup do
 
     Album.destroy_all
     puts 'All Albums destroyed'
-    ActiveStorage::Blob.destroy_all
-    puts 'All Blobs destroyed'
-    ActiveStorage::Attachment.destroy_all
-    puts 'All Attachments destroyed'
 
     puts 'Read csv'
     aux = 0
