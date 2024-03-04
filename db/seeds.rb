@@ -12,7 +12,13 @@ require "faker"
 Faker::Config.locale = 'es'
 
 user = User.create!(name: 'cisco', surname: 'gonzalez', email: 'cisco.glez@gmail.com', phone_number: '+34123456789', password: 'test123', password_confirmation: 'test123', role: 'admin')
-user.confirm
+
+roles = %w[user customer employee]
+
+15.times do |i|
+  user = User.create!(name: Faker::Name.first_name, surname: Faker::Name.last_name, email: Faker::Internet.email, password: 'test123', password_confirmation: 'test123', role: roles.sample)
+end
+
 
 # Establece la fecha de inicio hace 15 meses
 start_date = 3.months.ago.to_date
