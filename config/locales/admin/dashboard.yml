@@ -10,6 +10,8 @@ en:
         last_modified: "Last Modified"
         owner: "Owner ID"
         image: "Image"
+        storage_class: "Class"
+        file: "File"
 es:
   admin:
     dashboard:
@@ -22,7 +24,8 @@ es:
         last_modified: "Última modificación"
         owner: "propietario"
         image: "Imagen"
-
+        storage_class: "Clase"
+        file: "Archivo"
 gl:
   admin:
     dashboard:
@@ -35,3 +38,5 @@ gl:
         last_modified: "Última modificación"
         owner: "propietario"
         image: "Imaxe"
+        storage_class: "Clase"
+        file: "Arquivo"
