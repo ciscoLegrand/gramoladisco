@@ -55,10 +55,16 @@ class Album < ApplicationRecord
 
   private
 
+  def slug_candidates
+    [
+      :title,
+      [:title, :date_event_for_slug]
+    ]
+  end
+
   def update_image_counter
     UpdateImageCounterJob.perform_later(self.id, @current_host, @current_user_id)
   end
-
 
   def validate_image_size
     if images.attached?
