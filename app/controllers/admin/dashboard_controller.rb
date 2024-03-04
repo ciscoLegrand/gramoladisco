@@ -19,27 +19,20 @@ class Admin::DashboardController < Admin::BaseController
   end
 
   def spaces
-    @bucket = Aws::S3::Client.new(
-      region: Rails.application.credentials.dig(:digital_ocean, :region),
-      endpoint: Rails.application.credentials.dig(:digital_ocean, :endpoint),
-      access_key_id: Rails.application.credentials.dig(:digital_ocean, :access_key_id),
-      secret_access_key: Rails.application.credentials.dig(:digital_ocean, :secret_access_key),
-      force_path_style: true
-    )
-    s3 = @bucket.list_objects(bucket: Rails.application.credentials.dig(:digital_ocean, :bucket))
-    content = s3.contents
+    @objects = fetch_s3_objects
 
-    @headers = %w[etag key size last_modified owner]
+    @headers = %w[etag key size last_modified storage_class file]
 
     items = params[:items] || 10
     page = params[:page] || 1
     sort_column = params[:sort] || 'last_modified'
     sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
 
-    @content = content.sort_by { |obj| obj.send(sort_column.to_sym) }
+    @content = @objects.sort_by { |obj| obj.send(sort_column.to_sym) }
     @content.reverse! if sort_direction == 'desc'
     @pagy, @content = pagy_array(@content, items: items)
   end
+
 
   def execute_task
     @logs = []
@@ -52,4 +45,39 @@ class Admin::DashboardController < Admin::BaseController
 
   private
 
+  def fetch_s3_objects
+    objects = $redis.get('s3_objects')
+    if objects.nil?
+      objects = retrieve_s3_objects
+      $redis.set('s3_objects', Marshal.dump(objects))
+      $redis.expire('s3_objects', 3600) # expire in 1 hour
+    else
+      objects = Marshal.load(objects)
+      Rails.logger.info '🔥 Using cached S3 objects'
+    end
+    objects
+  end
+
+  def retrieve_s3_objects
+    s3 = Aws::S3::Client.new(
+      region: Rails.application.credentials.dig(:digital_ocean, :region),
+      endpoint: Rails.application.credentials.dig(:digital_ocean, :endpoint),
+      access_key_id: Rails.application.credentials.dig(:digital_ocean, :access_key_id),
+      secret_access_key: Rails.application.credentials.dig(:digital_ocean, :secret_access_key),
+      force_path_style: true
+    )
+    bucket_name = Rails.application.credentials.dig(:digital_ocean, :bucket)
+
+    objects = []
+    continuation_token = nil
+
+    loop do
+      response = s3.list_objects_v2(bucket: bucket_name, continuation_token: continuation_token)
+      objects.concat(response.contents)
+      break unless response.is_truncated
+      continuation_token = response.next_continuation_token
+    end
+
+    objects
+  end
 end
