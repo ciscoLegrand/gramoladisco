@@ -1,6 +1,6 @@
 class CreateAlbums < ActiveRecord::Migration[7.0]
   def change
-    create_table :albums do |t|
+    create_table :albums, id: :uuid do |t|
       t.string  :title,       null: false
       t.string  :password,    null: false
       t.string  :code
