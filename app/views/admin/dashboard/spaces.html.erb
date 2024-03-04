@@ -1,8 +1,10 @@
+
+
 <section class="w-full lg:container py-2 px-10 gap-6 flex flex-col justify-center items-center mx-auto">
   <div class="w-full flex flex-col justify-between bg-corporation text-white py-4 gap-y-12">
     <div class="w-full flex justify-between items-center mx-auto gap-5 py-6">
       <div class="w-full flex-1 flex justify-start items-center gap-6">
-        <%= render(UI::TitleCount.new(title: 'Space Data', count: @content.count)) %>
+        <%= render(UI::TitleCount.new(title: 'Space Data', count: @objects.size)) %>
         <%= render(UI::Paginator.new(items: params[:items], url: ->(params) { spaces_admin_dashboard_index_path(params) })) %>
       </div>
       <div class="flex-1 flex justify-end items-center gap-x-5 text-blue-950">
@@ -30,12 +32,33 @@
       <% @content.each do |obj| %>
         <li id="<%= obj.key %>"
             data-target="search_results"
-            class="min-w-full flex fustify-between items-center lg:grid lg:grid-cols-5 py-2 text-slate-100 hover:bg-indigo-800 even:bg-slate-700 odd:bg-slate-800 transition-colors ease-in-out duration-500">
+            class="min-w-full flex fustify-between items-center lg:grid lg:grid-cols-6 py-2 text-slate-100 hover:bg-indigo-800 even:bg-slate-700 odd:bg-slate-800 transition-colors ease-in-out duration-500">
           <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= obj.etag %></div>
           <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= obj.key %></div>
           <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= number_to_human_size(obj.size) %></div>
           <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= obj.last_modified %></div>
-          <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= obj.owner.id %></div>
+          <div class="flex justify-start items-center py-2 px-4 truncate whitespace-nowrap"><%= obj.storage_class %></div>
+          <div class="flex justify-end items-center py-2 px-4 truncate whitespace-nowrap">
+            <% s3_resource = Aws::S3::Resource.new(
+              region: Rails.application.credentials.dig(:digital_ocean, :region),
+              access_key_id: Rails.application.credentials.dig(:digital_ocean, :access_key_id),
+              secret_access_key: Rails.application.credentials.dig(:digital_ocean, :secret_access_key),
+              endpoint: Rails.application.credentials.dig(:digital_ocean, :endpoint)
+            ) %>
+            <% s3_obj = s3_resource.bucket(Rails.application.credentials.dig(:digital_ocean, :bucket)).object(obj.key) %>
+            <% url = s3_obj.presigned_url(:get, expires_in: 3600) %>
+            <% content_type = s3_resource.client.head_object(bucket: Rails.application.credentials.dig(:digital_ocean, :bucket), key: obj.key).content_type %>
+
+            <% if content_type.start_with?('image/') %>
+              <!-- Preview for image -->
+              <%= link_to url, target: "_blank" do %>
+                <%= image_tag url, class: "w-16 h-16 object-cover" %>
+              <% end %>
+            <% else %>
+              <!-- Download link for file -->
+              <%= link_to "Download", url, download: obj.key %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>
