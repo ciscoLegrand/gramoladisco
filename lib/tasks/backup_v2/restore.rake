@@ -24,6 +24,8 @@ namespace :restore do
 
     CSV.foreach(csv_albums_path, headers: true, header_converters: :symbol) do |album_row|
       current_row += 1
+      puts "🕥 [#{current_row}/#{total_rows}] procesando album #{album_row[:title]}..."
+
       temp_album = AlbumTemp.new(
         id: album_row[:id],
         title: album_row[:title],
@@ -77,6 +79,11 @@ namespace :restore do
 
       puts "✅ Álbum [#{current_row}/#{total_rows}] creado exitosamente con #{temp_album.images.count} imágenes."
 
+      puts "🕥 Esperando 30 segundos para el siguiente álbum..."
+      30.times do |i|
+        sleep(1)
+        putc '.'
+      end
     rescue ActiveRecord::RecordInvalid => e
       puts "❌ Error creando álbum [#{current_row}/#{total_rows}]: #{e.message}"
       error_records << { id: album_row[:id], title: album_row[:title], error: e.message }
