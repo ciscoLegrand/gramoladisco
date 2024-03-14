@@ -1,11 +1,22 @@
-    <footer class="bg-gray-950  text-white p-4">
+    <footer class="bg-gray-950  text-white p-2">
       <%#= render 'layouts/shared/cookies_banner' %>
       <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div class="flex items-center gap-6">
           <span class="text-sm">© <%= Time.zone.now.year %></span>
           <%= render UI::Logo.new(link: root_path, logo: 'gramola-logo-transparent.png') %>
         </div>
-        <div class="flex flex-col md:flex-row items-center gap-4 top-">
+        <div class="flex justify-center items-center gap-x-8">
+          <%= link_to inline_svg_tag('icons/brands/facebook.svg', class: 'w-10 h-10'), 
+                     'https://www.facebook.com/gramoladisco',
+                     target: '_blank',
+                     class: 'hover:scale-110 transition-all ease-in-out duration-500' %>
+          
+          <%= link_to inline_svg_tag('icons/brands/instagram.svg', class: 'w-11 h-11'),
+                     'https://www.instagram.com/lagramoladisco',
+                     target: '_blank',
+                     class: 'hover:scale-110 transition-all ease-in-out duration-500' %>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-4">
           <%= link_to 'Política de privacidad', privacy_path %>
         </div>
       </div>
