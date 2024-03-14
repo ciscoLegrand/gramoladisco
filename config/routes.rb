@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     root 'pages#index'
     get 'privacy', to: 'pages#privacy'
     resources :albums do
-      get :verify_password,       on: :member
-      get :download_image,        on: :member
+      get  :verify_password,      on: :member
+      get  :download_image,       on: :member
       post :verify_password,      on: :member
       post :index,                on: :collection
       post :search,               on: :collection
@@ -28,15 +28,16 @@ Rails.application.routes.draw do
       root 'dashboard#index'
       resources :albums do
         patch :publish, on: :member
-        post  :search, on: :collection
+        post  :search,  on: :collection
       end
       resources :contacts do
-        post :search, on: :collection
+        patch :open,    on: :member
+        post  :search,  on: :collection
       end
       resources :dashboard, only: %i[index] do
-        get :spaces, on: :collection
-        get :tasks, on: :collection
-        get :settings, on: :collection
+        get  :spaces,       on: :collection
+        get  :tasks,        on: :collection
+        get  :settings,     on: :collection
         post :execute_task, on: :collection, as: :execute_task
       end
       resources :images, only: %i[create]

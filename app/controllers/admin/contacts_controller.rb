@@ -1,5 +1,5 @@
 class Admin::ContactsController < Admin::BaseController
-  before_action :set_contact, only: %i[ show edit update destroy ]
+  before_action :set_contact, only: %i[ show edit update destroy open ]
 
   # GET /contacts or /contacts.json
   def index
@@ -25,12 +25,24 @@ class Admin::ContactsController < Admin::BaseController
 
     respond_to do |format|
       format.html
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update(@contact)
-      end
+      format.turbo_stream
     end
   end
 
+  # PATCH/PUT /contacts/1/open
+  def open
+    @contact.read! if @contact.unread?
+
+    respond_to do |format|
+      format.html { redirect_to @contact }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("contact_details", partial: "admin/contacts/contact_details", locals: { contact: @contact }),
+          turbo_stream.replace(@contact, partial: 'admin/contacts/contact', locals: { contact: @contact })
+        ]
+      end
+    end
+  end
 
   # GET /contacts/new
   def new

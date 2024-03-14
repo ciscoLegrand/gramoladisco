@@ -5,8 +5,10 @@ en:
     contacts:
       index:
         email: Email
-        title: Title
-        created_at: Created at
+        title: Subject
+        created_at: Received
+      contact_details:
+        back: Back
 
 es:
   admin:
@@ -14,9 +16,11 @@ es:
       contact:
         confirm_destroy: ¿Estás seguro?
       index:
-        email: Correo electrónico
-        title: Título
-        created_at: Creado en
+        email: Email
+        title: Asunto
+        created_at: Recibido
+      contact_details:
+        back: Volver
 
 gl:
   admin:
@@ -24,6 +28,8 @@ gl:
       contact:
         confirm_destroy: ¿Estás seguro?
       index:
-        email: Correo electrónico
-        title: Título
-        created_at: Creado en
+        email: Email
+        title: Asunto
+        created_at: Recibido
+      contact_details:
+        back: Volver
