@@ -12,9 +12,14 @@ class Contact < ApplicationRecord
   scope :order_by, ->(column, direction) { order("#{column} #{direction}") }
   scope :filter_by_text, ->(text) { where('title ILIKE ? OR email ILIKE ?', "%#{text}%", "%#{text}%") }
 
-  def icon = created_at < 15.days.ago ? 'mail-exclamation' : 'mail'
+  def icon
+    return 'mail-opened' if read?
+
+    created_at < 15.days.ago ? 'mail-exclamation' : 'mail'
+  end
 
   def color
+    return 'slate' if read?
     return 'red'   if created_at < 15.days.ago
     return 'amber' if created_at < 7.days.ago
     'blue'
