@@ -15,13 +15,13 @@ module ApplicationHelper
 
   def navbar_user_card_options
     {
-      container: { style: 'flex justify-end items-center gap-4 px-2 relative' },
+      container: { style: 'flex justify-end items-center gap-4 px-2 relative gap-x-8' },
       button: { style: 'w-1/4 py-2 px-2 hover:cursor-pointer flex justify-end items-center gap-4' },
       avatar: {
-        style: 'w-8 h-8 p-4 flex justify-center items-center bg-slate-200 border-4 border-indigo-600 rounded-full shadow shadow-indigo-100 text-slate-950 hover:text-red-500 hover:duration-500 duration-500 text-center font-bold uppercase'
+        style: 'w-12 h-12 p-4 flex justify-center items-center bg-slate-200 border-4 border-indigo-600 rounded-full shadow shadow-indigo-100 text-slate-950 hover:text-red-500 hover:duration-500 duration-500 text-center font-bold uppercase'
       },
       dropdown: {
-        style: 'w-full flex flex-col gap-6 hidden border-2 border-gray-950 text-slate-200 shadow-lg shadow-slate-500 shadow-t-none rounded-lg rounded-t-none p-4 bg-gray-950 opacity-0 transition-opacity duration-300 ease-in-out',
+        style: 'w-full min-w-[270px] flex flex-col gap-6 hidden border-2 border-gray-950 text-slate-200 shadow-lg shadow-slate-500 shadow-t-none rounded-lg rounded-t-none p-4 bg-gray-950 opacity-0 transition-opacity duration-300 ease-in-out',
         position: 'absolute top-16 -right-4 z-40'
       }
     }
