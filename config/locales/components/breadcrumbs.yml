@@ -10,6 +10,8 @@ en:
       index: Contacts
     user:
       index: Users
+    reviews:
+      index: Reviews
 es:
   breadcrumbs:
     admin:
@@ -22,6 +24,8 @@ es:
       index: Contactos
     user:
       index: Usuarios
+    reviews:
+      index: Reseñas
 gl:
   breadcrumbs:
     admin:
@@ -34,3 +38,5 @@ gl:
       index: Contactos
     user:
       index: Usuarios
+    reviews:
+      index: Reseñas
