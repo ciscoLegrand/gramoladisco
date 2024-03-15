@@ -1,0 +1,36 @@
+en:
+  admin:
+    reviews:
+      index:
+        name: Name
+        date: Date
+        review: Review
+        title: Title
+        ratings: Ratings
+        actions: Actions
+      review_details:
+        back: Back
+es:
+  admin:
+    reviews:
+      index:
+        name: Nombre
+        date: Fecha
+        review: Reseña
+        title: Título
+        ratings: Calificaciones
+        actions: Acciones
+      review_details:
+        back: Volver
+gl:
+  admin:
+    reviews:
+      index:
+        name: Nome
+        date: Data
+        review: Reseña
+        title: Título
+        ratings: Calificacións
+        actions: Accións
+      review_details:
+        back: Volver

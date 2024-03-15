@@ -7,6 +7,7 @@ en:
         contact: Contact
         users: Users
         settings: Settings
+        reviews: Reviews
   layouts:
     shared:
       navbar:
@@ -27,6 +28,7 @@ es:
         contact: Contacto
         users: Usuarios
         settings: Configuración
+        reviews: Reseñas
   layouts:
     shared:
       navbar:
@@ -47,6 +49,7 @@ gl:
         contact: Contacto
         users: Usuarios
         settings: Configuración
+        reviews: Reseñas
   layouts:
     shared:
       navbar:
