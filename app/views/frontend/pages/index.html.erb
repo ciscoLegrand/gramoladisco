@@ -1,7 +1,3 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", "data-turbo-track": "reload" %>
-<% end %>
-
 <section class="relative w-full h-[1060px]">
   <div class="h-full bg-cover bg-center bg-fixed mx-auto px-4 sm:px-6 lg:px-8" style="background-image: url('https://lagramoladisco.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ade0cce2cf8143ed3ddb08b30a95316112f4ec70/editorial-pazo-touza-msanz-315.jpg')">
     <div class="flex flex-col justify-center flex-wrap h-full">
@@ -38,70 +34,63 @@
   </div>
 </section>
 
-<% if 1 == 0 %>
-  <!---TODO: DESARROLLAR SECCION DE OPINIONES, TANTO PARA CREAR COMO PARA MOSTRAR-->
-  <% opinions = []
-      10.times do
-        opinions << OpenStruct.new(
-          name: "Marta",
-          title: "La mejor elección",
-          body: "La mejor elección que pudimos hacer para nuestra boda. Nos lo pasamos genial y los invitados también. Muy profesionales y atentos. Lo recomiendo 100%.",
-          ratingStar: rand(0.0..5.0).round(1)
-        )
-      end
-  %>
-
-  <section class="w-full mx-auto py-12 border-b border-black/10 overflow-hidden relative">
-    <div class="w-4/5 mx-auto relative">
-      <h1 class="text-2xl text-center text-slate-50">Nuestros clientes opinan</h1>
-      <div class="opinions relative w-4/5 mx-auto overflow-hidden" data-controller="swiper">
-        <div class="swiper-container my-5 min-h-[30rem] flex items-center relative" data-swiper-target="opinions">
-          <div class="swiper-wrapper">
-            <% opinions.each do |opinion|%>
-              <div class="swiper-slide">
-                <div class="p-6 bg-[#444654] text-gray-100 rounded-lg shadow-lg shadow-slate-950 ">
-                  <p class="mt-2 mb-4 text-sm">
-                    <span>
-                      <%= opinion.name %>
-                    </span>
-                  </p>
-                  <p class="text-xl font-semibold">
-                    <%= link_to opinion.title, 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: "text-indigo-600 dark:text-indigo-400" %>
-                  </p>
-                  <p class="text-sm">
-                    <%= opinion.body %>
-                  </p>
-                  <div class="mt-4 flex items-center">
-                    <%= link_to 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank' do%>
-                      <%#=inline_svg_tag('icons/ico-bodasnet.svg', class: "w-10 h-10")%>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", "data-turbo-track": "reload" %>
+<% end %>
+<section class="w-full mx-auto py-12 border-b border-black/10 overflow-hidden relative">
+  <div class="w-4/5 mx-auto relative">
+    <h1 class="text-4xl text-center text-slate-50">Que dicen nuestros novi@s?</h1>
+    <div class="opinions relative w-5/6 mx-auto overflow-hidden" data-controller="swiper">
+      <div class="swiper-container my-5 min-h-[30rem] flex items-center relative" data-swiper-target="opinions">
+        <div class="swiper-wrapper items-center">
+          <% @reviews.each do |opinion|%>
+            <div class="swiper-slide">
+              <div class="p-6 bg-[#444654] text-gray-100 rounded-lg shadow-lg shadow-slate-950 ">
+                <div class="flex justify-between items-center mt-2 mb-4">
+                  <span class="">
+                    <%= opinion.name %>
+                  </span>
+                  <div class="flex items-center gap-8">
+                    <%= link_to 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: 'flex justify-center items-center bg-slate-300 px-2 h-8 overflow-hidden rounded-xl' do%>
+                      <%=inline_svg_tag('icons/brands/bodasnet.svg', class: "w-16 h-16")%>
                     <% end %>
-                  </div>
-                  <p class="mt-4 mb-3 text-right">
-                    <span class="mr-2">
-                      <% count = 0.0 %>         
-                      <% while count < opinion.ratingStar do  %>
-                        <span> ⭐ </span>
-                        <% count += 1 %>
-                      <% end %>
+                    <span>
+                      <%= opinion.date.strftime('%d-%m-%Y') %>
                     </span>
-                    <span class="inline-block bg-green-500 rounded-full px-2 py-1 text-xs font-semibold text-white"><%= opinion.ratingStar %></span>
-                  </p>
-                </div>  
-              </div>
-            <% end %>
-          </div>
+                  </div>
+                </div>
+                <p class="text-xl font-semibold mb-4">
+                  <%= link_to opinion.title, 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: "text-indigo-600 dark:text-indigo-400" %>
+                </p>
+                <div data-controller="read-more">
+                  <div data-read-more-target="content" class="text-sm overflow-hidden max-h-16">
+                    <%= opinion.description %>
+                  </div>
+                  <button data-action="click->read-more#toggle" data-read-more-target="button" class="text-blue-600 hover:text-blue-800 hidden">Leer más</button>
+                </div>
+                <div class="flex justify-between items-center gap-4 mt-4 mb-3 text-right">
+                  <span class="inline-block bg-green-500 rounded-full px-2 py-1 text-xs font-semibold text-white"><%= opinion.overall_rating %></span>
+                  <span class="mr-2">
+                    <% count = 0.0 %>         
+                    <% while count < opinion.overall_rating do  %>
+                      <span> ⭐ </span>
+                      <% count += 1 %>
+                    <% end %>
+                  </span>
+                </div>
+              </div>  
+            </div>
+          <% end %>
         </div>
       </div>
-
-      <% if opinions.count > 1 %>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      <% end %>
     </div>
-  </section>
-<% end %>
-
+    <% if @reviews.count > 1 %>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    <% end %>
+  </div>
+</section>
 
 
 <section class="relative w-full h-[1060px]">
