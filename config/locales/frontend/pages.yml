@@ -1,0 +1,48 @@
+en:
+  frontend:
+    pages:
+      index:
+        banner:
+          primary:
+            title: Any occasion is perfect to enjoy music
+            description:
+          secondary:
+            title: The party is guaranteed with la gramola disco
+            description:
+          tertiary:
+            title: We have everything ready to make it the most special day of your life
+            description:
+        read_more: "Read more"
+        read_less: "Read less"
+es:
+  frontend:
+    pages:
+      index:
+        banner:
+          primary:
+            title: Cualquier ocasión es perfecta para disfrutar de la música
+            description:
+          secondary:
+            title: La fiesta asegurada con la gramola disco
+            description:
+          tertiary:
+            title: Tenemos todo preparado para que sea el día más especial de tu vida
+            description:
+        read_more: "Leer más"
+        read_less: "Leer menos"
+gl:
+  frontend:
+    pages:
+      index:
+        banner:
+          primary:
+            title: Calquera ocasión é perfecta para disfrutar da música
+            description:
+          secondary:
+            title: A festa asegurada coa gramola disco
+            description:
+          tertiary:
+            title: Temos todo preparado para que sexa o día máis especial da túa vida
+            description:
+        read_more: "Ler máis"
+        read_less: "Ler menos"
