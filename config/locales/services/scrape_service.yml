@@ -1,0 +1,32 @@
+en:
+  scrape_service:
+    reviews:
+      connecting: "🌐 Connecting to %{source}"
+      searching_reviews: "🔍 Searching for reviews..."
+      processing_review: "📝 Processing a new review created on %{date} by %{name}..."
+      no_reviews_found: "❌ No reviews found."
+      reviews_found: "✅ Found %{count} reviews."
+      reading_page_content: "📖 Reading page content..."
+      reading_local_file: "📖 Reading local file..."
+es:
+  scrape_service:
+    reviews:
+      connecting: "🌐 Conectándose a %{source}"
+      searching_reviews: "🔍 Buscando reseñas..."
+      processing_review: "📝 Procesando una nueva reseña creada el %{date} de %{name}..."
+      no_reviews_found: "❌ No se encontraron reseñas."
+      reviews_found: "✅ Se encontraron %{count} reseñas."
+      reading_page_content: "📖 Leyendo el contenido de la página..."
+      reading_local_file: "📖 Leyendo el archivo local..."
+
+gl:
+  scrape_service:
+    reviews:
+      connecting: "🌐 Conectando a %{source}"
+      searching_reviews: "🔍 Buscando reseñas..."
+      processing_review: "📝 Procesando unha nova reseña creada o %{date} por %{name}..."
+      no_reviews_found: "❌ Non se atoparon reseñas."
+      reviews_found: "✅ Atopáronse %{count} reseñas."
+      reading_page_content: "📖 Lendo o contido da páxina..."
+      reading_local_file: "📖 Lendo o arquivo local..."
+
