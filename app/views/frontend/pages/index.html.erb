@@ -47,9 +47,18 @@
             <div class="swiper-slide" data-controller="read-more">
               <div data-read-more-target="wrapper" class="flex flex-col justify-between p-6 bg-[#444654] text-gray-100 rounded-lg shadow-lg shadow-slate-950 h-80 max-h-80 transition-all duration-500 ease-in-out">
                 <div class="flex justify-between items-center">
-                  <span class="">
-                    <%= opinion.name %>
-                  </span>
+                  <div class="flex justify-start items-center gap-4">
+                    <% if opinion.avatar.present? %>
+                      <%= image_tag(opinion.avatar, class: "w-10 h-10 rounded-full") %>
+                    <% else %>
+                      <span class="w-10 h-10 flex justify-center items-center rounded-full bg-slate-400">
+                        <%= opinion.name[0] %>
+                      </span>
+                    <% end %>
+                    <span class="">
+                      <%= opinion.name %>
+                    </span>
+                  </div>
                   <div class="flex items-center gap-8">
                     <%= link_to 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: 'flex justify-center items-center bg-slate-300 px-2 h-8 overflow-hidden rounded-xl' do%>
                       <%=inline_svg_tag('icons/brands/bodasnet.svg', class: "w-16 h-16")%>

@@ -3,7 +3,7 @@
   <div class="w-full flex justify-between bg-corporation text-white py-4">
     <div class="w-full flex justify-between items-center mx-auto gap-5 py-6">
       <div class="w-full flex-1 flex justify-start items-center gap-6">
-        <%= render(UI::TitleCount.new(title: Review.name.humanize, count: @pagy.count)) %>
+        <%= render(UI::TitleCount.new(title: Review.model_name.human(count: @pagy.count), count: @pagy.count)) %>
         <%= render(UI::Paginator.new(items: params[:items], url: ->(params) { admin_reviews_path(params) })) %>
       </div>
       <div class="flex-1 flex justify-end items-center gap-x-5 text-blue-950">
