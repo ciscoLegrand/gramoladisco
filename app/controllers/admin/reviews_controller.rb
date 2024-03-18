@@ -25,4 +25,13 @@ class Admin::ReviewsController < Admin::BaseController
   def show
     @review = Review.find(params[:id])
   end
+
+  # GET /admin/reviews/new
+  def new; end
+
+  # POST /admin/reviews/
+  def create
+    Reviews::ReviewJob.perform_later(user_id: current_user.id)
+    render :new
+  end
 end

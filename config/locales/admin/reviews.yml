@@ -1,4 +1,11 @@
 en:
+  activerecord:
+    models:
+      review:
+        one: Review
+        other: Reviews
+        attributes:
+          taken: "The combination of name, date, and title must be unique"
   admin:
     reviews:
       index:
@@ -11,6 +18,14 @@ en:
       review_details:
         back: Back
 es:
+  activerecord:
+    models:
+      review:
+        one: Reseña
+        other: Reseñas
+        attributes:
+          name:
+            taken: "La combinación de nombre, fecha y título debe ser única"
   admin:
     reviews:
       index:
@@ -23,6 +38,14 @@ es:
       review_details:
         back: Volver
 gl:
+  activerecord:
+    models:
+      review:
+        one: Reseña
+        other: Reseñas
+        attributes:
+          name:
+            taken: "A combinación de nome, data e título debe ser única"
   admin:
     reviews:
       index:
