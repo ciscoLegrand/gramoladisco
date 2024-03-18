@@ -1,0 +1,16 @@
+en:
+  reviews:
+    job:
+      start: "🚀 Starting the scraping process at %{endpoint} for user %{user_id}..."
+      end: "✅ process finished"
+
+es:
+  reviews:
+    job:
+      start: "🚀 Iniciando el proceso de scraping a %{endpoint} para el user %{user_id}..."
+      end: "✅ Proceso finalizado"
+gl:
+  reviews:
+    job:
+      start: "🚀 Comezando o proceso de scraping en %{endpoint} para o usuario %{user_id}..."
+      end: "✅ Proceso rematado"
