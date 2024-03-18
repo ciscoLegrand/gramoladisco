@@ -11,5 +11,7 @@ class CreateReviews < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    add_index :reviews, [:name, :date, :title], unique: true, name: 'index_reviews_on_name_date_title_uniqueness'
   end
 end

@@ -44,7 +44,7 @@ Rails.application.routes.draw do
       resources :users, only: %i[index show update] do
         post :index, on: :collection
       end
-      resources :reviews, only: %i[index show] do
+      resources :reviews, except: %i[update delete] do
         post :search, on: :collection
       end
       delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
