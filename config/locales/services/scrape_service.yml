@@ -3,9 +3,17 @@ en:
     reviews:
       connecting: "🌐 Connecting to %{source}"
       searching_reviews: "🔍 Searching for reviews..."
-      processing_review: "📝 Processing a new review created on %{date} by %{name}..."
-      no_reviews_found: "❌ No reviews found."
-      reviews_found: "✅ Found %{count} reviews."
+      processing:
+        name: "📝 Processing a new review has been searched created by %{name}..."
+        date: "📝 Processing review published at %{date}..."
+        ratings: "🥇 Processing rating scores %{ratings}"
+        score: "🥇 Processing final score %{score}"
+        description: "📝 Processing review description:\n%{description}"
+        full_data: "😮 New review found:\nName: %{name}\nCreated: %{date}\nSpecific ratings: %{ratings}\nFinal score: %{score}\nDescription: %{description}"
+      existed: "🔍 The review already exists."
+      not_found: "❌ No new reviews found."
+      found: "✅ Found %{count} reviews."
+      created: "✅ Founded and created %{count} new reviews"
       reading_page_content: "📖 Reading page content..."
       reading_local_file: "📖 Reading local file..."
 es:
@@ -13,9 +21,16 @@ es:
     reviews:
       connecting: "🌐 Conectándose a %{source}"
       searching_reviews: "🔍 Buscando reseñas..."
-      processing_review: "📝 Procesando una nueva reseña creada el %{date} de %{name}..."
-      no_reviews_found: "❌ No se encontraron reseñas."
-      reviews_found: "✅ Se encontraron %{count} reseñas."
+      processing:
+        name: "📝 Procesando una nueva reseña creada por %{name}..."
+        date: "📝 Procesando reseña publicada el %{date}..."
+        ratings: "🥇 Procesando puntuaciones de calificación: %{ratings}"
+        score: "🥇 Procesando puntuación final %{score}"
+        description: "📝 Procesando descripción de la reseña:\n%{description}"
+        full_data: "😮 Nueva reseña encontrada:\nNombre: %{name}\nCreada: %{date}\nPuntuaciones especificas: %{ratings}\nPuntuación final: %{score}\nDescripción: %{description}"
+      existed: "🔍 La reseña analizada ya existe"
+      not_found: "❌ No se encontraron reseñas nuevas."
+      created: "✅ Se han encontrado y creado %{count} nuevas reseñas."
       reading_page_content: "📖 Leyendo el contenido de la página..."
       reading_local_file: "📖 Leyendo el archivo local..."
 
@@ -24,9 +39,16 @@ gl:
     reviews:
       connecting: "🌐 Conectando a %{source}"
       searching_reviews: "🔍 Buscando reseñas..."
-      processing_review: "📝 Procesando unha nova reseña creada o %{date} por %{name}..."
-      no_reviews_found: "❌ Non se atoparon reseñas."
-      reviews_found: "✅ Atopáronse %{count} reseñas."
+      processing:
+        name: "📝 Procesando unha nova reseña creada por %{name}..."
+        date: "📝 Procesando reseña publicada o %{date}..."
+        ratings: "🥇 Procesando puntuacións de cualificación %{ratings}"
+        score: "🥇 Procesando puntuación final %{score}"
+        description: "📝 Procesando descrición da reseña:\n%{description}"
+        full_data: "😮 Nova reseña atopada:\nNome: %{name}\nCreada: %{date}\nPuntuacións específicas: %{ratings}\nPuntuación final: %{score}\nDescrición: %{description}"
+      existed: "🔍 A reseña analizada xa existe"
+      not_found: "❌ Non se atoparon reseñas novas."
+      created: "✅ Atoparonse e crearonse %{count} novas reseñas"
       reading_page_content: "📖 Lendo o contido da páxina..."
       reading_local_file: "📖 Lendo o arquivo local..."
 

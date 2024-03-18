@@ -15,6 +15,7 @@ module ScrapeService
 
       log_with_i18n('scrape_service.reviews.searching_reviews')
       reviews = []
+      persisted_reviews = []
 
       doc.css('.storefrontReviewsTileSubpage').each do |review_element|
 
@@ -29,14 +30,36 @@ module ScrapeService
           title: review_element.at_css('.storefrontReviewsTileContent__title')&.text&.strip,
           description: review_element.at_css('.storefrontReviewsTileContent__description')&.text&.strip,
         }
-        log_with_i18n('scrape_service.reviews.processing_review', name: review[:name], date: review[:date])
-        reviews << review
+
+        persisted_review = Review.find_by(name: review[:name], date: review[:date], title: review[:title])
+
+        if persisted_review
+          persisted_reviews << persisted_review
+          log_with_i18n('scrape_service.reviews.existed', date: review[:date])
+          next
+        end
+
+        log_with_i18n('scrape_service.reviews.processing.name', name: review[:name])
+        log_with_i18n('scrape_service.reviews.processing.date', date: review[:date])
+        sleep rand(0.5..1.5)
+        log_with_i18n('scrape_service.reviews.processing.ratings', ratings: review[:overall_rating].to_json)
+        sleep rand(0.5..1.5)
+        log_with_i18n('scrape_service.reviews.processing.score', score: review[:ratings])
+        sleep rand(0.5..3.5)
+        log_with_i18n('scrape_service.reviews.processing.description', description: review[:description])
+        sleep rand(0.5..1.5)
+        log_with_i18n('scrape_service.reviews.processing.full_data',
+          name: review[:name], date: review[:date], score: review[:ratings], description: review[:description], ratings: review[:overall_rating]
+        )
+
+        reviews << review                     if persisted_review.nil?
       end
 
       if reviews.empty?
-        log_with_i18n('scrape_service.reviews.no_reviews_found')
+        log_with_i18n('scrape_service.reviews.not_found')
       else
-        log_with_i18n('scrape_service.reviews.reviews_found', count: reviews.size)
+        Review.insert_all(reviews)
+        log_with_i18n('scrape_service.reviews.created', count: reviews.size)
       end
 
       reviews
