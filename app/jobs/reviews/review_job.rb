@@ -2,12 +2,12 @@ module Reviews
   class ReviewJob < ApplicationJob
     queue_as :default
 
-    def perform(user_id:)
+    def perform(user_id:, logs: false)
       endpoint = Rails.application.credentials.dig(:scrape, :url)
 
       broadcast_log(I18n.t('reviews.job.start', endpoint: endpoint, user_id: user_id))
 
-      scraper = ScrapeService::Reviews.new(source: endpoint)
+      scraper = ScrapeService::Reviews.new(source: endpoint, logs: logs)
       scraper.on_data do |log_message|
         broadcast_log(log_message)
       end
