@@ -1,7 +1,8 @@
 module ScrapeService
   class Reviews
-    def initialize(source:)
+    def initialize(source:, logs: false)
       @source = source
+      @logs = logs
       @on_data = nil
     end
 
@@ -39,20 +40,25 @@ module ScrapeService
           next
         end
 
-        log_with_i18n('scrape_service.reviews.processing.name', name: review[:name])
-        log_with_i18n('scrape_service.reviews.processing.date', date: review[:date])
-        sleep rand(0.5..1.5)
-        log_with_i18n('scrape_service.reviews.processing.ratings', ratings: review[:overall_rating].to_json)
-        sleep rand(0.5..1.5)
-        log_with_i18n('scrape_service.reviews.processing.score', score: review[:ratings])
-        sleep rand(0.5..3.5)
-        log_with_i18n('scrape_service.reviews.processing.description', description: review[:description])
-        sleep rand(0.5..1.5)
-        log_with_i18n('scrape_service.reviews.processing.full_data',
-          name: review[:name], date: review[:date], score: review[:ratings], description: review[:description], ratings: review[:overall_rating]
-        )
+        if @logs
+          sleep rand(0.5..1.5)
+          log_with_i18n('scrape_service.reviews.processing.name', name: review[:name])
+          sleep rand(0.5..1.5)
+          log_with_i18n('scrape_service.reviews.processing.date', date: review[:date])
+          sleep rand(0.5..1.5)
+          log_with_i18n('scrape_service.reviews.processing.ratings', ratings: review[:overall_rating].to_json)
+          sleep rand(0.5..2.5)
+          log_with_i18n('scrape_service.reviews.processing.score', score: review[:ratings])
+          sleep rand(0.5..3.5)
+          log_with_i18n('scrape_service.reviews.processing.description', description: review[:description])
+          sleep rand(0.5..2)
+          log_with_i18n('scrape_service.reviews.processing.full_data',
+                        name: review[:name], date: review[:date], score: review[:ratings],
+                        description: review[:description], ratings: review[:overall_rating])
+          sleep rand(0.5..2.5)
+        end
 
-        reviews << review                     if persisted_review.nil?
+        reviews << review if persisted_review.nil?
       end
 
       if reviews.empty?
