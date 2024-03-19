@@ -33,6 +33,6 @@ class Admin::ReviewsController < Admin::BaseController
   def create
     Reviews::ReviewJob.perform_later(user_id: current_user.id, logs: true)
 
-    redirect_to new_admin_review_path, notice: 'El proceso de scraping ha comenzado y los resultados se mostrarán pronto.'
+    render :new
   end
 end
