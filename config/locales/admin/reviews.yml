@@ -17,6 +17,9 @@ en:
         actions: Actions
       review_details:
         back: Back
+      create:
+        start: "The process to search for new reviews will start shortly."
+        end: "The process to search for new reviews has finished."
 es:
   activerecord:
     models:
@@ -37,6 +40,9 @@ es:
         actions: Acciones
       review_details:
         back: Volver
+      create:
+        start: "En breve se inicializará el proceso para buscar nuevas reseñas."
+        end: "El proceso de búsqueda de reseñas ha finalizado."
 gl:
   activerecord:
     models:
@@ -57,3 +63,6 @@ gl:
         actions: Accións
       review_details:
         back: Volver
+      create:
+        start: "En breves se inicializará o proceso para buscar novas reseñas."
+        end: "O proceso de búsqueda de reseñas finalizou."
