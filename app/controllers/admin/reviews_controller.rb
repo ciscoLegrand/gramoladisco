@@ -33,6 +33,11 @@ class Admin::ReviewsController < Admin::BaseController
   def create
     Reviews::ReviewJob.perform_later(user_id: current_user.id, logs: true)
 
-    render :new
+    respond_to do |format|
+      format.html { redirect_to new_admin_review_path, notice: t('.start') }
+      format.turbo_stream {
+        turbo_stream.prepend 'reviews_logs', partial: 'admin/reviews/log', locals: { log: t('.start') }
+      }
+    end
   end
 end
