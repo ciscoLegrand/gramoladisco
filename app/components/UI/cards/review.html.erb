@@ -1,0 +1,24 @@
+<div class="swiper-slide" data-controller="read-more">
+  <div data-read-more-target="wrapper" class="flex flex-col justify-between p-6 bg-[#444654] text-gray-100 rounded-lg shadow-lg shadow-slate-950 h-80 max-h-80 transition-all duration-500 ease-in-out">
+    <div class="flex justify-between items-center">
+      <%= display_avatar_with_name %>
+      <%= display_ratings_with_stars %>
+    </div>
+    <div class="flex flex-col justify-start items-start gap-4 mt-2">
+      <h3 class="text-xl font-semibold overflow-hidden max-h-[3em] line-clamp-2">
+        <%= link_to review.title, 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: "text-indigo-600 dark:text-indigo-400" %>
+      </h3>
+      <div>
+        <div data-read-more-target="content" class="overflow-hidden max-h-24 bg-[#444654] transition-all duration-500 ease-in-out">
+          <%= review.description %>
+        </div>
+        <button data-action="click->read-more#toggle"
+                data-read-more-target="button"
+                data-read-more-text="<%= t('.read_more') %>"
+                data-read-less-text="<%= t('.read_less') %>"
+                class="text-blue-600 hover:text-blue-800 hidden"><%= t('.read_more') %></button>
+      </div>
+    </div>
+    <%= display_link_to_review_and_date %>
+  </div>
+</div>
