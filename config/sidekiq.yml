@@ -1,6 +1,8 @@
 :log_level: debug
-:concurrency: 1
+:concurrency: 5
 :queues:
+  - [gramoladisco_production_default, 1]
   - [high_priority_queue, 2]
   - [default, 1]
   - [low_priority_queue, 1]
+
