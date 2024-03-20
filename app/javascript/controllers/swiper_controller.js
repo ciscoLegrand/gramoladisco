@@ -13,15 +13,18 @@ export default class extends Controller {
         prevEl: '.swiper-button-prev',
       },
       breakpoints: {
+        // Mobile (Small devices)
         640: {
           slidesPerView: 1,
           spaceBetween: 10,
         },
+        // Tablet (Medium devices)
         768: {
           slidesPerView: 2,
           spaceBetween: 20,
         },
-        1243: {
+        // 2XL (Large devices)
+        1536: {
           slidesPerView: 3,
           spaceBetween: 30,
         },

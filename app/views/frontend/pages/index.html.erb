@@ -43,58 +43,8 @@
     <div class="opinions relative w-5/6 mx-auto overflow-hidden" data-controller="swiper">
       <div class="swiper-container my-5 min-h-[30rem] flex items-center relative" data-swiper-target="opinions">
         <div class="swiper-wrapper items-center">
-          <% @reviews.each do |opinion|%>
-            <div class="swiper-slide" data-controller="read-more">
-              <div data-read-more-target="wrapper" class="flex flex-col justify-between p-6 bg-[#444654] text-gray-100 rounded-lg shadow-lg shadow-slate-950 h-80 max-h-80 transition-all duration-500 ease-in-out">
-                <div class="flex justify-between items-center">
-                  <div class="flex justify-start items-center gap-4">
-                    <% if opinion.avatar.present? %>
-                      <%= image_tag(opinion.avatar, class: "w-10 h-10 rounded-full") %>
-                    <% else %>
-                      <span class="w-10 h-10 flex justify-center items-center rounded-full bg-slate-400">
-                        <%= opinion.name[0] %>
-                      </span>
-                    <% end %>
-                    <span class="">
-                      <%= opinion.name %>
-                    </span>
-                  </div>
-                  <div class="flex items-center gap-8">
-                    <%= link_to 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: 'flex justify-center items-center bg-slate-300 px-2 h-8 overflow-hidden rounded-xl' do%>
-                      <%=inline_svg_tag('icons/brands/bodasnet.svg', class: "w-16 h-16")%>
-                    <% end %>
-                    <span>
-                      <%= opinion.date.strftime('%d-%m-%Y') %>
-                    </span>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-start items-start gap-4">
-                  <h3 class="text-2xl font-semibold">
-                    <%= link_to opinion.title, 'https://www.bodas.net/musica/la-gramola-discotecas-moviles--e15600/opiniones', target: 'blank', class: "text-indigo-600 dark:text-indigo-400" %>
-                  </h3>
-                  <div>
-                    <div data-read-more-target="content" class="overflow-hidden max-h-24 bg-[#444654] transition-all duration-500 ease-in-out">
-                      <%= opinion.description %>
-                    </div>
-                    <button data-action="click->read-more#toggle"
-                            data-read-more-target="button"
-                            data-read-more-text="<%= t('.read_more') %>"
-                            data-read-less-text="<%= t('.read_less') %>"
-                            class="text-blue-600 hover:text-blue-800 hidden"><%= t('.read_more') %></button>
-                  </div>
-                </div>
-                <div class="flex justify-between items-center gap-4 mt-4 mb-3 text-right">
-                  <span class="inline-block bg-green-500 rounded-full px-2 py-1 text-xs font-semibold text-white"><%= opinion.overall_rating %></span>
-                  <span class="mr-2">
-                    <% count = 0.0 %>         
-                    <% while count < opinion.overall_rating do  %>
-                      <span> ⭐ </span>
-                      <% count += 1 %>
-                    <% end %>
-                  </span>
-                </div>
-              </div>  
-            </div>
+          <% @reviews.each do |review|%>
+            <%= render UI::Cards::Review.new(review: review)%>
           <% end %>
         </div>
       </div>
@@ -106,7 +56,6 @@
     <% end %>
   </div>
 </section>
-
 
 <section class="relative w-full h-[1060px]">
   <div class="h-full bg-cover bg-center bg-fixed mx-auto px-4 sm:px-6 lg:px-8" style="background-image: url(<%= asset_url('homepage/exterior.webp') %>)">
