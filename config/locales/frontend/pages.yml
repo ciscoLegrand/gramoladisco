@@ -1,4 +1,9 @@
 en:
+  UI:
+    cards:
+      review:
+        read_more: "Read more"
+        read_less: "Read less"
   frontend:
     pages:
       index:
@@ -15,6 +20,11 @@ en:
         read_more: "Read more"
         read_less: "Read less"
 es:
+  UI:
+    cards:
+      review:
+        read_more: "Leer más"
+        read_less: "Leer menos"
   frontend:
     pages:
       index:
@@ -31,6 +41,11 @@ es:
         read_more: "Leer más"
         read_less: "Leer menos"
 gl:
+  UI:
+    cards:
+      review:
+        read_more: "Ler máis"
+        read_less: "Ler menos"
   frontend:
     pages:
       index:
@@ -44,5 +59,3 @@ gl:
           tertiary:
             title: Temos todo preparado para que sexa o día máis especial da túa vida
             description:
-        read_more: "Ler máis"
-        read_less: "Ler menos"
