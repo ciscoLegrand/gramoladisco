@@ -1,7 +1,7 @@
 class CreateActiveStorageTables < ActiveRecord::Migration[7.1]
   def change
-    # Crear active_storage_blobs con id bigint por defecto
-    create_table :active_storage_blobs do |t|
+    # Crear active_storage_blobs con id uuid
+    create_table :active_storage_blobs, id: :uuid do |t|
       t.string   :key, null: false
       t.string   :filename, null: false
       t.string   :content_type
@@ -18,7 +18,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[7.1]
     create_table :active_storage_attachments, id: :uuid do |t|
       t.string     :name, null: false
       t.references :record, null: false, polymorphic: true, index: false, type: :uuid
-      t.references :blob, null: false, type: :bigint # Referencia a active_storage_blobs que usa bigint IDs
+      t.references :blob, null: false, type: :uuid # Referencia a active_storage_blobs que ahora usa uuid
 
       t.datetime :created_at, null: false, precision: 6
 
@@ -27,7 +27,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[7.1]
 
     # Crear active_storage_variant_records con id uuid
     create_table :active_storage_variant_records, id: :uuid do |t|
-      t.belongs_to :blob, null: false, index: false, type: :bigint # Referencia a active_storage_blobs que usa bigint IDs
+      t.belongs_to :blob, null: false, index: false, type: :uuid # Referencia a active_storage_blobs que ahora usa uuid
       t.string :variation_digest, null: false
 
       t.index [ :blob_id, :variation_digest ], name: :index_active_storage_variant_records_uniqueness, unique: true
