@@ -24,7 +24,7 @@
     <% aside_items.each do |item| %>
       <%= render UI::Navbar::NavItem.new(path: item[:path], title: item[:title], icon: item[:icon]) %>
     <% end %>
-    <%= render UI::Navbar::NavItem.new(path: settings_admin_dashboard_index_path, title: 'settings', icon: 'icons/user/settings-cog.svg' ) if current_user.superadmin? %>
+    <%= render UI::Navbar::NavItem.new(path: settings_admin_dashboard_index_path, title: 'settings', icon: 'icons/user/settings-cog.svg' ) %>
   </nav>
 
   <!-- user card -->

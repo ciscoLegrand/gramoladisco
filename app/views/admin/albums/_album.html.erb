@@ -30,6 +30,10 @@
             <%= button_to publish_admin_album_path(album), method: :patch, class: "btn-wrap-publish" do %>
               <%= inline_svg_tag('icons/form/share-3.svg', class: 'icon-wrapped')%>
             <% end %>
+          <% elsif album.archived? %>
+            <span class=" transition-colors duration-300 text-red-500">
+              <%= inline_svg_tag('icons/form/cloud-lock.svg', class: 'w-8 h-8')%>
+            </span>
           <% else %>
             <span class=" transition-colors duration-300 text-green-500">
               <%= inline_svg_tag('icons/form/circle-check.svg', class: 'w-8 h-8')%>
