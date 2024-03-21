@@ -10,7 +10,7 @@ class Album < ApplicationRecord
     attachable.variant :widescreen, resize_to_limit: [1920, 1080]
   end
 
-  enum status: { draft: 'draft', publish: 'publish' }
+  enum status: { draft: 'draft', publish: 'publish', closed: 'closed' }
 
   validates :title,
             presence: true,
@@ -37,7 +37,6 @@ class Album < ApplicationRecord
   scope :published, -> { where(status: :publish).order(published_at: :desc) }
   scope :draft, -> { where(status: :draft).order(date_event: :desc) }
   scope :by_year, ->(year) { where('extract(year from date_event) = ?', year) }
-
   scope :order_by, ->(column, direction) { order("#{column} #{direction}") }
 
   # sort by total of attachments
@@ -52,6 +51,10 @@ class Album < ApplicationRecord
   pg_search_scope :search, against: %i[title emails slug], using: {
     tsearch: { prefix: true }
   }
+
+  def archived?
+    closed? || date_event < 1.year.ago
+  end
 
   private
 

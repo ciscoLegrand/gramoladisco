@@ -1,22 +1,27 @@
 import { Controller } from "@hotwired/stimulus"
-
 import Dropzone from "dropzone";
 
 Dropzone.autoDiscover = false;
 
 export default class extends Controller {
-  static targets = ["input"];
-  static values = { album: String };
+  static values = {
+    album: String,
+    slug: String
+  };
+
   connect() {
     console.log("Connecting Dropzone Controller");
 
     let albumId = this.albumValue;
+    let albumSlug = this.slugValue;
     console.log("Album ID: ", albumId);
+    console.log("Album Slug: ", albumSlug);
+
     this.dropzone = new Dropzone(this.element, {
-      url: `/admin/images?album_id=${albumId}`,
+      url: `/admin/images?album_id=${albumId}&album_slug=${encodeURIComponent(albumSlug)}`,
       paramName: "images",
       maxFilesize: 25, // MB
-      parallelUploads: 5,
+      parallelUploads: 10,
       uploadMultiple: true,
       addRemoveLinks: true,
       previewsContainer: ".dropzone-previews",
@@ -43,7 +48,7 @@ export default class extends Controller {
           console.log("File removed: ", file);
           var fileId = file.previewElement.getAttribute('data-id');
 
-          var deleteUrl = `/admin/images/${fileId}?album_id=${albumId}`;
+          var deleteUrl = `/admin/images/${fileId}?album_id=${albumId}&album_slug=${encodeURIComponent(albumSlug)}`;
 
           fetch(deleteUrl, {
             method: 'DELETE',
