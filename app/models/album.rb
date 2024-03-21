@@ -36,6 +36,7 @@ class Album < ApplicationRecord
 
   scope :published, -> { where(status: :publish).order(published_at: :desc) }
   scope :draft, -> { where(status: :draft).order(date_event: :desc) }
+  scooe :closed, -> { where(status: :closed).order(date_event: :desc) }
   scope :by_year, ->(year) { where('extract(year from date_event) = ?', year) }
   scope :order_by, ->(column, direction) { order("#{column} #{direction}") }
 
@@ -52,6 +53,7 @@ class Album < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  # TODO: Implementar actualzación de estado de album para cerrarlo una vez que la fecha de publicacion haya pasado 1 año
   def archived?
     closed? || date_event < 1.year.ago
   end

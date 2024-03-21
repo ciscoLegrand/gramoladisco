@@ -24,6 +24,7 @@
       <div class="flex justify-center items-center gap-8">
         <%= link_to t('.hidden'), admin_albums_path(draft: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
         <%= link_to t('.published'), admin_albums_path(published: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
+        <%= link_to t('.closed'), admin_albums_path(closed: true, items: params[:items]), class: 'font-bold px-12 py-2 flex flex-nowrap gap-4 bg-slate-950 rounded-xl shadow-lg shadow-gray-950' %>
       </div>
       <div class="flex justfy-center items-center gap-8">
         <% @years.each do |year|%>

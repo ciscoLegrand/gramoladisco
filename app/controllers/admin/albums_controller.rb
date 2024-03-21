@@ -15,6 +15,7 @@ class Admin::AlbumsController < Admin::BaseController
     @years  = @albums.pluck(:date_event).map(&:year).uniq.sort.reverse
     @albums = Album.draft                   if params[:draft].present?
     @albums = Album.published               if params[:published].present?
+    @albums = Album.closed                  if params[:closed].present?
     @albums = Album.by_year(params[:year])  if params[:year].present?
 
     @headers = %w[title images password published_at date_event]
@@ -133,6 +134,7 @@ class Admin::AlbumsController < Admin::BaseController
       @years  = @albums.pluck(:date_event).map(&:year).uniq.sort.reverse
       @albums = Album.draft                   if params[:draft].present?
       @albums = Album.published               if params[:published].present?
+      @albums = Album.closed                  if params[:closed].present?
       @albums = Album.by_year(params[:year])  if params[:year].present?
     end
     @pagy, @albums = pagy(@albums)

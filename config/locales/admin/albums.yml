@@ -24,6 +24,7 @@ en:
         actions: Actions
         hidden: Hidden
         published: Published
+        closed: Closed
       show:
         title: Album
         images: Images
@@ -87,6 +88,7 @@ es:
         actions: Acciones
         hidden: Ocultos
         published: Publicados
+        closed: Cerrados
       show:
         title: Álbum
         images: Imágenes
@@ -150,6 +152,7 @@ gl:
         actions: Accións
         hidden: Ocultos
         published: Publicados
+        closed: Pechados
       show:
         title: Álbum
         images: Imaxes
