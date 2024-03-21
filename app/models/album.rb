@@ -35,8 +35,8 @@ class Album < ApplicationRecord
   end
 
   scope :published, -> { where(status: :publish).order(published_at: :desc) }
-  scope :draft, -> { where(status: :draft).order(date_event: :desc) }
   scope :closed, -> { where(status: :closed).order(date_event: :desc) }
+  scope :draft, -> { where(status: :draft).order(date_event: :desc) }
   scope :by_year, ->(year) { where('extract(year from date_event) = ?', year) }
   scope :order_by, ->(column, direction) { order("#{column} #{direction}") }
 
