@@ -10,7 +10,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[7.1]
       t.bigint   :byte_size, null: false
       t.string   :checksum
       t.datetime :created_at, null: false, precision: 6
-
+      t.bigint   :old_id, null: true
       t.index [ :key ], unique: true
     end
 

@@ -1,12 +1,13 @@
 class Admin::AlbumsController < Admin::BaseController
   before_action :set_album, only: %i[ show edit update destroy publish]
+  before_action :set_s3_client, only: [:create]
 
   # GET /admin/albums or /admin/albums.json
   def index
     add_breadcrumb 'Albums'
     items = params[:items]
     sort_column = params[:sort] || 'created_at'
-    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
 
     @albums = Album.order_by(sort_column, sort_direction)
     @albums = Album.ordered_by_image_count(sort_direction) if sort_column.eql?('images')
@@ -27,6 +28,11 @@ class Admin::AlbumsController < Admin::BaseController
     add_breadcrumb t('breadcrumbs.album.index'), admin_albums_path(items: params[:items].presence || 10)
     add_breadcrumb @album.title
     @headers = %w[title images password published_at date_event]
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /admin/albums/new
@@ -47,8 +53,12 @@ class Admin::AlbumsController < Admin::BaseController
     @album = Album.new(album_params)
     @album.current_host    = request.host
     @album.current_user_id = current_user&.id
+
     respond_to do |format|
       if @album.save
+        # Simular la creación de un directorio en DigitalOcean Spaces
+        create_album_directory_in_spaces(@album.slug)
+
         flash.now[:success] = { title: t('.success.title'), body: t('.success.body')}
         format.turbo_stream
         format.html { redirect_to admin_albums_path(items: params[:items].presence || 10) }
@@ -140,5 +150,19 @@ class Admin::AlbumsController < Admin::BaseController
     # Only allow a list of trusted parameters through.
     def album_params
       params.require(:album).permit(:title, :password, :code, :counter, :emails, :date_event, :published_at, :status, images: [])
+    end
+
+    def set_s3_client
+      @s3_client = Aws::S3::Client.new(
+        region: Rails.application.credentials.dig(:digital_ocean, :region),
+        endpoint: Rails.application.credentials.dig(:digital_ocean, :endpoint),
+        access_key_id: Rails.application.credentials.dig(:digital_ocean, :access_key_id),
+        secret_access_key: Rails.application.credentials.dig(:digital_ocean, :secret_access_key),
+        force_path_style: true
+      )
+    end
+
+    def create_album_directory_in_spaces(album_slug)
+      @s3_client.put_object(bucket: Rails.application.credentials.dig(:digital_ocean, :bucket), key: "#{album_slug}/", body: "")
     end
 end
