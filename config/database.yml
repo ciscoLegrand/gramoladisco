@@ -14,3 +14,8 @@ development:
 test:
   <<: *default
   database: gramoladisco_test
+
+staging:
+  <<: *default
+  database: gramoladisco_staging
+
