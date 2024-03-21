@@ -3,13 +3,19 @@ en:
     albums:
       index:
         search: "Search Album"
+        prev: "Previous"
+        next: "Next"
 es:
   frontend:
     albums:
       index:
         search: "Buscar Álbum"
+        prev: "Anterior"
+        next: "Siguiente"
 gl:
   frontend:
     albums:
       index:
         search: "Buscar Álbum"
+        prev: "Anterior"
+        next: "Seguinte"
