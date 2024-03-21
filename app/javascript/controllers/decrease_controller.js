@@ -4,13 +4,15 @@ export default class extends Controller {
   static targets = ['aside', 'iconLeft', 'iconRight', 'link', 'title']
 
   connect() { 
-    console.log('decrease controller connected')
-    this.loadState()
+    if (isNarrow === null) { 
+      setCookie('asideState', JSON.stringify(false), 7)
+    } else {
+      this.loadState()
+    }
   }
 
   loadState() {
     const isNarrow = JSON.parse(getCookie('asideState'));
-    console.log('isNarrow', isNarrow);
     if (isNarrow) {
       this.applyNarrowState();
     }
@@ -19,18 +21,15 @@ export default class extends Controller {
   saveState() {
     const isNarrow = this.asideTarget.classList.contains('lg:w-[4%]');
     setCookie('asideState', JSON.stringify(isNarrow), 7);
-    console.log('saveState ahora es: ', isNarrow);
   }
 
   toggle(e) {
     e.preventDefault()
-    console.log('toggle')
     this.decrease()
     this.saveState()
   }
 
   decrease() {
-    console.log('decrease')
     this.applyNarrowState()
   }
 
