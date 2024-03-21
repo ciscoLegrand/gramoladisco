@@ -27,13 +27,13 @@
 
   <div class="w-full grid grid-cols-8 gap-8">
     <div class="span-all flex flex-col">
-      <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-<%= @headers.size + 1 %> gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl">
+      <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-<%= @headers.size + 1 %> gap-4 p-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl">
         <% @headers.each do |header| %>
           <% hidden = 'hidden lg:block' if header.eql?('title')%>
-          <% style = 'text-center 2xl:text-right' if header.eql?('date') %>
-          <% style = 'text-center 2xl:text-right' if header.eql?('ratings') %>
+          <% style = 'text-right' if header.eql?('date') %>
+          <% style = 'text-right' if header.eql?('ratings') %>
           <% sort = params[:direction] == 'desc' && params[:sort] == header ? {direction: 'asc', arrow: '🔻' } : {direction: 'desc', arrow: '🔺' } %>
-          <div class="capitalize px-3 <%= style %> <%= hidden %> text-sm xl:text-xl whitespace-nowrap">
+          <div class="capitalize <%= style %> <%= hidden %> text-sm xl:text-xl whitespace-nowrap">
             <%= link_to "#{t(".#{header}")} #{sort[:arrow]}", admin_reviews_path(sort: header, direction: sort[:direction], items: params[:items]) %>
           </div>
         <% end %>
