@@ -16,6 +16,4 @@ test:
   database: gramoladisco_test
 
 staging:
-  <<: *default
-  database: gramoladisco_staging
-
+  url: <%= ENV['DATABASE_URL'] %>
