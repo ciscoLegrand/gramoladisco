@@ -4,77 +4,61 @@ export default class extends Controller {
   static targets = ['aside', 'iconLeft', 'iconRight', 'link', 'title']
 
   connect() {
-    let isNarrow = JSON.parse(getCookie('asideState'));
-    if (isNarrow === null) { 
-      setCookie('asideState', JSON.stringify(false), 7)
-    } else {
-      this.loadState()
-    }
+    this.initializeState();
   }
 
-  loadState() {
-    const isNarrow = JSON.parse(getCookie('asideState'));
+  initializeState() {
+    // Usar 'false' como valor por defecto si el item no existe en localStorage
+    let isNarrow = localStorage.getItem('asideState') === 'true';
+    this.asideTarget.setAttribute('aria-expanded', String(!isNarrow));
     if (isNarrow) {
       this.applyNarrowState();
+    } else {
+      this.applyWideState();
     }
-  }
-  
-  saveState() {
-    const isNarrow = this.asideTarget.classList.contains('lg:w-[4%]');
-    setCookie('asideState', JSON.stringify(isNarrow), 7);
   }
 
   toggle(e) {
-    e.preventDefault()
-    this.decrease()
-    this.saveState()
-  }
-
-  decrease() {
-    this.applyNarrowState()
+    e.preventDefault();
+    this.asideTarget.classList.contains('lg:w-2/12') ? this.applyNarrowState() : this.applyWideState();
+    this.saveState();
   }
 
   applyNarrowState() {
-    this.asideTarget.classList.toggle('lg:w-2/12')
-    this.asideTarget.classList.toggle('lg:w-[4%]')
-    this.iconLeftTarget.classList.toggle('hidden')
-    this.iconRightTarget.classList.toggle('hidden')
-
-    this.linkTargets.forEach((link) => {
-      link.classList.toggle('justify-start')
-      link.classList.toggle('justify-center')
-      link.classList.toggle('px-10', link.classList.contains('px-2'))
-      link.classList.toggle('px-2', !link.classList.contains('px-2'))
+    this.asideTarget.classList.remove('lg:w-2/12');
+    this.asideTarget.classList.add('lg:w-[4%]');
+    this.asideTarget.setAttribute('aria-expanded', 'false');
+    this.iconLeftTarget.classList.add('hidden');
+    this.iconRightTarget.classList.remove('hidden');
+    this.linkTargets.forEach(link => {
+      link.classList.add('justify-center');
+      link.classList.remove('justify-start');
+      link.classList.add('px-2', link.classList.contains('px-10'));
     })
-    this.titleTargets.forEach((title) => {
-      title.classList.toggle('hidden')
+    this.titleTargets.forEach(title => {
+      title.classList.add('hidden');
+    });
+  }
+
+  applyWideState() {
+    this.asideTarget.classList.add('lg:w-2/12');
+    this.asideTarget.classList.remove('lg:w-[4%]');
+    this.asideTarget.setAttribute('aria-expanded', 'true');
+    this.iconLeftTarget.classList.remove('hidden');
+    this.iconRightTarget.classList.add('hidden');
+    this.titleTargets.forEach(title => {
+      title.classList.remove('hidden');
+    });
+    this.linkTargets.forEach(link => {
+      link.classList.remove('justify-center');
+      link.classList.add('justify-start');
+      link.classList.remove('px-10', link.classList.contains('px-2'));
     })
   }
-}
 
-// handle cookies
-function setCookie(name, value, days) {
-  let expires = "";
-  if (days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
+  saveState() {
+    const isNarrow = this.asideTarget.classList.contains('lg:w-[4%]');
+    // Convertir el booleano a string para guardar en localStorage
+    localStorage.setItem('asideState', String(isNarrow));
   }
-  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      // ¿Esta cookie comienza con el nombre que queremos?
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
 }
