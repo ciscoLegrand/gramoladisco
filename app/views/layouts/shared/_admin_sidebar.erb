@@ -1,12 +1,14 @@
-<aside  data-controller='decrease'
-  data-decrease-target='aside'
-  class="relative aside-default md:flex lg:block <%= cookies['asideState'] ? 'lg:w-2/12' : 'lg:w-[4%]' %> gap-8">
+<aside data-controller="decrease"
+       data-decrease-target="aside"
+       aria-expanded="<%= cookies['asideState'].presence || true %>"
+       class="relative aside-default md:flex lg:block <%= cookies['asideState'] == 'true' ? 'lg:w-2/12' : 'lg:w-[4%]' %> gap-8">
+
   <!--LOGO--->
   <%= render UI::Logo.new(link: root_path, logo: 'gramola-logo-transparent.png') %>
   <!-- toggle button -->
   <%= active_link_to '', 
       data: { action: 'click->decrease#toggle' },
-      class: 'absolute top-3 -right-4 nav-link p-1 text-center rounded-full border border-slate-600 bg-white hover:bg-slate-200 text-indigo-500 shadow-md shadow-slate-300 z-10' do %>
+      class: 'absolute top-14 -right-4 nav-link p-1 text-center rounded-full border border-slate-600 bg-white hover:bg-slate-200 text-indigo-500 shadow-md shadow-slate-300 z-10' do %>
     <%= inline_svg_tag('icons/aside/chevron-left.svg', class: 'w-6 h-6', data: { 'decrease-target': 'iconLeft' }) %>
     <%= inline_svg_tag('icons/aside/chevron-right.svg', class: 'w-6 h-6 hidden', data: { 'decrease-target': 'iconRight' }) %>
   <% end %>
