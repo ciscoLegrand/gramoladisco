@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ['aside', 'iconLeft', 'iconRight', 'link', 'title']
 
-  connect() { 
+  connect() {
+    let isNarrow = JSON.parse(getCookie('asideState'));
     if (isNarrow === null) { 
       setCookie('asideState', JSON.stringify(false), 7)
     } else {
