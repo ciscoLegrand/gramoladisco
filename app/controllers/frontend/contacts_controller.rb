@@ -1,9 +1,12 @@
 class Frontend::ContactsController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
+  invisible_captcha only: [:create], honeypots: ['phone', 'country_prefix', 'address'], on_spam: :spam_detected
 
   def index; end
 
   def create
+    @human_instructions = I18n.t('invisible_captcha.human_instructions')
     @contact = Contact.new(contact_params)
     respond_to do |format|
       if @contact.save
@@ -20,5 +23,10 @@ class Frontend::ContactsController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(:title, :subject, :email)
+  end
+
+  def spam_detected
+    flash.now[:success] = { title: t('.spam.title'), message: t('.spam.message') }
+    redirect_to root_path
   end
 end
