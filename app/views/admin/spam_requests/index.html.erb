@@ -1,0 +1,51 @@
+
+<div class="w-full lg:container py-2 px-10 gap-6 flex flex-col justify-center items-center mx-auto">
+  <div class="w-full flex justify-between bg-corporation text-white py-4">
+    <div class="w-full flex justify-between items-center mx-auto gap-5 py-6">
+      <div class="w-full flex-1 flex justify-start items-center gap-6">
+        <%= render(UI::TitleCount.new(title: SpamRequest.name.humanize, count: @pagy.count)) %>
+        <%= render(UI::Paginator.new(items: params[:items], url: ->(params) { admin_spam_requests_path(params) })) %>
+      </div>
+      <div class="flex-1 flex justify-end items-center gap-x-5 text-blue-950">
+        <%= render(UI::StringSearcher.new(
+          path: search_admin_spam_requests_path,
+          attribute: :text,
+          options: {
+            placeholder: 'Buscar spam_requesto...',
+            regex: params[:text]
+          })
+        )%>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full grid grid-cols-8 gap-8">
+    <div class="span-all flex flex-col">
+      <header class="w-full flex fustify-between items-center lg:grid lg:grid-cols-<%= @headers.size + 1 %> gap-4 py-4 md:text-xl font-semibold text-slate-100 bg-slate-950 border-b-4 border-b-blue-800 rounded-t-2xl">
+        <% @headers.each do |header| %>
+          <% hidden = 'hidden lg:block' if header.eql?('ip')%>
+          <% style = 'text-center 2xl:text-right' if header.eql? 'created_at' %>
+          <% sort = params[:direction] == 'desc' && params[:sort] == header ? {direction: 'asc', arrow: '🔻' } : {direction: 'desc', arrow: '🔺' } %>
+          <div class="capitalize px-3 <%= style %> <%= hidden %> text-sm xl:text-xl whitespace-nowrap">
+            <%= link_to "#{t(".#{header}")} #{sort[:arrow]}", admin_spam_requests_path(sort: header, direction: sort[:direction], items: params[:items]) %>
+          </div>
+        <% end %>
+        <div class="flex justify-end items-center gap-5 py-2 px-4">
+        </div>
+      </header>
+      <%= turbo_frame_tag 'spam_requests' do %>
+        <ul id="search_results" class="w-full flex flex-col mb-4 [&>li:last-child]:border-b [&>li:last-child]:border-b-gray-950 [&>li:last-child]:rounded-b-xl shadow-lg shadow-gray-950 rounded-xl">
+          <%= render @spam_requests if params[:text].blank? %>
+        </ul>
+        <%== pagy_nav(@pagy)%>
+      <% end %>
+    </div>
+
+    <!-- Sección para Detalles del Contacto (2/3 del ancho) -->
+    <%= turbo_frame_tag('spam_request_details', class: 'col-span-5 flex justify-center items-start gap-4', load: :lazy) do%>
+      <style>
+          .span-all { grid-column: span 8;}
+      </style>
+    <% end %>
+  </div>
+</div>

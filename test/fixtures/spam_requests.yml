@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyText
+  remote_ip: MyString
+  user_agent: MyString
+  controller_name: MyString
+  action_name: MyString
+  url: MyString
+  params: MyText
+
+two:
+  message: MyText
+  remote_ip: MyString
+  user_agent: MyString
+  controller_name: MyString
+  action_name: MyString
+  url: MyString
+  params: MyText

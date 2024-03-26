@@ -4,15 +4,24 @@ en:
       words_connector: "and"
       two_words_connector: "and"
       last_word_connector: "and"
+  invisible_captcha:
+    human_instructions: "Leave this field empty"
+    timestamp_error: "The form was submitted too quickly. Please try again."
 es:
   support:
     array:
       words_connector: "y"
       two_words_connector: "y"
       last_word_connector: "y"
+  invisible_captcha:
+    human_instructions: "Por favor, deje este campo en blanco"
+    timestamp_error: "El formulario fue enviado demasiado rápido. Por favor, intente de nuevo."
 gl:
   support:
     array:
       words_connector: "e"
       two_words_connector: "e"
       last_word_connector: "e"
+  invisible_captcha:
+    human_instructions: "Por favor, deje este campo en blanco"
+    timestamp_error: "O formulario foi enviado moi rápido. Por favor, tente de novo."
