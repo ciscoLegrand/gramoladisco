@@ -12,6 +12,8 @@ en:
       index: Users
     reviews:
       index: Reviews
+    spam_requests:
+      index: Spam
 es:
   breadcrumbs:
     admin:
@@ -26,6 +28,8 @@ es:
       index: Usuarios
     reviews:
       index: Reseñas
+    spam_requests:
+      index: Spam
 gl:
   breadcrumbs:
     admin:
@@ -40,3 +44,5 @@ gl:
       index: Usuarios
     reviews:
       index: Reseñas
+    spam_requests:
+      index: Spam
