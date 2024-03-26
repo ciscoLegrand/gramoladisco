@@ -17,6 +17,7 @@
                           placeholder: 'Asunto a tratar',
                           class: "shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-lg" %>
     </div>
+    <%= form.invisible_captcha :address, sentence_for_humans: @human_instructions %>
     <div class="w-full flex flex-col justify-center items-start gap-4">
       <div class="flex justify-between gap-4">
         <%= form.label :email, t('.email'), class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -33,7 +34,8 @@
                             class: "shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-lg" %>
     </div>
   </div>
-
+  <%= form.invisible_captcha :country_prefix, sentence_for_humans: @human_instructions %>
+  <%= form.invisible_captcha :phone, sentence_for_humans: @human_instructions %>
   <div class="mb-6">
     <div class="flex justify-between gap-4">
       <%= form.label :subject, t('.subject'), class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -54,7 +56,6 @@
                             class: "trix-content min-h-[12rem] bg-white shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-lg" %>
 
   </div>
-
   <div class="flex items-center justify-between">
     <%= form.submit "Enviar",
             data: {

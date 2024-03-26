@@ -13,6 +13,9 @@ en:
         success:
           title: "Thank you for contacting us"
           message: "We will get back to you as soon as possible."
+      spam:
+        title: "Thank you for contacting us, champ!"
+        message: "We will get back to you as soon as possible, crack!."
 
 es:
   frontend:
@@ -29,6 +32,9 @@ es:
         success:
           title: "Gracias por contactarnos"
           message: "Nos pondremos en contacto lo antes posible."
+      spam:
+        title: "Gracias por contactarno, campeón!"
+        message: "Nos pondremos en contacto lo antes posible crack!."
 
 gl:
   frontend:
@@ -45,4 +51,7 @@ gl:
         success:
           title: "Grazas por contactar connosco"
           message: "Poremonos en contacto o antes posible."
+      spam:
+        title: "Grazas por contactar connosco, campión!"
+        message: "Poremonos en contacto o antes posible, crack!."
 
