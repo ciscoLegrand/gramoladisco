@@ -9,12 +9,6 @@ InvisibleCaptcha.setup do |config|
 end
 
 ActiveSupport::Notifications.subscribe('invisible_captcha.spam_detected') do |*args, data|
-
-  if BLOCKED_ENDPOINTS.include?(url)
-    Rails.cache.write("blocked_#{remote_ip}", true, expires_in: 15.minutes)
-    Rails.logger.info("🚫 Blocked access from #{remote_ip} to #{url} for 15 minutes.")
-  end
-
   message = data[:message]
   remote_ip = data[:remote_ip]
   user_agent = data[:user_agent]
@@ -32,6 +26,11 @@ ActiveSupport::Notifications.subscribe('invisible_captcha.spam_detected') do |*a
   session_id = data[:session_id]
   cookies = data[:cookies]
   user_id = data[:user_id]
+
+  if BLOCKED_ENDPOINTS.include?(url)
+    Rails.cache.write("blocked_#{remote_ip}", true, expires_in: 15.minutes)
+    Rails.logger.info("🚫 Blocked access from #{remote_ip} to #{url} for 15 minutes.")
+  end
 
   SpamRequest.create(
     message: message,
