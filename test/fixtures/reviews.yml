@@ -1,19 +1,17 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  avatar: MyString
-  name: MyString
-  date: 2024-03-15
-  overall_rating: 1.5
-  ratings: 
-  title: MyString
-  description: MyText
-
+  avatar: "avatar1.png"
+  name: "Usuario 1"
+  date: "2024-03-26"
+  overall_rating: 4.5
+  ratings: { quality: 4, price: 5, service: 4 }
+  title: "Excelente producto"
+  description: "Estoy muy contento con mi compra. El producto cumplió todas mis expectativas."
+  
 two:
-  avatar: MyString
-  name: MyString
-  date: 2024-03-15
-  overall_rating: 1.5
-  ratings: 
-  title: MyString
-  description: MyText
+  avatar: "avatar2.png"
+  name: "Usuario 2"
+  date: "2024-03-25"
+  overall_rating: 3.8
+  ratings: { quality: 3, price: 4, service: 4 }
+  title: "Buen producto"
+  description: "El producto es bueno pero esperaba un poco más en términos de calidad."
