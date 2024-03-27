@@ -1,0 +1,21 @@
+one:
+  title: "Álbum 1"
+  password: "password1"
+  code: "ABC123"
+  counter: 10
+  emails: { email1: "email1@example.com", email2: "email2@example.com" }
+  date_event: "2024-04-15"
+  published_at: "2024-04-01"
+  status: "published"
+  slug: "album-1"
+
+two:
+  title: "Álbum 2"
+  password: "password2"
+  code: "XYZ789"
+  counter: 5
+  emails: { email3: "email3@example.com", email4: "email4@example.com" }
+  date_event: "2024-05-20"
+  published_at: "2024-05-01"
+  status: "draft"
+  slug: "album-2"
