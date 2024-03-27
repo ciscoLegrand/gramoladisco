@@ -1,0 +1,47 @@
+# Patterns of URL to be considered malicious
+patterns:
+  - ^/admin
+  - ^/wp-admin
+  - ^/wp-login\.php$
+  - ^/phpmyadmin$
+  - ^/wp-content/.*$
+  - ^/xmlrpc\.php$
+  - ^/api/.*$
+  - ^/admin\.php$
+  - ^/login\.php$
+  - ^/dashboard$
+  - ^/cgi-bin/.*$
+  - ^/webdav/.*$
+  - ^/ALFA_DATA/$
+  - ^/.git.*$
+  - ^/git.*$
+  - ^/config/.*$
+  - ^/database/.*$
+  - ^/tmp/.*$
+  - ^/vendor/.*$
+  - ^/log/.*$
+  - ^/public/system/.*$
+
+# Keywords in URL (case-insensitive)
+keywords:
+  - 'wp\w*'
+  - 'php.*'
+  - 'perl.*'
+  - 'alfa.*'
+  - 'git'
+  - 'svn'
+  - 'hg'
+  - 'cvs'
+  - 'ssh'
+  - 'sql'
+  - 'php'
+  - 'perl'
+  - 'bash'
+  - 'cmd'
+
+# Error codes to not consider for blocking (optional)
+error_codes:
+  - 401
+  - 403
+  - 404
+
