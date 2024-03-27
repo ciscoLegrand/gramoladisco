@@ -18,7 +18,7 @@ class CreateSpamRequests < ActiveRecord::Migration[7.1]
       t.string :session_id
       t.jsonb :cookies
       t.integer :user_id
-
+      t.integer :status_code
       t.timestamps
     end
   end
