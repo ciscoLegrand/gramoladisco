@@ -106,3 +106,4 @@ gem "faker"
 gem "nokogiri"
 # anti-spam
 gem 'invisible_captcha'
+gem 'rack-attack'
