@@ -47,6 +47,9 @@ Rails.application.routes.draw do
       resources :reviews, except: %i[update delete] do
         post :search, on: :collection
       end
+      resources :spam_requests, only: %i[index show delete] do
+        post :search, on: :collection
+      end
       delete 'images/:album_id/delete-all', to: 'images#delete_all', as: :delete_all
     end
   end

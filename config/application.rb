@@ -22,7 +22,7 @@ module Gramoladisco
       gen.helper            false
       # gen.test_framework    :minitest
       gen.jbuilder          true
-      gen.orm               :active_record#, primary_key_type: :uuid
+      gen.orm               :active_record, primary_key_type: :uuid
       gen.system_tests      false
     end
     # Configuration for the application, engines, and railties goes here.
@@ -37,5 +37,8 @@ module Gramoladisco
     config.i18n.available_locales = %i[es en gl]
     config.i18n.default_locale = :es
     config.i18n.fallbacks = true
+
+    require_relative '../app/middleware/request_logger'
+    config.middleware.use RequestLogger
   end
 end

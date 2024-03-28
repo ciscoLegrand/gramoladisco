@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_15_184233) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_192132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -124,6 +124,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_184233) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "date", "title"], name: "index_reviews_on_name_date_title_uniqueness", unique: true
+  end
+
+  create_table "spam_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "message"
+    t.string "remote_ip"
+    t.string "user_agent"
+    t.string "controller_name"
+    t.string "action_name"
+    t.string "url"
+    t.jsonb "params"
+    t.string "request_method"
+    t.string "referer"
+    t.string "accept_language"
+    t.string "origin"
+    t.string "host"
+    t.string "content_type"
+    t.integer "content_length"
+    t.string "session_id"
+    t.jsonb "cookies"
+    t.integer "user_id"
+    t.integer "status_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

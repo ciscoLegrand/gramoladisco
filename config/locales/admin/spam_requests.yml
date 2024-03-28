@@ -1,0 +1,113 @@
+en:
+  active_record:
+    models:
+      spam_request: Spam request
+    attributes:
+      spam_request:
+        message: Message
+        remote_ip: Remote IP
+        user_agent: User agent
+        controller_name: Controller name
+        action_name: Action name
+        url: URL
+        params: Params
+        request_method: Request method
+        referrer: Referrer
+        accept_language: Accept language
+        origin: Origin
+        host: Host
+        content_type: Content type
+        content_length: Content length
+        session_id: Session ID
+        cookies: Cookies
+        user_id: User ID
+        created_at: Created at
+  admin:
+    spam_requests:
+      spam_request_details:
+        back: Back
+      spam_request:
+        confirm_destroy: Are you sure?
+      index:
+        search: Search spam requests
+        remote_ip: IP
+        action_name: Action
+        created_at: Created at
+        request_host: Host
+        controller_name: Controller
+
+es:
+  active_record:
+    models:
+      spam_request: Solicitud de spam
+    attributes:
+      spam_request:
+        message: Mensaje
+        remote_ip: IP remota
+        user_agent: Agente de usuario
+        controller_name: Nombre del controlador
+        action_name: Nombre de la acción
+        url: URL
+        params: Parámetros
+        request_method: Método de solicitud
+        referrer: Referente
+        accept_language: Idioma de aceptación
+        origin: Origen
+        host: Anfitrión
+        content_type: Tipo de contenido
+        content_length: Longitud del contenido
+        session_id: ID de sesión
+        cookies: Cookies
+        user_id: ID de usuario
+        created_at: Creado en
+  admin:
+    spam_requests:
+      spam_request_details:
+        back: Volver
+      spam_request:
+        confirm_destroy: ¿Estás seguro?
+      index:
+        search: Buscar solicitudes de spam
+        remote_ip: IP
+        action_name: Acción
+        created_at: Creado en
+        request_host: Anfitrión
+        controller_name: Controlador
+      
+gl:
+  active_record:
+    models:
+      spam_request: Solicitude de spam
+    attributes:
+      spam_request:
+        message: Mensaxe
+        remote_ip: IP remota
+        user_agent: Axente de usuario
+        controller_name: Nome do controlador
+        action_name: Nome da acción
+        url: URL
+        params: Parámetros
+        request_method: Método de solicitude
+        referrer: Referente
+        accept_language: Idioma de aceptación
+        origin: Orixe
+        host: Anfitrión
+        content_type: Tipo de contido
+        content_length: Lonxitude do contido
+        session_id: ID de sesión
+        cookies: Cookies
+        user_id: ID de usuario
+        created_at: Creado en
+  admin:
+    spam_requests:
+      spam_request_details:
+        back: Volver
+      spam_request:
+        confirm_destroy: ¿Estás seguro?
+      index:
+        search: Buscar solicitudes de spam
+        remote_ip: IP
+        action_name: Acción
+        created_at: Creado en
+        request_host: Anfitrión
+        controller_name: Controlador

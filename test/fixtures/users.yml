@@ -4,8 +4,34 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  name: "Usuario 1"
+  surname: "Apellido 1"
+  phone_number: "123456789"
+  email: "usuario1@example.com"
+  role: "USER"
+  slug: "usuario-1"
+  reset_password_token: <%= SecureRandom.hex(10) %>
+  reset_password_sent_at: "2024-03-26 12:00:00"
+  remember_created_at: "2024-03-26 12:00:00"
+  sign_in_count: 0
+  current_sign_in_at: "2024-03-26 12:00:00"
+  last_sign_in_at: "2024-03-26 12:00:00"
+  current_sign_in_ip: "127.0.0.1"
+  last_sign_in_ip: "127.0.0.1"
+
+two:
+  name: "Usuario 2"
+  surname: "Apellido 2"
+  phone_number: "987654321"
+  email: "usuario2@example.com"
+  role: "USER"
+  slug: "usuario-2"
+  reset_password_token: <%= SecureRandom.hex(10) %>
+  reset_password_sent_at: "2024-03-26 12:00:00"
+  remember_created_at: "2024-03-26 12:00:00"
+  sign_in_count: 0
+  current_sign_in_at: "2024-03-26 12:00:00"
+  last_sign_in_at: "2024-03-26 12:00:00"
+  current_sign_in_ip: "127.0.0.1"
+  last_sign_in_ip: "127.0.0.1"

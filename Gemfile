@@ -72,29 +72,37 @@ group :test do
   gem "selenium-webdriver"
 end
 
+# handle cloud bucket uploads
 gem 'aws-sdk-s3', require: false
+# helpers for views and style
 gem 'friendly_id'
 gem 'inline_svg'
-gem 'mailjet'
 gem 'pagy'
 gem 'breadcrumbs_on_rails'
-gem 'sidekiq'
 gem 'view_component'
+gem 'sidekiq'
+# cron tasks
 gem 'whenever', require: false
+# email
 gem 'letter_opener'
+gem 'mailjet'
+# excel and csv
 gem "roo", "~> 2.9.0"
 gem "caxlsx"
 gem "caxlsx_rails"
+# better search against postgres
 gem "pg_search"
+# docker
 gem "dockerfile-rails", ">= 1.5", :group => :development
 
 gem "sentry-ruby", "~> 5.14"
-
 gem "sentry-rails", "~> 5.14"
-
+# omniauth
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
-
+# scraper
 gem "faker"
 gem "nokogiri"
+# anti-spam
+gem 'invisible_captcha'
