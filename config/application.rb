@@ -38,7 +38,6 @@ module Gramoladisco
     config.i18n.default_locale = :es
     config.i18n.fallbacks = true
 
-    require_relative '../app/middleware/request_logger'
-    config.middleware.use RequestLogger
+    config.middleware.use Rack::Attack
   end
 end
