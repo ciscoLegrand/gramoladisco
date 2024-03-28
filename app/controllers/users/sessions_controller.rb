@@ -10,12 +10,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    Rails.logger.info "current_user: #{current_user.inspect}"
     respond_to do |format|
       if current_user.present?
-        flash[:success] = "Bienvenido, #{current_user.email}!"
+        flash[:success] = {title: "Bienvenido!", body: "#{current_user.email}! Has iniciado sesión correctamente"}
       else
-        flash.now[:error] = 'Usuario o contraseña incorrectos'
+        flash[:error] = {title: "Error!", body: "No se ha podido iniciar sesión, verifica tus credenciales e intenta nuevamente"}
       end
 
       format.html { redirect_to root_path }
