@@ -1,14 +1,26 @@
 # Patterns of URL to be considered malicious
 patterns:
-  - ^/admin
   - ^/wp-admin
   - ^/wp-login\.php$
-  - ^/phpmyadmin$
+  - ^/wp-includes/.*$
   - ^/wp-content/.*$
+  - ^/wp-content/plugins/.*$
+  - ^/wp-content/themes/.*$
+  - ^/wp-content/uploads/.*$
+  - ^/wp-content/cache/.*$
+  - ^/wp-content/languages/.*$
+  - ^/wp-content/upgrade/.*$
+  - ^/wp-content/backup-db/.*$
+  - ^/phpmyadmin$
   - ^/xmlrpc\.php$
   - ^/api/.*$
   - ^/admin\.php$
+  - ^/galeria/.*$
+  - ^/gallery/.*$
   - ^/login\.php$
+  - ^/login$
+  - ^/administrator$
+  - ^/contacto
   - ^/dashboard$
   - ^/cgi-bin/.*$
   - ^/webdav/.*$
