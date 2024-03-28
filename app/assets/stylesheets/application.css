@@ -43,3 +43,15 @@
 .main-h-screen {
   min-height: calc(100vh - 104px - 88px);
 }
+
+/* Album gallery */
+.pswp__zoom-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.pswp__img {
+  object-fit: contain;
+}
