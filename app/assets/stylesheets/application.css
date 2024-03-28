@@ -1,7 +1,6 @@
 /* notification component css */
 .toast-fade-in {
   animation: toast-fade-in 1s forwards;
-  animation-delay: 1s;
 }
 
 .toast-fade-out {
