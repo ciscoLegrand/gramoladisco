@@ -15,12 +15,14 @@
               <div>
                 <%= f.text_field :name, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
+              <%= form.invisible_captcha :last_name, sentence_for_humans: @human_instructions %>
               <div>
                 <%= f.text_field :surname, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
               <div>
                 <%= f.phone_field :phone_number, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
+              <%= form.invisible_captcha :code, sentence_for_humans: @human_instructions %>
               <div>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-all ease-in-out duration-300", placeholder: true %>
               </div>
@@ -28,6 +30,7 @@
                 <%= f.password_field :password, autocomplete: "new-password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: true %>
               </div>
             </div>
+            <%= form.invisible_captcha :address, sentence_for_humans: @human_instructions %>
             <div class="relative flex flex-col justify-between items-center gap-4">
 
               <%= button_to nil, class: "w-full flex justify-start items-center bg-blue-500 text-white rounded-lg px-4 py-2 mx-2 gap-4" do %>
